@@ -1,7 +1,11 @@
-# perneMuchilotkshetra
+# PerneKshetra.com
 
-Official Website of perneMuchilotkshetra Shree Perne Muchilot Bhagavathi Kshetra
+This is a website built for the religious place in my hometown. 
+This place is known for it's culture and simple mass marriage
 
-Note: This is temple website. Can't be used by other temple without permission
 
-Please raise PR and following best coding guidlines 
+
+[Visit pernekshetra.com](http://www.pernekshetra.com/)
+
+Feel free to contribute, Raise a PR, follow best coding guidelines. 
+If you contribute for a major feature, your name will be added to contribution list
