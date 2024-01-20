@@ -1631,3 +1631,14 @@ audio::-webkit-media-controls-enclosure {
 audio::-webkit-media-controls-panel {
     width: calc(100% + 30px); /* Adjust as needed */
 }
+
+.download-button {
+  display: block;
+  text-align: center;
+  background-color: #cc0000;
+  border-radius: 30px;
+  padding: 10px;
+  font-size: 24px;
+  color: white;
+  margin-bottom: 20px;
+}

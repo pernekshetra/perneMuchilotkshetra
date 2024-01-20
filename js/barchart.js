@@ -14,10 +14,11 @@ $(function() {
             text: 'Number of Marriages'
         },
         subtitle: {
-            text: 'Last 10 years data'
+            text: 'Last 11 years data'
         },
         xAxis: {
             categories: [
+            '2019',
             '2018',
             '2017',
             '2016',
@@ -54,11 +55,11 @@ $(function() {
         },
         series: [{
             name: 'Pooram',
-            data: [29,31,21,23,40, 40, 66, 47, 40, 49, 37,]
+            data: [9,29,31,21,23,40, 40, 66, 47, 40, 49, 37,]
 
         }, {
             name: 'Udayastamanam',
-            data: [0,16,22,40, 27, 39, 37, 35, 40, 27, 26,]
+            data: [22,20,16,22,40, 27, 39, 37, 35, 40, 27, 26,]
 
         }]
     });
