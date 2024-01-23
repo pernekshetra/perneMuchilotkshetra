@@ -533,6 +533,12 @@ header.parallax:after {
 header.home {
     background-image: url(../Resource/Header/landing.jpg);
 }
+
+@media (max-width: 768px) {
+    header.home {
+        background-image: url('../Resource/Header/landing_mobile.jpg');
+    }
+}
 header.seva {
     background-image: url(../Resource/Header/seva.jpg);
 }
