@@ -1706,6 +1706,7 @@ audio::-webkit-media-controls-panel {
     border: 1px solid black;
     border-radius: 5px;
     cursor: pointer;
+      background-color: #FF7F7F
 }
 
 #panRightButton {
@@ -1716,6 +1717,7 @@ audio::-webkit-media-controls-panel {
     border: 1px solid black;
     border-radius: 5px;
     cursor: pointer;
+    background-color: #FF7F7F
 }
 
 #panUpButton {
@@ -1726,6 +1728,7 @@ audio::-webkit-media-controls-panel {
     border: 1px solid black;
     border-radius: 5px;
     cursor: pointer;
+    background-color: #FF7F7F
 }
 
 #panDownButton {
@@ -1736,6 +1739,7 @@ audio::-webkit-media-controls-panel {
     border: 1px solid black;
     border-radius: 5px;
     cursor: pointer;
+    background-color: #FF7F7F
 }
 #zoomInButton {
     display: inline;
@@ -1745,6 +1749,7 @@ audio::-webkit-media-controls-panel {
     border: 1px solid black;
     border-radius: 5px;
     cursor: pointer;
+    background-color: #FF7F7F
 }
 #zoomOutButton {
     display: inline;
@@ -1754,6 +1759,7 @@ audio::-webkit-media-controls-panel {
     border: 1px solid black;
     border-radius: 5px;
     cursor: pointer;
+    background-color: #FF7F7F
 }
 
 /* Styling for the result container */
