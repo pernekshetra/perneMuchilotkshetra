@@ -129,7 +129,7 @@ function generateProfilePic() {
             let userWidth, userHeight, userX, userY;
 
             // Ensure the user image covers the circle in the overlay
-            let circleDiameter = Math.min(overlayImage.width, overlayImage.height); // Assuming circle diameter is the smaller dimension of the overlay
+            let circleDiameter = Math.min(overlayImage.width*0.8, overlayImage.height*0.8); // Assuming circle diameter is the smaller dimension of the overlay
             if (aspectRatio >= 1) { // Wide or square image
                 userHeight = circleDiameter;
                 userWidth = userHeight * aspectRatio;
