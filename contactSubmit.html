@@ -254,13 +254,16 @@ You may not, except with our express written permission, distribute or exploit t
 
 </script>
 
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-70077839-1"></script>
 <script>
-$(document).ready(function () {
-  setTimeout(function () {
-      $('#msg').hide();
-  }, 3000);
-});
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-70077839-1');
 </script>
+
 
 </body>
 
