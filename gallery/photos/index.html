@@ -14,30 +14,34 @@
     <link rel="shortcut icon" type="image/png" href="/favicon.png" />
     <link rel="icon" type="image/png" href="favicon.png" />
 
-    <title>Perne About</title>
-
+    <title>Perne Photos</title>
     <!-- ******************************** CSS ******************************** -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link href="../../css/custom.css" rel="stylesheet" type="text/css">
     <link href="../../css/pace-preloder.css" rel="stylesheet" type="text/css">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="../../css/custom.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/blueimp-gallery.min.css">
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript" src="flipgallery/settings.js"></script>
   </head>
   <body>
     <!-- ******************************** Navigation ******************************** -->
     <nav class="navbar navbar-custom navbar-fixed-top navigation" id="nav" role="navigation">
+      <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" id="navbar-toggle" data-toggle="collapse" data-target="#menu">
           <i class="fa fa-bars"></i>
         </button>
-        <a class="navbar-brand" href="/">
+        <a class="navbar-brand" href="index">
           <div class="brand"><img class="brand_logo" alt="" src="../../Resource/Common/sitelogo.png"/>PERNE KSHETRA</div>
         </a>
       </div>
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="menu">
         <ul class="nav navbar-nav navbar-center">
-          <li class="active">
-            <a href="#">About</a>
+          <li>
+            <a href="../../about/festivals">About</a>
           </li>
           <li>
             <a href="../../history/incarnation">History</a>
@@ -48,8 +52,8 @@
           <li>
             <a href="../../donate">Donate</a>
           </li>
-          <li>
-            <a href="../../gallery/videos">Gallery</a>
+          <li class="active">
+            <a href="#">Gallery</a>
           </li>
           <li>
             <a href="../../nearby">Near By</a>
@@ -62,83 +66,90 @@
           </li>
         </ul>
       </div>
-      <!-- container- -->
     </nav>
+    <!-- .navbar-custom -->
     <!-- ******************************** Top Header ******************************** -->
-    <header class="parallax seva"></header>
-    <!-- ******************************** Introduction Section ******************************** -->
+    <header class="parallax gallery"></header>
     <section class="stickyBar" id="stickyBar">
       <div class="container">
         <div class="row">
-          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
             <div class="row text-center menuItems">
-              <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 text-center">
-                <div class="row"><a href="../festivals">FESTIVALS</a></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center">
+                <div class="row"><a href="../videos">Videos</a></div>
               </div>
-              <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 text-center">
-                <div class="row"><a href="../deities">DEITIES</a></div>
-              </div>
-              <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 text-center">
-                <div class="row"><a href="../administration">ADMINISTRATION</a></div>
-              </div>
-              <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 text-center">
-                <div class="row"><a href="#" class="active">SEVAS</a></div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center">
+                <div class="row"><a href="#" class="active">Photos</a></div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </section>
-    <div class="container">
+    <!-- ******************************** Video listing ******************************** -->
+    <div class="container paddingT30">
+      <h1>Photo Gallery</h1>
       <div class="row">
-        <div class="col-sm-10 col-sm-offset-1">
-          <h1 class="text-center marginT50 marginB30">
-            Seva Details in Perne Kshetram
-          </h1>
+        <!-- Gallery Item 1 -->
+        <div class="col-sm-6 gallery-item">
+          <a href="https://photos.app.goo.gl/Affqw4tsH3dE1WVg8" target="_blank" class="thumbnail">
+            <img src="../../Resource/photos/1.jpg" alt="">
+            <div class="caption">
+              <h3>ಕಳಿಯಾಟ ಮಹೋತ್ಸವದ ಮೇಲೇರಿಗೆ ಕೊಳ್ಳಿ ಕಡಿಯುವ ಕಾರ್ಯಕ್ರಮ</h3>
+            </div>
+          </a>
         </div>
-        <div class="col-sm-12 text-center">
-          <img alt="" class="img-circle" src="../../Resource/OtherDeities/Devi.jpg" width="200" height="200" />
+        <!-- Gallery Item 2 -->
+        <div class="col-sm-6 gallery-item">
+          <a href="https://photos.app.goo.gl/x5wV6w4NGjPmbdwj6" target="_blank" class="thumbnail">
+            <img src="../../Resource/photos/2.jpg" alt="">
+            <div class="caption">
+              <h3>Education camp - Summer camp</h3>
+            </div>
+          </a>
         </div>
-        <div class="col-sm-8 col-sm-offset-4">
-          <p class="headingUnderLine text-left marginT50" style="padding-left:60px;"> <b>Seva Name</b>
-          <p>
-          <div id="list2" class="marginB30">
-            <ol>
-              <li>
-                <p>Manevanthige</p>
-              </li>
-              <li>
-                <p>Suthu Belaku (Chuttu Vilak)</p>
-              </li>
-              <li>
-                <p>Thulabhara Seve (Thulabharam) </p>
-              </li>
-              <li>
-                <p>Chappara Maduve (Pandal Mangalam)</p>
-              </li>
-              <li>
-                <p>Dhara Maduve - Bride Rs 1000/- , Bride Groom -Rs 1500/- </p>
-              </li>
-              <li>
-                <p>Kootam</p>
-              </li>
-            </ol>
-          </div>
+        <div class="col-sm-6 gallery-item">
+          <a href="https://photos.app.goo.gl/qqrut6PgtYDPfjWf8" target="_blank" class="thumbnail">
+            <img src="../../Resource/photos/3.jpg" alt="">
+            <div class="caption">
+              <h3>PerneKshetra in 2014</h3>
+            </div>
+          </a>
         </div>
+        <div class="col-sm-6 gallery-item">
+          <a href="https://photos.app.goo.gl/fLrNLbxmWu9boMf87" target="_blank" class="thumbnail">
+            <img src="../../Resource/photos/4.jpg" alt="">
+            <div class="caption">
+              <h3>Shree Perne Muchilot Bhagavathi Kshetra</h3>
+            </div>
+          </a>
+        </div>
+        <div class="col-sm-6 gallery-item">
+          <a href="https://photos.app.goo.gl/9v1zxUprzSNUxGY97" target="_blank" class="thumbnail">
+            <img src="../../Resource/photos/5.jpg" alt="">
+            <div class="caption">
+              <h3>ನೆನಪುಗಳು</h3>
+            </div>
+          </a>
+        </div>
+        <!-- Add more items here -->
       </div>
     </div>
+    <!-- ******************************** Footer ******************************** -->
     <footer>
       <div class="footerData">
         <p>
           ©2024 Shree Perne Muchilot Bhagavathi Kshetra. 
-          </br>All rights reserved.
+          </br>All rights reserved. 
+        </p>
       </div>
     </footer>
-    <!-- ******************************** Scripts /******************************** -->
+    <!-- ******************************** Scripts ******************************** -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../../js/common.js"></script>
     <script type="text/javascript" src="../../js/pace.min.js"></script>
+    <script src="js/blueimp-gallery.min.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-70077839-1"></script>
     <script>
