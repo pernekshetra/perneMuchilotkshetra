@@ -548,8 +548,8 @@ header.deities {
 header.festival {
     background-image: url(../Resource/Header/festivals.jpg);
 }
-header.admin {
-    background-image: url(../Resource/Header/admin.jpg);
+header.oushadhavana {
+    background-image: url(../Resource/Header/oushadhavana.jpg);
 }
 header.incarnation {
     background-image: url(../Resource/Header/incarnation.jpeg);
@@ -1814,6 +1814,13 @@ audio::-webkit-media-controls-panel {
 
 #shareButton:hover {
     background-color: #128C7E; /* Darker shade on hover */
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Styling for the bottom image */
