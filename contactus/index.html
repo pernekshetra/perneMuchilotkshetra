@@ -119,7 +119,6 @@
               <h2 class="paddingT30">Disclaimer</h2>
               <div>
                 <p>The information contained in this website is for general information purposes only. The information is provided by Perne Muchilot Temple administration and while we endeavour to keep the information up to date and correct, we make no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, suitability or availability with respect to the website or the information. If you have any concerns please write to us and we will address it accordingly.</p>
-
               </div>
             </div>
             <div class="modal-footer">
@@ -153,8 +152,16 @@
       <footer>
         <div class="footerData">
           <p>
-            ©2024 Shree Perne Muchilot Bhagavathi Kshetra. 
-            </br>All rights reserved. <span style="cursor: pointer; color: #FFA500;" type="button" data-toggle="modal" data-target="#myModal">Website Team</span>
+            ©<span id="year">
+              <script>
+              document.getElementById("year").textContent = new Date().getFullYear();
+              </script>
+            </span>
+            Shree Perne Muchilot Bhagavathi Kshetra. 
+            </br>All rights reserved. 
+            <span style="cursor: pointer; color: #FFA500;" type="button" data-toggle="modal" data-target="#myModal">
+              Website Team
+            </span>
           </p>
         </div>
       </footer>
