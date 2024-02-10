@@ -21,8 +21,8 @@
     <link href="../../css/pace-preloder.css" rel="stylesheet" type="text/css">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="../../css/custom.css" rel="stylesheet" type="text/css">
-    <script type="text/javascript" src="../data.js"></script>
-    <script type="text/javascript" src="../scripts/plant.js"></script>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   </head>
   <body>
     <!-- ******************************** Navigation ******************************** -->
@@ -40,53 +40,59 @@
       <div class="collapse navbar-collapse" id="menu">
         <ul class="nav navbar-nav navbar-center">
           <li class="active">
-            <a href="../../../about/festivals">About</a>
+            <a href="../../about/festivals">About</a>
           </li>
           <li>
-            <a href="../../../history/incarnation">History</a>
+            <a href="../../history/incarnation">History</a>
           </li>
           <li>
-            <a href="../../../marriage">Marriage</a>
+            <a href="../../marriage">Marriage</a>
           </li>
           <li>
-            <a href="../../../donate">Donate</a>
+            <a href="../../donate">Donate</a>
           </li>
           <li>
-            <a href="../../../gallery">Gallery</a>
+            <a href="../../gallery">Gallery</a>
           </li>
           <li>
-            <a href="../../../nearby">Near By</a>
+            <a href="../../nearby">Near By</a>
           </li>
           <li>
-            <a href="../../../contactus">Contact</a>
+            <a href="../../contactus">Contact</a>
           </li>
           <li>
-            <a href="../../../kaliyata">Kaliyata</a>
+            <a href="../../kaliyata">Kaliyata</a>
           </li>
           <li>
-            <a href="../oushadhavana">Oushadhavana</a>
+            <a href="#">Oushadhavana</a>
           </li>
         </ul>
       </div>
       <!-- container- -->
     </nav>
     <!-- ******************************** Top Header ******************************** -->
-    <header class="parallax admin"></header>
+    <header class="parallax oushadhavana"></header>
     <div class="container">
-      <div class="row">
-        <div class="col-sm-12 col-lg-10 col-lg-offset-1 text-center marginT50">
-          <h1>OUSHADHAVANA</h1>
+      <div class="row center">
+        <div class="col-sm-12 col-lg-10 text-center marginT50">
+          <img style="width: 100%; max-width: 400px; height: auto;" src="../../Resource/Oushadhavana/logo.jpg" alt="oushadahavana logo">
+          <!-- <h1>OUSHADHAVANA</h1> -->
           <!-- <p class="marginT30"> -->
           <!--   Description of oushadhavan -->
           <!-- </p> -->
         </div>
-        <div class="col-sm-8 col-sm-offset-4">
-          <p class="headingUnderLine text-left marginT50" style="padding-left:60px;"> 
-            <b>GRAPE</b>
+        <div class="col-sm-12 center">
+          <p class="headingUnderLine text-left marginT50"> 
+            <b>Medicinal plants at Perne</b>
           <p>
-          <div id="description-ousadhavana-plant" class="marginB30">
-            <ul id="plant-metadata">
-            </ul>
+          <div id="list2" class="marginB30">
+            <ol id="app">
+              <li v-for="plant in plants">
+                <a :href="plant['sanskrit_name'].toLowerCase().replace(/\s+/g, '')" :title="plant['sanskrit_name']">
+                  {{ plant["sanskrit_name"] }}
+                </a>
+              </li>
+            </ol>
           </div>
         </div>
       </div>
@@ -104,6 +110,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../../js/common.js"></script>
     <script type="text/javascript" src="../../js/pace.min.js"></script>
+    <script type="module" src="scripts/listing.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-70077839-1"></script>
     <script>
