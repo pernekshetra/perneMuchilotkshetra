@@ -88,7 +88,7 @@
           <div id="list2" class="marginB30">
             <ol id="app">
               <li v-for="plant in plants">
-                <a :href="plant['sanskrit_name'].toLowerCase().replace(/\s+/g, '')" :title="plant['sanskrit_name']">
+                <a :href="plant['sanskrit_name'].toLowerCase().replace(/\s+/g, '_')" :title="plant['sanskrit_name']">
                   {{ plant["sanskrit_name"] }}
                 </a>
               </li>

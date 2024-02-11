@@ -1,10 +1,10 @@
 import fs from 'fs';
 import plants from '../data.mjs';
 
-const pathOfFileToCopy = '../index.html';
+const pathOfFileToCopy = '../base.htmx';
 
 for(const plant of plants) {
-  const folderPath = `../${plant['sanskrit_name'].toLowerCase().replace(/\s+/g, '')}`;
+  const folderPath = `../${plant['sanskrit_name'].toLowerCase().replace(/\s+/g, '_')}`;
 
   fs.stat(folderPath, (err, stats) => {
     if (err) {
