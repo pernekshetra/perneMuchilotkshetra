@@ -124,51 +124,53 @@ function generateProfilePic() {
   const overlayImage = new Image();
   overlayImage.src = selectedOverlay;
 
-  const reader = new FileReader();
-  reader.onload = function(event) {
-    const userImage = new Image();
-    userImage.src = event.target.result;
+  overlayImage.onload = function() {
+    const reader = new FileReader();
+    reader.onload = function(event) {
+      const userImage = new Image();
+      userImage.src = event.target.result;
 
-    userImage.onload = function() {
-      profileCanvas.width = overlayImage.width;
-      profileCanvas.height = overlayImage.height;
+      userImage.onload = function() {
+        profileCanvas.width = overlayImage.width;
+        profileCanvas.height = overlayImage.height;
 
-      const aspectRatio = userImage.width / userImage.height;
-      let userWidth, userHeight, userX, userY;
+        const aspectRatio = userImage.width / userImage.height;
+        let userWidth, userHeight, userX, userY;
 
-      // Ensure the user image covers the circle in the overlay
-      let circleDiameter = Math.min(overlayImage.width, overlayImage.height); // Assuming circle diameter is the smaller dimension of the overlay
-      if (aspectRatio >= 1) { // Wide or square image
-        userHeight = circleDiameter;
-        userWidth = userHeight * aspectRatio;
-      } else { // Tall image
-        userWidth = circleDiameter;
-        userHeight = userWidth / aspectRatio;
-      }
+        // Ensure the user image covers the circle in the overlay
+        let circleDiameter = Math.min(overlayImage.width, overlayImage.height); // Assuming circle diameter is the smaller dimension of the overlay
+        if (aspectRatio >= 1) { // Wide or square image
+          userHeight = circleDiameter;
+          userWidth = userHeight * aspectRatio;
+        } else { // Tall image
+          userWidth = circleDiameter;
+          userHeight = userWidth / aspectRatio;
+        }
 
-      // Centering the image within the canvas
-      userX = (overlayImage.width - userWidth) / 2;
-      userY = (overlayImage.height - userHeight) / 2;
+        // Centering the image within the canvas
+        userX = (overlayImage.width - userWidth) / 2;
+        userY = (overlayImage.height - userHeight) / 2;
 
-      context.clearRect(0, 0, profileCanvas.width, profileCanvas.height);
-      context.drawImage(
-        userImage,
-        userX + panX,
-        userY + panY,
-        userWidth * zoomLevel,
-        userHeight * zoomLevel
-      );
-      context.drawImage(overlayImage, 0, 0, overlayImage.width, overlayImage.height);
+        context.clearRect(0, 0, profileCanvas.width, profileCanvas.height);
+        context.drawImage(
+          userImage,
+          userX + panX,
+          userY + panY,
+          userWidth * zoomLevel,
+          userHeight * zoomLevel
+        );
+        context.drawImage(overlayImage, 0, 0, overlayImage.width, overlayImage.height);
 
-      if(isCanvasEmpty(profileCanvas)) {
-        alert("There was some error with the image, try again");
-        return;
-      }
+        if(isCanvasEmpty(profileCanvas)) {
+          alert("There was some error with the image, try again");
+          return;
+        }
 
-      resultImage.src = profileCanvas.toDataURL('image/png');
-      resultContainer.style.display = 'block';
-      downloadButton.href = profileCanvas.toDataURL('image/png');
+        resultImage.src = profileCanvas.toDataURL('image/png');
+        resultContainer.style.display = 'block';
+        downloadButton.href = profileCanvas.toDataURL('image/png');
+      };
     };
-  };
-  reader.readAsDataURL(imageInput.files[0]);
+    reader.readAsDataURL(imageInput.files[0]);
+  }
 }
