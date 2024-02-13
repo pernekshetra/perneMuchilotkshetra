@@ -5,7 +5,7 @@ import plants from "../data.mjs";
 const directoryPath = '../';
 
 for(const plant of plants) {
-  const folderNameToSearch = `${plant['sanskrit_name'].toLowerCase().replace(/\s+/g, '_')}`;
+  const folderNameToSearch = `${plant['Sanskrit Name'].toLowerCase().replace(/\s+/g, '_')}`;
 
   const files = fs.readdirSync(directoryPath);
 
