@@ -43,120 +43,107 @@ profileCanvas.addEventListener('mouseup', endDrag);
 profileCanvas.addEventListener('mouseleave', endDrag);
 
 profileCanvas.addEventListener('touchstart', (e) => {
-    if (e.touches.length === 1) {
-        startDrag(e.touches[0].clientX, e.touches[0].clientY);
-    }
+  if (e.touches.length === 1) {
+    startDrag(e.touches[0].clientX, e.touches[0].clientY);
+  }
 });
 profileCanvas.addEventListener('touchmove', (e) => {
-    if (e.touches.length === 1) {
-        dragImage(e.touches[0].clientX, e.touches[0].clientY);
-    }
+  if (e.touches.length === 1) {
+    dragImage(e.touches[0].clientX, e.touches[0].clientY);
+  }
 });
 profileCanvas.addEventListener('touchend', endDrag);
 
 function zoom(factor) {
-    zoomLevel *= factor;
-    zoomLevel = Math.max(0.5, Math.min(zoomLevel, 2));
-    updateCanvas();
+  zoomLevel *= factor;
+  zoomLevel = Math.max(0.5, Math.min(zoomLevel, 2));
+  updateCanvas();
 }
 
 function pan(dx, dy) {
-    panX += dx;
-    panY += dy;
-    updateCanvas();
+  panX += dx;
+  panY += dy;
+  updateCanvas();
 }
 
 function startDrag(x, y) {
-    isDragging = true;
-    dragStartX = x;
-    dragStartY = y;
+  isDragging = true;
+  dragStartX = x;
+  dragStartY = y;
 }
 
 function dragImage(x, y) {
-    if (isDragging) {
-        panX += x - dragStartX;
-        panY += y - dragStartY;
-        dragStartX = x;
-        dragStartY = y;
-        updateCanvas();
-    }
+  if (isDragging) {
+    panX += x - dragStartX;
+    panY += y - dragStartY;
+    dragStartX = x;
+    dragStartY = y;
+    updateCanvas();
+  }
 }
 
 function endDrag() {
-    isDragging = false;
+  isDragging = false;
 }
 
 function updateCanvas() {
-    if (imageInput.files && imageInput.files.length > 0) {
-        generateProfilePic();
-    }
+  if (imageInput.files && imageInput.files.length > 0) {
+    generateProfilePic();
+  }
 }
 
 function generateProfilePic() {
-    const overlayRadioButtons = document.getElementsByName('overlay');
-    let selectedOverlay;
+  /* This will need to be manually changed if we need to use for another event */
+  const selectedOverlay = "../../Resource/kaliyata/overlay1.png";
 
-    for (const radioButton of overlayRadioButtons) {
-        if (radioButton.checked) {
-            selectedOverlay = radioButton.value;
-            break;
-        }
-    }
+  if (!imageInput.files || imageInput.files.length === 0) {
+    alert('Please select your photo before generating a profile photo.');
+    return;
+  }
 
-    if (!selectedOverlay) {
-        alert('Please select an overlay.');
-        return;
-    }
+  const overlayImage = new Image();
+  overlayImage.src = selectedOverlay;
 
-    if (!imageInput.files || imageInput.files.length === 0) {
-        alert('Please select your photo before generating a profile photo.');
-        return;
-    }
+  const reader = new FileReader();
+  reader.onload = function(event) {
+    const userImage = new Image();
+    userImage.src = event.target.result;
 
-    const overlayImage = new Image();
-    overlayImage.src = selectedOverlay;
+    userImage.onload = function() {
+      profileCanvas.width = overlayImage.width;
+      profileCanvas.height = overlayImage.height;
 
-    const reader = new FileReader();
-    reader.onload = function(event) {
-        const userImage = new Image();
-        userImage.src = event.target.result;
+      const aspectRatio = userImage.width / userImage.height;
+      let userWidth, userHeight, userX, userY;
 
-        userImage.onload = function() {
-            profileCanvas.width = overlayImage.width;
-            profileCanvas.height = overlayImage.height;
+      // Ensure the user image covers the circle in the overlay
+      let circleDiameter = Math.min(overlayImage.width, overlayImage.height); // Assuming circle diameter is the smaller dimension of the overlay
+      if (aspectRatio >= 1) { // Wide or square image
+        userHeight = circleDiameter;
+        userWidth = userHeight * aspectRatio;
+      } else { // Tall image
+        userWidth = circleDiameter;
+        userHeight = userWidth / aspectRatio;
+      }
 
-            var aspectRatio = userImage.width / userImage.height;
-            let userWidth, userHeight, userX, userY;
+      // Centering the image within the canvas
+      userX = (overlayImage.width - userWidth) / 2;
+      userY = (overlayImage.height - userHeight) / 2;
 
-            // Ensure the user image covers the circle in the overlay
-            let circleDiameter = Math.min(overlayImage.width, overlayImage.height); // Assuming circle diameter is the smaller dimension of the overlay
-            if (aspectRatio >= 1) { // Wide or square image
-                userHeight = circleDiameter;
-                userWidth = userHeight * aspectRatio;
-            } else { // Tall image
-                userWidth = circleDiameter;
-                userHeight = userWidth / aspectRatio;
-            }
+      context.clearRect(0, 0, profileCanvas.width, profileCanvas.height);
+      context.drawImage(
+        userImage,
+        userX + panX,
+        userY + panY,
+        userWidth * zoomLevel,
+        userHeight * zoomLevel
+      );
+      context.drawImage(overlayImage, 0, 0, overlayImage.width, overlayImage.height);
 
-            // Centering the image within the canvas
-            userX = (overlayImage.width - userWidth) / 2;
-            userY = (overlayImage.height - userHeight) / 2;
-
-            context.clearRect(0, 0, profileCanvas.width, profileCanvas.height);
-            context.drawImage(
-                userImage,
-                userX + panX,
-                userY + panY,
-                userWidth * zoomLevel,
-                userHeight * zoomLevel
-            );
-            context.drawImage(overlayImage, 0, 0, overlayImage.width, overlayImage.height);
-
-            resultImage.src = profileCanvas.toDataURL('image/png');
-            resultContainer.style.display = 'block';
-            downloadButton.href = profileCanvas.toDataURL('image/png');
-        };
+      resultImage.src = profileCanvas.toDataURL('image/png');
+      resultContainer.style.display = 'block';
+      downloadButton.href = profileCanvas.toDataURL('image/png');
     };
-
-    reader.readAsDataURL(imageInput.files[0]);
+  };
+  reader.readAsDataURL(imageInput.files[0]);
 }
