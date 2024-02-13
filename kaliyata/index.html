@@ -23,7 +23,7 @@
     <link href="../../css/custom.css" rel="stylesheet" type="text/css">
     <link href="../../css/pace-preloder.css" rel="stylesheet" type="text/css">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/animate.min.css" type="text/css">
+    <link rel="stylesheet" href="../../css/animate.min.css" type="text/css">
   </head>
   <body>
     <!-- ******************************** Navigation ******************************** -->
@@ -71,17 +71,17 @@
           <div class="col-sm-12">
             <!-- Upload and frame selection container -->
             <div id="uploadContainer">
-              <p><b>Upload your photo</b></p>
-              <input type="file" id="imageInput" accept="image/*">
-              <p><b>Frame</b></p>
-              <div class="overlay-options">
-                <label class="overlay-option">
-                  <input type="radio" name="overlay" value="../../Resource/kaliyata/overlay1.png" checked>
-                  <img src="../../Resource/kaliyata/overlay1.png" alt="Overlay 1">
-                </label>
-              </div>
-              <p>This is a simple tool built to help you. <b>Privacy Info</b> - All image processing is conducted locally, directly within your web browser. We want to make it clear that we do not read or upload your images. Basic analytics to track the number of users and events are enabled.</p>
+              <p><b>UPLOAD YOUR PHOTO</b></p>
+              <label>
+                <i class="glyphicon glyphicon-upload choose-file-icon"></i>
+                <p>Click to choose</p>
+                <input style="display: none;" type="file" id="imageInput" accept="image/*">
+              </label>
               <button id="generateButton">Generate Profile Photo</button>
+              <p class="marginT30">This is a simple tool built to help you.
+                <b>Privacy Info</b>
+                - All image processing is conducted locally, directly within your web browser. We want to make it clear that we do not read or upload your images. Basic analytics to track the number of users and events are enabled.
+              </p>
             </div>
             <!-- Result Container -->
             <div id="resultContainer">
@@ -230,8 +230,8 @@
               document.getElementById("year").textContent = new Date().getFullYear();
             </script>
           </span>
-          Shree Perne Muchilot Bhagavathi Kshetra. 
-          </br>All rights reserved. 
+          Shree Perne Muchilot Bhagavathi Kshetra.
+          </br>All rights reserved.
           <span style="cursor: pointer; color: #FFA500;" type="button" data-toggle="modal" data-target="#myModal">
             Website Team
           </span>
