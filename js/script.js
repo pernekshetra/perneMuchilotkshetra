@@ -95,6 +95,23 @@ imageInput.addEventListener('change', function() {
   setTimeout(() => uploadContainer.style.display = "none", 300);
 });
 
+/* This function is to debug the issue of canvas not working, need this to be
+ * deployed to test it on live site since this bug does not happen on local */
+function isCanvasEmpty(canvas) {
+  const context = canvas.getContext('2d');
+  const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+  const data = imageData.data; // Pixel data array
+
+  // Iterate through the pixel data array
+  for (let i = 0; i < data.length; i += 4) {
+    // Check if any non-transparent pixels are present
+    if (data[i + 3] !== 0) { // Check alpha channel (transparency)
+      return false; // Canvas is not empty
+    }
+  }
+  return true; // Canvas is empty
+}
+
 function generateProfilePic() {
   /* This will need to be manually changed if we need to use for another event */
   const selectedOverlay = "../../Resource/kaliyata/overlay1.png";
@@ -142,6 +159,11 @@ function generateProfilePic() {
         userHeight * zoomLevel
       );
       context.drawImage(overlayImage, 0, 0, overlayImage.width, overlayImage.height);
+
+      if(isCanvasEmpty(profileCanvas)) {
+        alert("There was some error with the image, try again");
+        return;
+      }
 
       resultImage.src = profileCanvas.toDataURL('image/png');
       resultContainer.style.display = 'block';
