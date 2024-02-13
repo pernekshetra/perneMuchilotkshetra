@@ -1,4 +1,4 @@
-import plants from "../data.js";
+import plants from "../data.mjs";
 
 const { createApp, ref } = Vue;
 

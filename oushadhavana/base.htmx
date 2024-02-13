@@ -64,7 +64,7 @@
             <a href="../../kaliyata">Kaliyata</a>
           </li>
           <li>
-            <a href="#">Oushadhavana</a>
+            <a href="../">Oushadhavana</a>
           </li>
         </ul>
       </div>
@@ -76,22 +76,108 @@
       <div class="row center">
         <div class="col-sm-12 col-lg-10 text-center marginT50">
           <img style="width: 100%; max-width: 400px; height: auto;" src="../../Resource/Oushadhavana/logo.jpg" alt="oushadahavana logo">
-          <!-- <h1>OUSHADHAVANA</h1> -->
-          <!-- <p class="marginT30"> -->
-          <!--   Description of oushadhavan -->
-          <!-- </p> -->
+            <!-- <h1>OUSHADHAVANA</h1> -->
+            <!-- <p class="marginT30"> -->
+            <!--   Description of oushadhavan -->
+            <!-- </p> -->
         </div>
         <div class="col-sm-12 center">
           <p class="headingUnderLine text-left marginT50"> 
             <b>Medicinal plants at Perne</b>
           <p>
-          <div id="list2" class="marginB30">
-            <ol id="app">
-              <li v-for="plant in plants">
-                <a :href="plant['sanskrit_name'].toLowerCase().replace(/\s+/g, '_')" :title="plant['sanskrit_name']">
-                  {{ plant["sanskrit_name"] }}
-                </a>
-              </li>
+          <div id="app" class="marginB30">
+            <h1>{{ plant['sanskrit_name'] }}</h1>
+            <ol class="plant-details">
+              <!-- <div class="names plant-details"> -->
+              <div class="panel panel-danger stretch" v-if="plant['sanskrit_name']">
+                <div class="panel-heading">
+                  Sanskrit name
+                </div>
+                <div class="panel-body">
+                  <p>{{ plant['sanskrit_name'] }}</p>
+                </div>
+              </div>
+              <div class="panel panel-danger stretch" v-if="plant['Botanical name']">
+                <div class="panel-heading">
+                  Botanical name
+                </div>
+                <div class="panel-body">
+                  <p>{{ plant['Botanical name'] }}</p>
+                </div>
+              </div>
+              <div class="panel panel-danger stretch" v-if="plant['English name']">
+                <div class="panel-heading">
+                  English name
+                </div>
+                <div class="panel-body">
+                  <p>{{ plant['English name'] }}</p>
+                </div>
+              </div>
+              <div class="panel panel-danger stretch" v-if="plant['Malayalam Name']">
+                <div class="panel-heading">
+                  Malayalam name
+                </div>
+                <div class="panel-body">
+                  <p>{{ plant['Malayalam Name'] }}</p>
+                </div>
+              </div>
+              <div class="panel panel-danger stretch" v-if="plant['Kannada Name']">
+                <div class="panel-heading">
+                  Kannada name
+                </div>
+                <div class="panel-body">
+                  <p>{{ plant['Kannada Name'] }}</p>
+                </div>
+              </div>
+              <!-- </div> -->
+              <div class="panel panel-danger stretch" v-if="plant['Description']">
+                <div class="panel-heading">
+                  Description
+                </div>
+                <div class="panel-body">
+                  <p>{{ plant['Description'] }}</p>
+                </div>
+              </div>
+              <div class="panel panel-danger stretch" v-if="plant['Geographical distribution']">
+                <div class="panel-heading">
+                  Geographical distribution
+                </div>
+                <div class="panel-body">
+                  <p>{{ plant['Geographical distribution'] }}</p>
+                </div>
+              </div>
+              <div class="panel panel-danger stretch" v-if="plant['Chemical constituents']">
+                <div class="panel-heading">
+                  Chemical constituents
+                </div>
+                <div class="panel-body">
+                  <p>{{ plant['Chemical constituents'] }}</p>
+                </div>
+              </div>
+              <div class="panel panel-danger stretch" v-if="plant['Important Therapeutic use']">
+                <div class="panel-heading">
+                  Important therapeutic uses
+                </div>
+                <div class="panel-body">
+                  <p>{{ plant['Important Therapeutic use'] }}</p>
+                </div>
+              </div>
+              <div class="panel panel-danger stretch" v-if="plant['Other medical uses']">
+                <div class="panel-heading">
+                  Other medicinal uses
+                </div>
+                <div class="panel-body">
+                  <p>{{ plant['Other medical uses'] }}</p>
+                </div>
+              </div>
+              <div class="panel panel-danger stretch" v-if="plant['Ayurvedic uses ']">
+                <div class="panel-heading">
+                  Ayurvedic uses
+                </div>
+                <div class="panel-body">
+                  <p>{{ plant['Ayurvedic uses '] }}</p>
+                </div>
+              </div>
             </ol>
           </div>
         </div>
@@ -110,7 +196,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../../js/common.js"></script>
     <script type="text/javascript" src="../../js/pace.min.js"></script>
-    <script type="module" src="scripts/listing.js"></script>
+    <script type="module" src="../scripts/details.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-70077839-1"></script>
     <script>
