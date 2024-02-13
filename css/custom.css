@@ -559,6 +559,9 @@ header.events {
 header.gallery {
   background-image: url(../Resource/Header/gallery.jpg);
 }
+header.photos {
+  background-image: url(../Resource/Header/photos.jpg);
+}
 header.contact {
   background-image: url(../Resource/Header/contact.jpg);
 }
