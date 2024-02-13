@@ -4,7 +4,7 @@
 
 // Get references to HTML elements
 const imageInput = document.getElementById('imageInput');
-const generateButton = document.getElementById('generateButton');
+const uploadContainer = document.getElementById('uploadElements');
 const resultContainer = document.getElementById('resultContainer');
 const resultImage = document.getElementById('resultImage');
 const downloadButton = document.getElementById('downloadButton');
@@ -16,8 +16,6 @@ const panLeftButton = document.getElementById('panLeftButton');
 const panRightButton = document.getElementById('panRightButton');
 const panUpButton = document.getElementById('panUpButton');
 const panDownButton = document.getElementById('panDownButton');
-
-generateButton.addEventListener('click', generateProfilePic);
 
 const context = profileCanvas.getContext('2d');
 
@@ -91,6 +89,11 @@ function updateCanvas() {
     generateProfilePic();
   }
 }
+
+imageInput.addEventListener('change', function() {
+  generateProfilePic();
+  setTimeout(() => uploadContainer.style.display = "none", 300);
+});
 
 function generateProfilePic() {
   /* This will need to be manually changed if we need to use for another event */
