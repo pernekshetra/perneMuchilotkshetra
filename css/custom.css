@@ -1796,6 +1796,27 @@ audio::-webkit-media-controls-panel {
   flex: 1;
 }
 
+.plant-images {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjust minmax values as needed */
+  grid-gap: 10px;
+  margin: 10px auto;
+  place-items: center
+}
+
+.plant-images img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.plant-images img:hover {
+  opacity: 0.9;
+  transform: scale(1.01);
+}
+
 /* Styling for the bottom image */
 #bottomImage {
   width: 100%; /* Make the image responsive */
