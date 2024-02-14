@@ -11,8 +11,8 @@
     <meta property="og:url" content="https://pernekshetra.com"/>
     <meta property="og:image" content="https://pernekshetra.com/kaliyata.png"/>
 
-    <link rel="shortcut icon" type="image/png" href="/favicon.png" />
-    <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="shortcut icon" type="image/png" href="../../favicon.png" />
+    <link rel="icon" type="image/png" href="../../favicon.png" />
 
     <title>Perne Oushadhavana</title>
 
@@ -82,13 +82,17 @@
             <!-- </p> -->
         </div>
         <div class="col-sm-12 center">
-          <p class="headingUnderLine text-left marginT50"> 
+          <p class="headingUnderLine text-left marginT50">
             <b>Medicinal plants at Perne</b>
           <p>
           <div id="app" class="marginB30">
             <h1>{{ plant['Sanskrit Name'] }}</h1>
             <ol class="plant-details">
-              <!-- <div class="names plant-details"> -->
+              <div class="plant-images" v-if="plant['images'] && plant['images'].length > 0">
+                <img
+                  v-for="image in plant['images']"
+                  :src="`../images/${plant['Sanskrit Name'].toLowerCase().replace(/\s+/g, '_')}/${image}`" />
+              </div>
               <div class="panel panel-danger stretch" v-if="plant['Sanskrit Name']">
                 <div class="panel-heading">
                   Sanskrit name
@@ -129,7 +133,6 @@
                   <p>{{ plant['Kannada Name'] }}</p>
                 </div>
               </div>
-              <!-- </div> -->
               <div class="panel panel-danger stretch" v-if="plant['Description']">
                 <div class="panel-heading">
                   Description
@@ -186,7 +189,7 @@
     <footer>
       <div class="footerData">
         <p>
-          ©2024 Shree Perne Muchilot Bhagavathi Kshetra. 
+          ©2024 Shree Perne Muchilot Bhagavathi Kshetra.
           </br>All rights reserved.
         </p>
       </div>

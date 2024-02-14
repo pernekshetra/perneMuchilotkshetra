@@ -19,7 +19,7 @@ const plants = [
   },
   {
     "Number": "2",
-    "Sanskrit Name": "Sadāphala",
+    "Sanskrit Name": "Sadaphala",
     "Botanical name": "Ficus racemosa L",
     "English name": "Cluster fig ",
     "Malayalam Name": "Atthi",
