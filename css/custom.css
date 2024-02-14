@@ -564,6 +564,7 @@ header.gallery {
 }
 header.photos {
   background-image: url(../Resource/Header/photos.jpg);
+  height: calc(100vh - 60px);
 }
 header.contact {
   background-image: url(../Resource/Header/contact.jpg);
