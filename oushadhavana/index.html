@@ -14,17 +14,20 @@
     <link rel="shortcut icon" type="image/png" href="/favicon.png" />
     <link rel="icon" type="image/png" href="favicon.png" />
 
-    <title>About sevas - Perne</title>
+    <title>Perne Oushadhavana</title>
 
     <!-- ******************************** CSS ******************************** -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <link href="../../css/pace-preloder.css" rel="stylesheet" type="text/css">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="../../css/custom.css" rel="stylesheet" type="text/css">
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   </head>
   <body>
     <!-- ******************************** Navigation ******************************** -->
     <nav class="navbar navbar-custom navbar-fixed-top navigation" id="nav" role="navigation">
+      <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" id="navbar-toggle" data-toggle="collapse" data-target="#menu">
           <i class="fa fa-bars"></i>
@@ -37,7 +40,7 @@
       <div class="collapse navbar-collapse" id="menu">
         <ul class="nav navbar-nav navbar-center">
           <li class="active">
-            <a href="#">About</a>
+            <a href="../../about/festivals">About</a>
           </li>
           <li>
             <a href="../../history/incarnation">History</a>
@@ -49,10 +52,10 @@
             <a href="../../donate">Donate</a>
           </li>
           <li>
-            <a href="../../gallery/videos">Gallery</a>
+            <a href="../../gallery">Gallery</a>
           </li>
           <li>
-            <a href="../../nearby">Nearby</a>
+            <a href="../../nearby">Near By</a>
           </li>
           <li>
             <a href="../../contactus">Contact</a>
@@ -60,67 +63,34 @@
           <li>
             <a href="../../kaliyata">Kaliyata</a>
           </li>
+          <li>
+            <a href="#">Oushadhavana</a>
+          </li>
         </ul>
       </div>
       <!-- container- -->
     </nav>
     <!-- ******************************** Top Header ******************************** -->
-    <header class="parallax seva"></header>
-    <!-- ******************************** Introduction Section ******************************** -->
-    <section class="stickyBar" id="stickyBar">
-      <div class="container">
-        <div class="row">
-          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <div class="row text-center menuItems">
-              <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 text-center">
-                <div class="row"><a href="../festivals">FESTIVALS</a></div>
-              </div>
-              <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 text-center">
-                <div class="row"><a href="../deities">DEITIES</a></div>
-              </div>
-              <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 text-center">
-                <div class="row"><a href="../administration">ADMINISTRATION</a></div>
-              </div>
-              <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 text-center">
-                <div class="row"><a href="#" class="active">SEVAS</a></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <header class="parallax oushadhavana"></header>
     <div class="container">
-      <div class="row">
-        <div class="col-sm-10 col-sm-offset-1">
-          <h1 class="text-center marginT50 marginB30">
-            Seva Details in Perne Kshetram
-          </h1>
+      <div class="row center">
+        <div class="col-sm-12 col-lg-10 text-center marginT50">
+          <img style="width: 100%; max-width: 400px; height: auto;" src="../../Resource/Oushadhavana/logo.jpg" alt="oushadahavana logo">
+          <!-- <h1>OUSHADHAVANA</h1> -->
+          <!-- <p class="marginT30"> -->
+          <!--   Description of oushadhavan -->
+          <!-- </p> -->
         </div>
-        <div class="col-sm-12 text-center">
-          <img alt="" class="img-circle" src="../../Resource/OtherDeities/Devi.jpg" width="200" height="200" />
-        </div>
-        <div class="col-sm-8 col-sm-offset-4">
-          <p class="headingUnderLine text-left marginT50" style="padding-left:60px;"> <b>Seva Name</b>
+        <div class="col-sm-12 center">
+          <p class="headingUnderLine text-left marginT50"> 
+            <b>Medicinal plants at Perne</b>
           <p>
           <div id="list2" class="marginB30">
-            <ol>
-              <li>
-                <p>Manevanthige</p>
-              </li>
-              <li>
-                <p>Suthu Belaku (Chuttu Vilak)</p>
-              </li>
-              <li>
-                <p>Thulabhara Seve (Thulabharam) </p>
-              </li>
-              <li>
-                <p>Chappara Maduve (Pandal Mangalam)</p>
-              </li>
-              <li>
-                <p>Dhara Maduve - Bride Rs 1000/- , Bride Groom -Rs 1500/- </p>
-              </li>
-              <li>
-                <p>Kootam</p>
+            <ol id="app">
+              <li v-for="plant in plants">
+                <a :href="plant['Sanskrit Name'].toLowerCase().replace(/\s+/g, '_')" :title="plant['Sanskrit Name']">
+                  {{ plant["Sanskrit Name"] }}
+                </a>
               </li>
             </ol>
           </div>
@@ -130,16 +100,8 @@
     <footer>
       <div class="footerData">
         <p>
-          ©<span id="year">
-            <script>
-            document.getElementById("year").textContent = new Date().getFullYear();
-            </script>
-          </span>
-          Shree Perne Muchilot Bhagavathi Kshetra. 
-          </br>All rights reserved. 
-          <span style="cursor: pointer; color: #FFA500;" type="button" data-toggle="modal" data-target="#myModal">
-            Website Team
-          </span>
+          ©2024 Shree Perne Muchilot Bhagavathi Kshetra. 
+          </br>All rights reserved.
         </p>
       </div>
     </footer>
@@ -148,6 +110,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../../js/common.js"></script>
     <script type="text/javascript" src="../../js/pace.min.js"></script>
+    <script type="module" src="scripts/listing.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-70077839-1"></script>
     <script>
