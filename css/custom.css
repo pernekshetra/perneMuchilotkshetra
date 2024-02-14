@@ -562,6 +562,9 @@ header.events {
 header.gallery {
   background-image: url(../Resource/Header/gallery.jpg);
 }
+header.photos {
+  background-image: url(../Resource/Header/photos.jpg);
+}
 header.contact {
   background-image: url(../Resource/Header/contact.jpg);
 }
@@ -1693,84 +1696,6 @@ audio::-webkit-media-controls-panel {
   transition: all 1s;
 }
 
-/* Styling for the generate button */
-#generateButton {
-  display: block;
-  margin: 0 auto;
-  margin-top: 30px;
-  padding: 10px 20px;
-  background-color: #CC0000;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-
-#panLeftButton {
-  display: inline;
-  margin: 0 auto;
-  margin-top: 30px;
-  padding: 10px 20px;
-  border: 1px solid black;
-  border-radius: 5px;
-  cursor: pointer;
-  background-color: #FF7F7F
-}
-
-#panRightButton {
-  display: inline;
-  margin: 0 auto;
-  margin-top: 30px;
-  padding: 10px 20px;
-  border: 1px solid black;
-  border-radius: 5px;
-  cursor: pointer;
-  background-color: #FF7F7F
-}
-
-#panUpButton {
-  display: inline;
-  margin: 0 auto;
-  margin-top: 30px;
-  padding: 10px 20px;
-  border: 1px solid black;
-  border-radius: 5px;
-  cursor: pointer;
-  background-color: #FF7F7F
-}
-
-#panDownButton {
-  display: inline;
-  margin: 0 auto;
-  margin-top: 30px;
-  padding: 10px 20px;
-  border: 1px solid black;
-  border-radius: 5px;
-  cursor: pointer;
-  background-color: #FF7F7F
-}
-#zoomInButton {
-  display: inline;
-  margin: 0 auto;
-  margin-top: 10px;
-  padding: 10px 20px;
-  border: 1px solid black;
-  border-radius: 5px;
-  cursor: pointer;
-  background-color: #FF7F7F
-}
-#zoomOutButton {
-  display: inline;
-  margin: 0 auto;
-  margin-top: 10px;
-  padding: 10px 20px;
-  border: 1px solid black;
-  border-radius: 5px;
-  cursor: pointer;
-  background-color: #FF7F7F
-}
-
 /* Styling for the result container */
 #resultContainer {
   text-align: center;
@@ -1784,9 +1709,22 @@ audio::-webkit-media-controls-panel {
   cursor: pointer;
 }
 
+#resultContainer button {
+  display: inline;
+  margin: 0 3px;
+  margin-top: 10px;
+  padding: 5px 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #FF7F7F
+}
+
 /* Styling for the result image */
 #resultImage {
-  max-width: 300px;
+  max-width: 400px;
+  width: 100%;
+  height: auto;
   margin-bottom: 10px;
   border: 2px solid #CC0000;
   border-radius: 5px;
@@ -1796,13 +1734,25 @@ audio::-webkit-media-controls-panel {
 #downloadButton {
   display: block;
   margin: 0 auto;
-  margin-top: 30px;
   padding: 10px 20px;
   background-color: #CC0000;
+  max-width: 300px;
+}
+
+.button-gradient {
+  background-image: linear-gradient(to right, #CC0000 50%, orange 75%, #CC0000 90%);
+  background-size: 200% auto;
+  box-shadow: 0 0 20px #eee;
+  transition: 0.5s;
   color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.button-gradient:hover {
+  background-position: right center;
+  color: black;
 }
 
 /* Styling for the share button */
