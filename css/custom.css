@@ -574,13 +574,42 @@ header.marriage {
 header.donate {
   background-image: url(../Resource/Header/donate.jpg);
 }
-/* ********************************
-Header Image Close
-/******************************** */
-/* ********************************
-Footer Start
-/******************************** */
-
+/* ******************************** Header Image Close ******************************* */
+/* ******************************** 404 section ******************************* */
+.four-o-four > header.photos {
+  background-image: url(../Resource/Header/photos.jpg);
+  height: calc(100vh - 60px);
+  overflow: hidden;
+}
+.four-o-four > header.photos > section {
+  position: absolute;
+  top: 32px;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding-right: 0;
+}
+.four-o-four > header.photos > section > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 75vh;
+}
+.four-o-four h1 {
+  color: #CC0000;
+  text-shadow: 3px 3px orange;
+  font-size: 70px;
+}
+.four-o-four > header.photos p {
+  text-align: center;
+  color: white;
+  text-shadow: 3px 3px black;
+  font-size: 24px;
+}
+/* ******************************** 404 section ******************************* */
+/* ******************************** Footer Start ******************************* */
 footer {
   background: url('../Resource/Common/footer.png') center top repeat-x;
   text-align: center;
