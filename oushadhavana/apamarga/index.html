@@ -70,23 +70,18 @@
       </div>
       <!-- container- -->
     </nav>
-    <!-- ******************************** Top Header ******************************** -->
-    <header class="parallax oushadhavana"></header>
     <div class="container">
       <div class="row center">
         <div class="col-sm-12 col-lg-10 text-center marginT50">
           <img style="width: 100%; max-width: 400px; height: auto;" src="../../Resource/Oushadhavana/logo.jpg" alt="oushadahavana logo">
-            <!-- <h1>OUSHADHAVANA</h1> -->
+            <h1>MEDICINAL PLANTS AT PERNE</h1>
             <!-- <p class="marginT30"> -->
             <!--   Description of oushadhavan -->
             <!-- </p> -->
         </div>
         <div class="col-sm-12 center">
-          <p class="headingUnderLine text-left marginT50">
-            <b>Medicinal plants at Perne</b>
-          <p>
-          <div id="app" class="marginB30">
-            <h1>{{ plant['Sanskrit Name'] }}</h1>
+          <div id="app">
+            <h1 style="color: orange;">{{ plant['Sanskrit Name'] }}</h1>
             <ol class="plant-details">
               <div class="plant-images" v-if="plant['images'] && plant['images'].length > 0">
                 <img
@@ -181,7 +176,19 @@
                   <p>{{ plant['Ayurvedic uses '] }}</p>
                 </div>
               </div>
+              <div class="panel panel-danger stretch" v-if="plant['Adopter Name']">
+                <div class="panel-heading">
+                  Adopter name
+                </div>
+                <div class="panel-body">
+                  <p>{{ plant['Adopter Name'] }}</p>
+                </div>
+              </div>
             </ol>
+          </div>
+          <div>
+            <small>Reference: Easy Ayurveda <a href="http://easyayurveda.com"
+              target="_blank" rel="noopener noreferrer">www.easyayurveda.com</a> accessed on 12.02.2024</small>
           </div>
         </div>
       </div>
@@ -189,8 +196,16 @@
     <footer>
       <div class="footerData">
         <p>
-          ©2024 Shree Perne Muchilot Bhagavathi Kshetra.
-          </br>All rights reserved.
+          ©<span id="year">
+            <script>
+            document.getElementById("year").textContent = new Date().getFullYear();
+            </script>
+          </span>
+          Shree Perne Muchilot Bhagavathi Kshetra. 
+          </br>All rights reserved. 
+          <span style="cursor: pointer; color: #FFA500;" type="button" data-toggle="modal" data-target="#myModal">
+            Website Team
+          </span>
         </p>
       </div>
     </footer>

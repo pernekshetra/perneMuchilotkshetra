@@ -14,7 +14,7 @@ const plants = [
     "Ayurvedic uses ": "Breaks down and expels sputum collection. Useful in piles, hemorrhoid's. Useful in relieving pruritus (excessive itching). Useful in ascites. Relieves ama - a product of indigestion and altered metabolism.\nImproves blood. An excess dose may cause nausea and vomiting. Improves digestion strength. It helps to relieve worms and infections in head and neck region. Relieves bloating, balances Vata Dosha. Relieves abdominal colic pain. Relieves hiccups. Useful in piles, hemorrhoid's. Ueful in urticaria, itching, allergic skin rashes. Useful in fibroids, glandular growths. Improves taste, relieves anorexia. Useful in cardiac disorders with cholesterol deposition in blood vessels. Relieves bloating, gaseous distension of abdomen. Fruit is sweet in taste, hard to undergo digestion, useful in bleeding disorders.",
     "Google drive Album": "https://drive.google.com/drive/folders/1prrSZCTmEZ-gCztD__FY3fV7c3FI2gwq?usp=sharing",
     "Reference/Futher Reading Link": "https://www.easyayurveda.com/2014/11/20/apamarga-achyranthes-aspera-uses-dose-side-effects/#varieties_distribution",
-    "Adopter Name": "",
+    "Adopter Name": "Rahul Perne",
     "Adopter contact": ""
   },
   {
