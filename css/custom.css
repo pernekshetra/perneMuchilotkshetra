@@ -1812,29 +1812,27 @@ audio::-webkit-media-controls-panel {
 }
 
 .plant-details {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
   margin-top: 45px;
   padding-inline-start: 0;
 }
 
 .stretch {
   flex: 1;
+  margin: 20px;
 }
 
 .plant-images {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjust minmax values as needed */
-  grid-gap: 10px;
-  margin: 10px auto;
-  place-items: center
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 30px auto;
 }
 
 .plant-images img {
-  max-width: 100%;
+  width: 100%;
+  max-width: 350px; 
   height: auto;
   border-radius: 5px;
   transition: all 0.3s ease;
