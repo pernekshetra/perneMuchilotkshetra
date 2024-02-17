@@ -14,8 +14,6 @@ for(const plant of plants) {
     return fs.statSync(filePath).isDirectory() && file === folderNameToSearch;
   });
 
-  console.log('Matching folders:', matchingFolders);
-
   for(const folderPath of matchingFolders) {
     fs.rmdir(`../${folderPath}`, { recursive: true }, (err) => {
       if (err) {
