@@ -29,7 +29,7 @@ for(const plant of plants) {
                 if (err) {
                   console.error('Error creating file:', err);
                 } else {
-                  console.log('File created successfully');
+                  console.log('File created successfully', filePath);
                 }
               });
             });
@@ -40,7 +40,7 @@ for(const plant of plants) {
       }
     } else {
       if (stats.isDirectory()) {
-        console.log('Folder exists');
+        console.log('Folder exists', folderPath);
         return;
       } else {
         console.log('Path exists, but is not a folder');
