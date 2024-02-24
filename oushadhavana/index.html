@@ -113,12 +113,25 @@
           <p class="headingUnderLine text-left marginT50"> 
             <b>HERBS THAT HEAL</b>
           <p>
-          <div id="list2" class="marginB30">
+          <div id="list2" class="plants-list marginB30">
             <ol id="app">
+              <p>
+                <span>Sanskrit name</span>
+                <span>Kannada name</span>
+                <span>Malayalam name</span>
+              </p>
               <li v-for="plant in plants">
-                <a :href="plant['Sanskrit Name'].toLowerCase().replace(/\s+/g, '_')" :title="plant['Sanskrit Name']">
-                  {{ plant["Sanskrit Name"] }}
-                </a>
+                <p class="horizontal-line">
+                  <a :href="plant['Sanskrit Name'].toLowerCase().replace(/\s+/g, '_')" :title="plant['Sanskrit Name']">
+                    {{ plant["Sanskrit Name"] }}
+                  </a>
+                  <a :href="plant['Sanskrit Name'].toLowerCase().replace(/\s+/g, '_')" :title="plant['Kannada Name']">
+                    {{ plant["Kannada Name"] }}
+                  </a>
+                  <a :href="plant['Sanskrit Name'].toLowerCase().replace(/\s+/g, '_')" :title="plant['Malayalam Name']">
+                    {{ plant["Malayalam Name"] }}
+                  </a>
+                </p>
               </li>
             </ol>
           </div>
