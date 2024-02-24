@@ -1,7 +1,11 @@
 const plantImages = {
   "apamarga": [ "1.jpg", "2.jpg", "3.jpg", ],
-  "flame_of_the_forest": [ "1.jpg", "2.jpg", "3.jpg", "4.jpg"],
-  "sadaphala": [ "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg" ]
+  "durva": [ "1.jpg", "2.jpg", "3.jpg", "4.jpg" ],
+  "khadirah": [ "1.jpg", "2.jpg", "3.jpg", "4.jpg" ],
+  "shami": [ "1.jpg", "2.jpg", "3.jpg", "4.jpg" ],
+  "arka": [ "1.jpg", "2.jpg", "3.jpg", ],
+  "ashvatha": [ "1.jpg", "2.jpg", "3.jpg", ],
+  "palasa": [ "1.jpg", "2.jpg", "3.jpg", "4.jpg" ]
 }
 
 export default plantImages;
