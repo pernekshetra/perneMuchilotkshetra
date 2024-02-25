@@ -6,7 +6,9 @@ const plantImages = {
   "arka": [ "1.jpg", "2.jpg", "3.jpg", ],
   "ashvatha": [ "1.jpg", "2.jpg", "3.jpg", ],
   "palasa": [ "1.jpg", "2.jpg", "3.jpg", "4.jpg" ]
-  "panasa": [ "1.jpg", "2.jpg", "3.jpg", "4.jpg","5.jpg" ]
+  "panasa": [ "1.jpg", "2.jpg", "3.jpg", "4.jpg","5.jpg"]
+ "kadamba": [ "1.jpg", "2.jpg", "3.jpg"]
+
 }
 
 export default plantImages;
