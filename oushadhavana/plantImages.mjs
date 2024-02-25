@@ -11,7 +11,8 @@ const plantImages = {
   "udumbara": [ "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg"],
    "darbha": [ "1.jpg", "2.jpg", "3.jpg" ],
 "amalaki": [ "1.jpg", "2.jpg", "3.jpg","4.jpg"],
-"kupilu": [ "1.jpg", "2.jpg", "3.jpg","4.jpg"]
+"kupilu": [ "1.jpg", "2.jpg", "3.jpg","4.jpg"],
+"jamun": [ "1.jpg", "2.jpg", "3.jpg" ]
 }
 
 
