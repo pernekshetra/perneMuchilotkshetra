@@ -15,7 +15,7 @@ const app = {
       }, {});
     }
     return {
-      plants: groupBy(plantsArray.value, "Category")
+      plants: groupBy(plantsArray.value, "Type")
     }
   }
 }
