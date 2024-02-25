@@ -1847,7 +1847,7 @@ audio::-webkit-media-controls-panel {
   transform: scale(1.01);
 }
 
-.plants-list ol li p {
+.plants-list div ol li p {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 5px;
