@@ -17,7 +17,8 @@ const plantImages = {
 "amra": [ "1.jpg", "2.jpg", "3.jpg","4.jpg","5.jpg","6.jpg"],
 "nagakesara": [ "1.jpg", "2.jpg", "3.jpg","4.jpg","5.jpg","6.jpg"],
 "arjuna": [ "1.jpg", "2.jpg", "3.jpg","4.jpg","5.jpg","6.jpg"],
-"nyagrodha": [ "1.jpg", "2.jpg", "3.jpg","4.jpg","5.jpg"]
+"nyagrodha": [ "1.jpg", "2.jpg", "3.jpg","4.jpg","5.jpg"],
+"nimba": [ "1.jpg", "2.jpg", "3.jpg","4.jpg","5.jpg"],
 }
 
 
