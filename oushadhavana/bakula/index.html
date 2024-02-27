@@ -95,7 +95,7 @@
             Botanical name
           </div>
           <div class="panel-body">
-            <p style="white-space: pre-wrap;">{{ plant['Botanical name'] }}</p>
+            <p style="white-space: pre-wrap;" v-html="makeFirstTwoWordsItalic(plant['Botanical name'])"></p>
           </div>
         </div>
         <div class="panel panel-danger stretch" v-if="plant['English name']">

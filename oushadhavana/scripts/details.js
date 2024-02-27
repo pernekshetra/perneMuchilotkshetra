@@ -12,8 +12,18 @@ const app = {
     const plant = ref(mappedPlants.filter((plant) => {
       return (plant['Sanskrit Name'].toLowerCase().replace(/\s+/g, '_') == window.location.pathname.split('/')[2])
     })[0]);
+    const makeFirstTwoWordsItalic = (text) => {
+      const words = text?.split(" ");
+      if (words.length >= 2) {
+        const firstTwoWordsItalic = `<span style="font-style: italic">${words[0]} ${words[1]}</span>`;
+        return firstTwoWordsItalic + " " + words.slice(2).join(" ");
+      } else {
+        return text;
+      }
+    }
     return {
-      plant: plant
+      plant: plant,
+      makeFirstTwoWordsItalic
     }
   }
 }
