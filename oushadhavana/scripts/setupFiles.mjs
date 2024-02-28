@@ -14,18 +14,29 @@ for(const plant of plants) {
             console.error('Error creating folder:', err);
             return;
           } else {
-            let fileContent;
 
-            fs.readFile(pathOfFileToCopy, 'utf8', (err, data) => {
+            fs.readFile(pathOfFileToCopy, 'utf8', (err, html) => {
               if (err) {
                 console.error('Error reading file:', err);
                 return;
               }
-              fileContent = data;
+
+              const titleStart = html.indexOf('<title>');
+              const titleEnd = html.indexOf('</title>');
+
+              if (titleStart === -1 || titleEnd === -1) {
+                console.error('Title tag not found in the HTML file');
+                return;
+              }
+
+              html.substring(titleStart + 7, titleEnd);
+
+              const newTitle = `Perne Oushadhavana ${plant['Sanskrit Name']}`;
+              const updatedHtml = html.substring(0, titleStart + 7) + newTitle + html.substring(titleEnd);
 
               const filePath = `${folderPath}/index.html`;
 
-              fs.writeFile(filePath, fileContent, (err) => {
+              fs.writeFile(filePath, updatedHtml, (err) => {
                 if (err) {
                   console.error('Error creating file:', err);
                 } else {

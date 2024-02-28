@@ -52,7 +52,7 @@
       </div>
       <!-- container- -->
     </nav>
-    <div id="app">
+    <div v-cloak id="app">
       <ol class="plant-details">
         <div class="text-center marginT50">
           <img style="width: 100%; max-width: 400px; height: auto;" src="../../Resource/Oushadhavana/logo.jpg" alt="oushadahavana logo">

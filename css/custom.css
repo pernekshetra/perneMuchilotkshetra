@@ -1874,6 +1874,11 @@ audio::-webkit-media-controls-panel {
   background-color: #CC0000;
 }
 
+/* Hiding flower brackets until Vue instance finishes compilation */
+[v-cloak] {
+  display: none;
+}
+
 /* Styling for the bottom image */
 #bottomImage {
   width: 100%; /* Make the image responsive */
