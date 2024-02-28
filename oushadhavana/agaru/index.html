@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="Perne Muchilot, Muchilot Bhagavathi, Official Website of Shri Perne Muchilotu Bhagavathi Temple Kasaragod, Ganiga Samudaya Seva Sangha, Patali, Perne Kshetra, Perne Bhagavathi">
+    <meta name="description" content="Official Website of Perne Muchilotu Bhagavathi Kshetra, Perne">
+    <meta property="og:title" content="Perne Kshetra" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://pernekshetra.com"/>
+    <meta property="og:image" content="https://pernekshetra.com/kaliyata.png"/>
+
+    <link rel="shortcut icon" type="image/png" href="../../favicon.png" />
+    <link rel="icon" type="image/png" href="../../favicon.png" />
+
+    <title>Perne Oushadhavana Agaru</title>
+
+    <!-- ******************************** CSS ******************************** -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link href="../../css/pace-preloder.css" rel="stylesheet" type="text/css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../css/custom.css" rel="stylesheet" type="text/css">
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <!-- ******************************** Navigation ******************************** -->
+    <nav class="navbar navbar-custom navbar-fixed-top navigation" id="nav" role="navigation">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" id="navbar-toggle" data-toggle="collapse" data-target="#menu">
+          <i class="fa fa-bars"></i>
+        </button>
+        <a class="navbar-brand" href="/">
+          <div class="brand"><img class="brand_logo" alt="" src="../../Resource/Common/sitelogo.png"/>PERNE KSHETRA</div>
+        </a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="menu">
+        <ul class="nav navbar-nav navbar-center">
+          <li class="active"><a href="../../about/festivals">About</a></li>
+          <li><a href="../../history/incarnation">History</a></li>
+          <li><a href="../../marriage">Marriage</a></li>
+          <li><a href="../../donate">Donate</a></li>
+          <li><a href="../../gallery">Gallery</a></li>
+          <li><a href="../../nearby">Near By</a></li>
+          <li><a href="../../contactus">Contact</a></li>
+          <li><a href="../../kaliyata">Kaliyata</a></li>
+          <li><a href="../">Oushadhavana</a></li>
+        </ul>
+      </div>
+      <!-- container- -->
+    </nav>
+    <div v-cloak id="app">
+      <ol class="plant-details">
+        <div class="text-center marginT50">
+          <img style="width: 100%; max-width: 400px; height: auto;" src="../../Resource/Oushadhavana/logo.jpg" alt="oushadahavana logo">
+          <a class="text-center" style="display: block;" href="../">Go back to all herbs</a>
+        </div>
+        <h1 style="color: orange; margin-top: 30px;">{{ plant['Sanskrit Name'] }}</h1>
+        <div class="plant-images" v-if="plant['images'] && plant['images'].length > 0">
+          <div class="image" v-for="image in plant['images']">
+            <img :src="`../images/${plant['Sanskrit Name'].toLowerCase().replace(/\s+/g, '_')}/${image}`" />
+          </div>
+        </div>
+        <div class="panel panel-danger stretch" v-if="plant['Sanskrit Name']">
+          <div class="panel-heading">
+            Sanskrit name
+          </div>
+          <div class="panel-body">
+            <p style="white-space: pre-wrap;">{{ plant['Sanskrit Name'] }}</p>
+          </div>
+        </div>
+        <div class="panel panel-danger stretch" v-if="plant['Botanical name']">
+          <div class="panel-heading">
+            Botanical name
+          </div>
+          <div class="panel-body">
+            <p style="white-space: pre-wrap;" v-html="makeFirstTwoWordsItalic(plant['Botanical name'])"></p>
+          </div>
+        </div>
+        <div class="panel panel-danger stretch" v-if="plant['English name']">
+          <div class="panel-heading">
+            English name
+          </div>
+          <div class="panel-body">
+            <p style="white-space: pre-wrap;">{{ plant['English name'] }}</p>
+          </div>
+        </div>
+        <div class="panel panel-danger stretch" v-if="plant['Malayalam Name']">
+          <div class="panel-heading">
+            Malayalam name
+          </div>
+          <div class="panel-body">
+            <p style="white-space: pre-wrap;">{{ plant['Malayalam Name'] }}</p>
+          </div>
+        </div>
+        <div class="panel panel-danger stretch" v-if="plant['Kannada Name']">
+          <div class="panel-heading">
+            Kannada name
+          </div>
+          <div class="panel-body">
+            <p style="white-space: pre-wrap;">{{ plant['Kannada Name'] }}</p>
+          </div>
+        </div>
+        <div class="panel panel-danger stretch" v-if="plant['Description']">
+          <div class="panel-heading">
+            Description
+          </div>
+          <div class="panel-body">
+            <p style="white-space: pre-wrap;">{{ plant['Description'] }}</p>
+          </div>
+        </div>
+        <div class="panel panel-danger stretch" v-if="plant['Geographical distribution']">
+          <div class="panel-heading">
+            Geographical distribution
+          </div>
+          <div class="panel-body">
+            <p style="white-space: pre-wrap;">{{ plant['Geographical distribution'] }}</p>
+          </div>
+        </div>
+        <div class="panel panel-danger stretch" v-if="plant['Chemical constituents']">
+          <div class="panel-heading">
+            Chemical constituents
+          </div>
+          <div class="panel-body">
+            <p style="white-space: pre-wrap;">{{ plant['Chemical constituents'] }}</p>
+          </div>
+        </div>
+        <div class="panel panel-danger stretch" v-if="plant['Important Therapeutic use']">
+          <div class="panel-heading">
+            Important therapeutic uses
+          </div>
+          <div class="panel-body">
+            <p style="white-space: pre-wrap;">{{ plant['Important Therapeutic use'] }}</p>
+          </div>
+        </div>
+        <div class="panel panel-danger stretch" v-if="plant['Other medical uses']">
+          <div class="panel-heading">
+            Other medicinal uses
+          </div>
+          <div class="panel-body">
+            <p style="white-space: pre-wrap;">{{ plant['Other medical uses'] }}</p>
+          </div>
+        </div>
+        <div class="panel panel-danger stretch" v-if="plant['Ayurvedic uses ']">
+          <div class="panel-heading">
+            Ayurvedic uses
+          </div>
+          <div class="panel-body">
+            <p style="white-space: pre-wrap;">{{ plant['Ayurvedic uses '] }}</p>
+          </div>
+        </div>
+        <div class="panel panel-danger stretch" v-if="plant['Adopter Name']">
+          <div class="panel-heading">
+            Adopter name
+          </div>
+          <div class="panel-body">
+            <p style="white-space: pre-wrap;">{{ plant['Adopter Name'] }}</p>
+          </div>
+        </div>
+      </ol>
+    </div>
+    <div class="text-center">
+      <small>Reference: Easy Ayurveda <a href="http://easyayurveda.com"
+        target="_blank" rel="noopener noreferrer">www.easyayurveda.com</a> accessed on 12.02.2024</small>
+    </div>
+    <footer>
+      <div class="footerData">
+        <p>
+          ©<span id="year">
+            <script>
+            document.getElementById("year").textContent = new Date().getFullYear();
+            </script>
+          </span>
+          Shree Perne Muchilot Bhagavathi Kshetra. 
+          </br>All rights reserved. 
+          <span style="cursor: pointer; color: #FFA500;" type="button" data-toggle="modal" data-target="#myModal">
+            Website Team
+          </span>
+        </p>
+      </div>
+    </footer>
+    <!-- ******************************** Scripts /******************************** -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../js/common.js"></script>
+    <script type="text/javascript" src="../../js/pace.min.js"></script>
+    <script type="module" src="../scripts/details.js"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-70077839-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-70077839-1');
+    </script>
+  </body>
+</html>
