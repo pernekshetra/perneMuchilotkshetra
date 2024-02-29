@@ -1,5 +1,5 @@
 const plantImages = {
-  "amalaki": [ "1.jpg", "2.jpg", "3.jpg","4.jpg" ],
+  "amalaka": [ "1.jpg", "2.jpg", "3.jpg","4.jpg" ],
   "amra": [ "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg" ],
   "apamarga": [ "1.jpg", "2.jpg", "3.jpg", ],
   "arjuna": [ "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg" ],
@@ -20,7 +20,16 @@ const plantImages = {
   "shami": [ "1.jpg", "2.jpg", "3.jpg", "4.jpg" ],
   "sinshapa": [ "1.jpg", "2.jpg", "3.jpg" ],
   "udumbara": [ "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg" ],
-  "vamsha": [ "1.jpg", "2.jpg", "3.jpg", "4.jpg"]
+  "vamsha": [ "1.jpg", "2.jpg", "3.jpg", "4.jpg"],
+  "plaksha": [ "1.jpg", "2.jpg", "3.jpg", "4.jpg"],
+  "amrataka": [ "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg" ],
+  "bilva": [ "1.jpg", "2.jpg", "3.jpg", "4.jpg"],
+   "sarala": [ "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg"],
+   "bakula": [ "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg"],
+   "madhuka": [ "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg"],
+   "sarja": [ "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg" ],
+   "kapittha": [ "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg" ],
+   "ashoka": [ "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg" ]
 }
 
 
