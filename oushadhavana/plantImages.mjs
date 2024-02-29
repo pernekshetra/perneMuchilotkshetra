@@ -29,7 +29,8 @@ const plantImages = {
    "madhuka": [ "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg"],
    "sarja": [ "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg" ],
    "kapittha": [ "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg" ],
-   "ashoka": [ "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg" ]
+   "ashoka": [ "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg" ],
+   "tuvaraka": [ "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg" ]
 }
 
 
