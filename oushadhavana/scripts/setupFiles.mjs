@@ -31,7 +31,7 @@ for(const plant of plants) {
 
               html.substring(titleStart + 7, titleEnd);
 
-              const newTitle = `Perne Oushadhavana ${plant['Sanskrit Name']}`;
+              const newTitle = `${plant['Sanskrit Name']} Oushadhavana - Perne`;
               const updatedHtml = html.substring(0, titleStart + 7) + newTitle + html.substring(titleEnd);
 
               const filePath = `${folderPath}/index.html`;
