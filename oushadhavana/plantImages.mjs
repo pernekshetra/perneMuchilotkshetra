@@ -1,6 +1,6 @@
 const plantImages = {
   "amalaka": [ "1.jpg", "2.jpg"],
-  "amra": [ "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg" ],
+  "amra": [ "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg"],
   "apamarga": [ "1.jpg", "2.jpg", "3.jpg", ],
   "arjuna": [ "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg" ],
   "arka": [ "1.jpg", "2.jpg"],
