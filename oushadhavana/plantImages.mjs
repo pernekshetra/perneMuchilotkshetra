@@ -33,7 +33,8 @@ const plantImages = {
    "tuvaraka": [ "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg" ],
    "kolikukke": [ "1.jpg", "2.jpg", "3.jpg", "4.jpg"],
   "lakshmitaru": [ "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg" ],
-  "punnaga": [ "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg"]
+  "punnaga": [ "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg"],
+   "kumbhi": [ "1.jpg", "2.jpg", "3.jpg", "4.jpg"]
 }
 
 
