@@ -23,7 +23,7 @@ const plantImages = {
   "vamsha": [ "1.jpg", "2.jpg"],
   "plaksha": [ "1.jpg", "2.jpg", "3.jpg", "4.jpg"],
   "amrataka": [ "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg" ],
-  "bilva": [ "1.jpg", "2.jpg", "3.jpg", "4.jpg"],
+  "bilva": [ "1.jpg", "2.jpg", "3.jpg"],
    "sarala": [ "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg"],
    "bakula": [ "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg"],
    "madhuka": [ "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg"],
