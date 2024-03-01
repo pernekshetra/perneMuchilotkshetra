@@ -9,7 +9,7 @@ const plantImages = {
   "durva": [ "1.jpg"],
   "jambu": [ "1.jpg", "2.jpg", "3.jpg" ],
   "kadamba": [ "1.jpg", "2.jpg", "3.jpg" ],
-  "khadirah": [ "1.jpg", "2.jpg", "3.jpg", "4.jpg" ],
+  "khadirah": [ "1.jpg"],
   "kupilu": [ "1.jpg", "2.jpg", "3.jpg","4.jpg" ],
   "nagakesara": [ "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg" ],
   "nimba": [ "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg"],
