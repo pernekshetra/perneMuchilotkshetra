@@ -15,7 +15,7 @@ const plantImages = {
   "nimba": [ "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg"],
   "nyagrodha": [ "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg" ],
   "palasa": [ "1.jpg", "2.jpg", "3.jpg"],
-  "panasa": [ "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg" ],
+  "panasa": [ "1.jpg", "2.jpg", "3.jpg", "4.jpg"],
   "rakthachandan": [ "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg"],
   "shami": [ "1.jpg", "2.jpg", "3.jpg"],
   "sinshapa": [ "1.jpg", "2.jpg", "3.jpg" ],
