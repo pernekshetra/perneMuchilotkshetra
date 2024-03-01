@@ -25,7 +25,7 @@ const plantImages = {
   "amrataka": [ "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg" ],
   "bilva": [ "1.jpg", "2.jpg", "3.jpg"],
    "sarala": [ "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg"],
-   "bakula": [ "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg"],
+   "bakula": [ "1.jpg", "2.jpg", "3.jpg", "4.jpg"],
    "madhuka": [ "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg"],
    "sarja": [ "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg" ],
    "kapittha": [ "1.jpg", "2.jpg", "3.jpg"],
