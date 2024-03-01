@@ -5,7 +5,7 @@ const plantImages = {
   "arjuna": [ "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg" ],
   "arka": [ "1.jpg", "2.jpg"],
   "ashvatha": [ "1.jpg", "2.jpg", "3.jpg" ],
-  "darbha": [ "1.jpg", "2.jpg", "3.jpg" ],
+  "darbha": [ "1.jpg"],
   "durva": [ "1.jpg"],
   "jambu": [ "1.jpg", "2.jpg", "3.jpg" ],
   "kadamba": [ "1.jpg", "2.jpg", "3.jpg" ],
