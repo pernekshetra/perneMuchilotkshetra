@@ -1,6 +1,8 @@
 
- var offsetToStickyBar = $(".stickyBar").offset().top;
- offsetToStickyBar = offsetToStickyBar - $(".navbar").height();
+ var offsetToStickyBar = 644;
+if($(".stickyBar").offset()) {
+  offsetToStickyBar = $(".stickyBar").offset().top - $(".navbar").height();
+}
 $(document).scroll(function(){
     if($(this).scrollTop() > offsetToStickyBar)
     {   
