@@ -1887,3 +1887,24 @@ audio::-webkit-media-controls-panel {
   margin: 20px auto; /* Add margin for spacing */
   display: block;
 }
+
+.upcoming-event .event-box {
+  background-color: #FFD700; /* Gold background */
+  padding: 20px;
+  margin-bottom: 30px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.upcoming-event h2 {
+  color: #000; /* Black color for heading */
+  margin-bottom: 15px;
+}
+
+.event-name, .event-date {
+  color: #333; /* Dark grey color for text */
+  font-size: 18px;
+  margin: 5px 0;
+}
+
