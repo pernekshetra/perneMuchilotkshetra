@@ -140,8 +140,16 @@
     <footer>
       <div class="footerData">
         <p>
-          ©2024 Shree Perne Muchilot Bhagavathi Kshetra. 
+          ©<span id="year">
+            <script>
+            document.getElementById("year").textContent = new Date().getFullYear();
+            </script>
+          </span>
+          Shree Perne Muchilot Bhagavathi Kshetra.
           </br>All rights reserved.
+          <a href="../team/" style="cursor: pointer; color: #FFA500;" type="button">
+            Website Team
+          </a>
         </p>
       </div>
     </footer>
