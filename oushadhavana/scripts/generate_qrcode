@@ -1,0 +1,28 @@
+# 1. npm i -g qrcode
+# 2. chmod +x generate_qrcode
+# ./generate_qrcode
+#!/bin/bash
+
+urls=(
+    "https://pernekshetra.com/oushadhavana/plant_name1/"
+    "https://pernekshetra.com/oushadhavana/plant_name2/"
+    )
+
+mkdir -p qr_codes
+
+for url in "${urls[@]}"; do
+  # This removes the trailing slash and then takes everything after the last slash
+  filename=$(basename "${url%/}")
+  output_file="qr_codes/${filename}.png"
+
+  echo "Generating QR code for: $url -> $output_file"
+  qrcode -o "$output_file" "$url"
+
+  if [ $? -eq 0 ]; then
+    echo "Successfully created $output_file"
+  else
+    echo "Error creating QR code for $url"
+  fi
+done
+
+echo "All QR codes generated (or attempted) in the 'qr_codes' directory."
