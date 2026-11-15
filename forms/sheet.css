@@ -1,0 +1,206 @@
+/* ==========================================================================
+   Perne Kshetra forms: A4 sheet (screen preview + print).
+   One .sheet = one printed page. Serif type matches the paper forms
+   the temple office already uses. Fonts: SIL OFL 1.1 (fonts/LICENSE-OFL.txt).
+   ========================================================================== */
+
+@font-face {
+  font-family: "EB Garamond";
+  font-style: normal; font-weight: 400; font-display: swap;
+  src: url("fonts/eb-garamond-latin-400-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "EB Garamond";
+  font-style: normal; font-weight: 700; font-display: swap;
+  src: url("fonts/eb-garamond-latin-700-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "EB Garamond";
+  font-style: italic; font-weight: 400; font-display: swap;
+  src: url("fonts/eb-garamond-latin-400-italic.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Noto Serif Kannada";
+  font-style: normal; font-weight: 400; font-display: swap;
+  src: url("fonts/noto-serif-kannada-kannada-400-normal.woff2") format("woff2");
+  unicode-range: U+0951-0952, U+0964-0965, U+0C80-0CF3, U+1CD0, U+1CD2-1CD3, U+1CDA, U+1CF2, U+1CF4, U+200C-200D, U+20B9, U+25CC, U+A830-A835;
+}
+@font-face {
+  font-family: "Noto Serif Kannada";
+  font-style: normal; font-weight: 700; font-display: swap;
+  src: url("fonts/noto-serif-kannada-kannada-700-normal.woff2") format("woff2");
+  unicode-range: U+0951-0952, U+0964-0965, U+0C80-0CF3, U+1CD0, U+1CD2-1CD3, U+1CDA, U+1CF2, U+1CF4, U+200C-200D, U+20B9, U+25CC, U+A830-A835;
+}
+@font-face {
+  font-family: "Noto Serif Malayalam";
+  font-style: normal; font-weight: 400; font-display: swap;
+  src: url("fonts/noto-serif-malayalam-malayalam-400-normal.woff2") format("woff2");
+  unicode-range: U+0307, U+0323, U+0951-0952, U+0964-0965, U+0D00-0D7F, U+1CDA, U+1CF2, U+200C-200D, U+20B9, U+25CC, U+A830-A832;
+}
+@font-face {
+  font-family: "Noto Serif Malayalam";
+  font-style: normal; font-weight: 700; font-display: swap;
+  src: url("fonts/noto-serif-malayalam-malayalam-700-normal.woff2") format("woff2");
+  unicode-range: U+0307, U+0323, U+0951-0952, U+0964-0965, U+0D00-0D7F, U+1CDA, U+1CF2, U+200C-200D, U+20B9, U+25CC, U+A830-A832;
+}
+
+:root { --serif: "EB Garamond", "Noto Serif Kannada", "Noto Serif Malayalam", Georgia, serif; }
+
+/* ==========================================================================
+   A4 sheet (shared by screen preview and print)
+   ========================================================================== */
+
+.sheet {
+  --row: 6.6mm;
+  zoom: var(--preview-zoom, 1);
+  width: 210mm;
+  height: 297mm;
+  padding: 11mm 14mm 10mm;
+  box-sizing: border-box;
+  background: #fff;
+  color: #000;
+  font-family: var(--serif);
+  font-size: 11pt;
+  line-height: 1.25;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 1px 2px rgba(24,24,27,.06), 0 8px 24px rgba(24,24,27,.08);
+}
+.sheet *, .sheet *::before, .sheet *::after { box-sizing: border-box; }
+.sheet p { margin: 0; padding: 0; } /* site css adds p { padding-bottom: 20px } */
+
+.sheet .s-temple {
+  text-align: center;
+  font-weight: 700;
+  font-size: 12.5pt;
+  letter-spacing: 0.02em;
+}
+.sheet .s-addr { text-align: center; font-size: 10pt; letter-spacing: 0.04em; }
+.sheet .s-title {
+  text-align: center;
+  font-weight: 700;
+  font-size: 13pt;
+  letter-spacing: 0.08em;
+  margin: 2mm 0 4mm;
+}
+.sheet .s-title span { border-bottom: 1.2pt solid #000; padding-bottom: 0.6mm; }
+.sheet .s-rule { border: 0; border-top: 0.6pt solid #000; margin: 2.5mm 0; }
+.sheet .s-rule.double { border-top: 2pt double #000; margin: 3mm 0; }
+.sheet .s-foot {
+  position: absolute;
+  left: 14mm; right: 14mm; bottom: 5mm;
+  font-size: 7.5pt;
+  color: #777;
+  text-align: center;
+}
+
+/* Filled values */
+.sheet .v {
+  font-weight: 600;
+  color: #111;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* Ruled line that holds a value */
+.sheet .line {
+  display: block;
+  min-height: var(--row);
+  border-bottom: 0.6pt solid #555;
+  padding: 0 1mm 0.4mm;
+  line-height: calc(var(--row) - 0.6mm);
+  overflow: hidden;
+  white-space: nowrap;
+}
+/* Multi-line: rules are real borders (.r), because browsers skip
+   background images when printing by default. */
+.sheet .line.multi {
+  position: relative;
+  white-space: pre-wrap;
+  height: calc(var(--row) * var(--lines, 2));
+  border-bottom: 0;
+  padding: 0;
+}
+.sheet .line.multi .r {
+  position: absolute;
+  left: 0; right: 0;
+  height: var(--row);
+  border-bottom: 0.6pt solid #555;
+}
+.sheet .line.multi .v {
+  position: relative;
+  display: block;
+  padding: 0 1mm;
+  line-height: var(--row);
+}
+
+/* Character boxes (dates, phone, PIN, Aadhaar, age) */
+.sheet .boxes { display: inline-flex; vertical-align: middle; }
+.sheet .boxes .grp { display: inline-flex; }
+.sheet .boxes .grp + .grp { margin-left: 1.6mm; }
+.sheet .boxes .b {
+  width: 5.4mm;
+  height: 6mm;
+  border: 0.6pt solid #333;
+  margin-left: -0.6pt;
+  text-align: center;
+  line-height: 5.8mm;
+  font-weight: 600;
+  font-size: 11pt;
+}
+.sheet .boxes .grp .b:first-child { margin-left: 0; }
+.sheet .boxes .b.ph { color: #b9b2ab; font-weight: 400; font-size: 7pt; }
+
+/* Dotted fill-in used in the sentence-style Pandal Mangalam forms */
+.sheet .dots {
+  display: inline-block;
+  min-width: var(--w, 40mm);
+  border-bottom: 1pt dotted #333;
+  text-align: center;
+  padding: 0 1.5mm;
+  line-height: 1.2;
+}
+
+/* Signature placeholder */
+.sheet .sig { text-align: right; }
+.sheet .sig .sig-line {
+  display: inline-block;
+  width: 58mm;
+  border-top: 0.6pt solid #555;
+  padding-top: 1mm;
+  text-align: center;
+  font-size: 10pt;
+}
+
+
+/* Highlight the spot that matches the focused input (screen only). */
+.sheet .is-hl {
+  background: rgba(185, 28, 28, 0.08);
+  box-shadow: 0 0 0 1.2pt rgba(185, 28, 28, 0.55);
+  border-radius: 0.8mm;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .sheet [data-bind], .sheet [data-boxes], .sheet .line { transition: background-color .2s ease, box-shadow .2s ease; }
+}
+
+/* ---------- Print ---------- */
+
+@media print {
+  @page { size: A4; margin: 0; }
+  html, body { margin: 0 !important; padding: 0 !important; background: #fff !important; }
+  body > *:not(main),
+  .fp-header, .fp-form, .fp-chips, .fp-bar, .fp-preview-head, .no-print { display: none !important; }
+  main, .fp-wrap, .fp-layout, .fp-preview, .fp-preview .sheets {
+    display: block !important; position: static !important; inset: auto !important;
+    padding: 0 !important; margin: 0 !important; max-width: none !important; max-height: none !important;
+    overflow: visible !important; background: #fff !important; transform: none !important;
+  }
+  .sheet { zoom: 1 !important; box-shadow: none !important; margin: 0 !important; break-after: page; page-break-after: always; }
+  .sheet:last-child { break-after: auto; page-break-after: auto; }
+  .sheet .is-hl { background: none !important; box-shadow: none !important; }
+  .sheet .boxes .b.ph { color: transparent !important; }
+  .sheet .s-foot { color: #888 !important; }
+}
