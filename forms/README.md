@@ -31,11 +31,6 @@ V=$(date +%Y%m%d%H%M)
 sed -i '' -E "s/\?v=[0-9]+/?v=$V/g" forms/index.html forms/marriage/index.html forms/pandal-mangalam/index.html
 ```
 
-## Test
-
-Add `?demo=1` to a form URL to fill sample data (it is not saved).
-For example: `forms/marriage/?demo=1`, `forms/pandal-mangalam/?lang=ml&demo=1`.
-
 ## Social preview images
 
 `og/forms.jpg`, `og/marriage.jpg` and `og/pandal.jpg` (1200x630) are the link previews for WhatsApp, Facebook and X.

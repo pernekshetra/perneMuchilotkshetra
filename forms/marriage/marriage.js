@@ -159,19 +159,6 @@
   }
 
   new window.PerneForm(document.querySelector("form[data-form-id]")).init({
-    check: checkDates,
-    demo: {
-      engagement_place: "PERNE KSHETHRA", engagement_date: "04/10/2026", marriage_date: "21/03/2027",
-      groom_name: "PRAKASHA KODAKKARA", groom_father: "NARAYANA K", groom_mother: "LAKSHMI",
-      groom_illam: "CHORLA", groom_tharavad: "KODAKKARA THARAVAD, ANANTHAPURA", groom_dob: "12/06/1997",
-      groom_address: "KODAKKARA HOUSE, ANANTHAPURA POST, KUMBLA VIA, KASARAGOD DISTRICT, KERALA", groom_pin: "671321",
-      groom_phone: "98765 43210", groom_aadhaar: "1234 5678 9012", groom_occupation: "TEACHER",
-      groom_w_name_addr: "SURESHA K, KODAKKARA HOUSE, ANANTHAPURA", groom_w_phone: "91234 56780",
-      bride_name: "ANANYA PUTHILA", bride_father: "RAMESHA P", bride_mother: "SAVITHRI",
-      bride_illam: "THACHILA", bride_tharavad: "PUTHILA THARAVAD", bride_dob: "30/01/2000",
-      bride_address: "PUTHILA HOUSE, PERNE, BANTWAL TALUK, DAKSHINA KANNADA, KARNATAKA", bride_pin: "574231",
-      bride_phone: "99887 76655", bride_aadhaar: "9876 5432 1098", bride_occupation: "NURSE",
-      bride_w_name_addr: "GOPALA P, PUTHILA HOUSE, PERNE", bride_w_phone: "90000 11111"
-    }
+    check: checkDates
   });
 })();

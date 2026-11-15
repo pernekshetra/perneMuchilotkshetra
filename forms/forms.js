@@ -597,11 +597,6 @@
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  PerneForm.prototype.fillDemo = function (data) {
-    var form = this.form;
-    Object.keys(data).forEach(function (k) { if (form.elements[k]) form.elements[k].value = data[k]; });
-  };
-
   /* ---------- Wiring ---------- */
 
   PerneForm.prototype.init = function (opts) {
@@ -668,9 +663,7 @@
     this.check = opts.check || null;
     this.buildBlockNotes();
     this.buildRules();
-    var params = new URLSearchParams(window.location.search);
-    if (params.get("demo") === "1" && opts.demo) this.fillDemo(opts.demo);
-    else if (this.restore()) this.toast("Your saved draft is back");
+    if (this.restore()) this.toast("Your saved draft is back");
 
     $all("[data-mask]", form).forEach(function (f) { f._lastLen = f.value.length; });
     $all("textarea", form).forEach(autosize);
