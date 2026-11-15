@@ -122,7 +122,18 @@
     this.form = form;
     this.key = PREFIX + form.getAttribute("data-form-id");
     this.preview = $(".fp-preview");
+    this.cross = {};
+    this.blockers = [];
   }
+
+  /* Date helpers for form-specific checks (see init opts.check). */
+  PerneForm.date = {
+    parse: parseDate,
+    real: function (v) { return realDate(parseDate(v)); },
+    ageAt: ageAt,
+    /* YYYYMMDD number, for comparing two dates; NaN when the date is not real. */
+    key: function (v) { var p = parseDate(v); return realDate(p) ? +p.y * 10000 + +p.m * 100 + +p.d : NaN; }
+  };
 
   /* ---------- Field builder ---------- */
 
@@ -226,10 +237,13 @@
   /* ---------- Validation ---------- */
 
   PerneForm.prototype.checkField = function (f) {
+    var custom = "";
     if (f.getAttribute("data-mask") === "date") {
       var p = parseDate(f.value);
-      f.setCustomValidity(f.value && p && !realDate(p) ? "This date does not exist. Check the day and month." : "");
+      if (f.value && p && !realDate(p)) custom = "This date does not exist. Check the day and month.";
     }
+    if (!custom && f.value && this.cross[f.name]) custom = this.cross[f.name];
+    f.setCustomValidity(custom);
     var v = f.validity;
     var msg = "";
     if (v.valueMissing) msg = "Please fill this in.";
@@ -281,6 +295,8 @@
         a.textContent = (gname ? gname + ": " : "") + (lab ? lab.textContent : f.name);
         a.addEventListener("click", function (e) { e.preventDefault(); f.focus(); });
         li.appendChild(a);
+        var why = self.checkField(f);
+        if (why) li.appendChild(document.createTextNode(" — " + why));
         ul.appendChild(li);
       });
       box.appendChild(h);
@@ -291,6 +307,70 @@
     this.closePreview();
     setTimeout(function () { bad[0].focus({ preventScroll: true }); }, 350);
     return false;
+  };
+
+  /* ---------- Cross-field checks (for example, dates that must be in order) ----------
+     opts.check(values) returns a list of { field, msg }. Each message shows on its field.
+     While the list is not empty, Preview and Print are turned off and say why. */
+
+  PerneForm.prototype.runChecks = function () {
+    var self = this;
+    var prev = this.cross;
+    var list = this.check ? this.check(this.values()) || [] : [];
+    var cross = {};
+    list.forEach(function (e) { if (!cross[e.field]) cross[e.field] = e.msg; });
+    this.cross = cross;
+    this.blockers = list;
+    Object.keys(prev).concat(Object.keys(cross)).forEach(function (n) {
+      var f = self.form.elements[n];
+      if (!f) return;
+      var w = f.closest(".f");
+      if (cross[n] && w) w.classList.add("touched");
+      self.paintField(f);
+    });
+    this.updateBlock();
+  };
+
+  PerneForm.prototype.buildBlockNotes = function () {
+    var bar = $(".fp-bar");
+    if (bar) bar.insertAdjacentHTML("afterbegin", '<p class="fp-block fp-block-bar" hidden><i class="fa fa-ban" aria-hidden="true"></i><span>Fix the dates marked in red to preview or print.</span></p>');
+    var actions = $(".fp-finish .actions", this.form);
+    if (actions) actions.insertAdjacentHTML("beforebegin", '<div class="fp-block fp-block-list" hidden></div>');
+    var head = this.preview && $(".fp-preview-head", this.preview);
+    if (head) head.insertAdjacentHTML("afterend", '<div class="fp-block fp-block-list" hidden></div>');
+    if (!$(".fp-print-block")) {
+      document.body.insertAdjacentHTML("beforeend", '<div class="fp-print-block"><p>This form cannot be printed yet.</p><p>Go back to the form and fix the dates marked in red.</p></div>');
+    }
+  };
+
+  PerneForm.prototype.updateBlock = function () {
+    var blocked = this.blockers.length > 0;
+    var self = this;
+    document.documentElement.classList.toggle("fp-blocked", blocked);
+    if (this.preview) this.preview.classList.toggle("is-blocked", blocked);
+    $all("[data-action=print], [data-action=preview]").forEach(function (b) {
+      b.classList.toggle("is-disabled", blocked);
+      if (blocked) b.setAttribute("aria-disabled", "true");
+      else b.removeAttribute("aria-disabled");
+    });
+    $all(".fp-block").forEach(function (el) { el.hidden = !blocked; });
+    $all(".fp-block-list").forEach(function (el) {
+      el.innerHTML = "";
+      if (!blocked) return;
+      var h = document.createElement("strong");
+      h.textContent = "Preview and print are off until these dates are fixed:";
+      var ul = document.createElement("ul");
+      var seen = {};
+      self.blockers.forEach(function (e) {
+        if (seen[e.msg]) return;
+        seen[e.msg] = 1;
+        var li = document.createElement("li");
+        li.textContent = e.msg;
+        ul.appendChild(li);
+      });
+      el.appendChild(h);
+      el.appendChild(ul);
+    });
   };
 
   /* ---------- Section chips ---------- */
@@ -445,6 +525,7 @@
 
   PerneForm.prototype.openPreview = function (opener) {
     if (!this.preview) return;
+    if (this.blockers.length) { this.validate(); return; }
     this._opener = opener || document.activeElement;
     this.preview.classList.add("is-open");
     this.preview.setAttribute("role", "dialog");
@@ -509,6 +590,7 @@
     var box = $(".fp-errors");
     if (box) box.classList.remove("show");
     this.computeAges();
+    this.runChecks();
     this.render();
     this.updateChips();
     this.toast("All data cleared from this device");
@@ -542,6 +624,7 @@
       }
       if (f.tagName === "TEXTAREA") autosize(f);
       self.computeAges();
+      self.runChecks();
       self.paintField(f);
       self.render();
       self.save();
@@ -582,6 +665,8 @@
     window.addEventListener("beforeprint", function () { self.computeAges(); self.render(); self.highlight(null); });
     window.addEventListener("resize", function () { self.scalePreview(); });
 
+    this.check = opts.check || null;
+    this.buildBlockNotes();
     this.buildRules();
     var params = new URLSearchParams(window.location.search);
     if (params.get("demo") === "1" && opts.demo) this.fillDemo(opts.demo);
@@ -591,6 +676,7 @@
     $all("textarea", form).forEach(autosize);
     this.scalePreview();
     this.computeAges();
+    this.runChecks();
     this.render();
     this.fields().forEach(function (f) {
       if (f.value && !f.readOnly) { var w = f.closest(".f"); if (w) w.classList.add("touched"); self.paintField(f); }

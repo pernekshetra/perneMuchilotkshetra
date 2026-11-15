@@ -209,6 +209,10 @@
   .sheet .s-foot { position: static !important; margin-top: 6mm; color: #888 !important; }
   .sheet .is-hl { background: none !important; box-shadow: none !important; }
   .sheet .boxes .b.ph { color: transparent !important; }
+  /* Ctrl+P while a date rule fails: print a short note, not a wrong form. */
+  .fp-block { display: none !important; }
+  html.fp-blocked .sheet { display: none !important; }
+  html.fp-blocked .fp-print-block { display: block !important; padding: 30mm 20mm; font: 16pt/1.5 serif; color: #000; }
   /* WebKit (Safari, every browser on iPhone/iPad) ignores @page margins and adds
      its own. It then shrinks the 210mm sheet to the printable width, which also
      shrinks its height, so each auto-height sheet still fits on one page. */

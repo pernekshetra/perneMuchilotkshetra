@@ -129,7 +129,37 @@
 
   document.getElementById("year").textContent = new Date().getFullYear();
 
+  /* Date rules. Preview and print stay off while any of these fail.
+     - Engagement on or before the marriage date.
+     - Age on the marriage date (or today, if there is no marriage date yet):
+       bridegroom at least 21, bride at least 18. */
+  var MIN_AGE = { groom: 21, bride: 18 };
+  function checkDates(v) {
+    var D = window.PerneForm.date;
+    var out = [];
+    var eng = D.key(v.engagement_date), mar = D.key(v.marriage_date);
+    if (eng > mar) {
+      out.push({ field: "engagement_date", msg: "The engagement date must be on or before the marriage date (" + v.marriage_date + ")." });
+      out.push({ field: "marriage_date", msg: "The marriage date must be on or after the engagement date (" + v.engagement_date + ")." });
+    }
+    var at = isNaN(mar) ? "" : v.marriage_date;
+    var when = at ? "on the marriage date" : "today";
+    ["groom", "bride"].forEach(function (p) {
+      var dob = v[p + "_dob"];
+      if (!D.real(dob)) return;
+      var who = ROLES[p].en.toLowerCase();
+      var age = D.ageAt(dob, at);
+      if (age === "") {
+        out.push({ field: p + "_dob", msg: "The " + who + "’s date of birth must be before " + (at ? "the marriage date." : "today.") });
+      } else if (+age < MIN_AGE[p]) {
+        out.push({ field: p + "_dob", msg: "The " + who + " must be at least " + MIN_AGE[p] + " years old " + when + ". Age " + when + ": " + age + "." });
+      }
+    });
+    return out;
+  }
+
   new window.PerneForm(document.querySelector("form[data-form-id]")).init({
+    check: checkDates,
     demo: {
       engagement_place: "PERNE KSHETHRA", engagement_date: "04/10/2026", marriage_date: "21/03/2027",
       groom_name: "PRAKASHA KODAKKARA", groom_father: "NARAYANA K", groom_mother: "LAKSHMI",
