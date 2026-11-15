@@ -141,8 +141,8 @@
 
               <div class="pl"><span class="dots v" data-bind="district" data-fit></span><span>ಜಿಲ್ಲೆ,</span><span class="dots v" data-bind="taluk" data-fit></span><span>ತಾಲೂಕು,</span></div>
               <div class="pl"><span class="dots v" data-bind="place" data-fit></span><span>ಎಂಬಲ್ಲಿರುವ</span></div>
-              <div class="pl"><span class="dots v" data-bind="father_name" data-fit></span><span>ತಂದೆ,</span><span class="dots fixed v" style="--w:42mm" data-bind="father_illam" data-fit></span><span>ಇಲ್ಲಂ</span></div>
-              <div class="pl"><span class="dots v" data-bind="mother_name" data-fit></span><span>ತಾಯಿ,</span><span class="dots fixed v" style="--w:42mm" data-bind="mother_illam" data-fit></span><span>ಇಲ್ಲಂ</span></div>
+              <div class="pl"><span class="dots v" data-bind="father_name" data-fit></span><span>ತಂದೆ,</span><span class="dots fixed v" style="--w:42mm" data-bind="father_illam" data-fit></span><span>ಇಲ್ಲಂ (ಕುಟುಂಬ)</span></div>
+              <div class="pl"><span class="dots v" data-bind="mother_name" data-fit></span><span>ತಾಯಿ,</span><span class="dots fixed v" style="--w:42mm" data-bind="mother_illam" data-fit></span><span>ಇಲ್ಲಂ (ಕುಟುಂಬ)</span></div>
               <div class="pl"><span>ಎಂಬವರ ಮಗಳು ಕುಮಾರಿ</span><span class="dots v" data-bind="daughter_name" data-fit></span><span>ಯ ಚಪ್ಪರ ಮದುವೆಯನ್ನು</span></div>
               <p class="para">ಶ್ರೀ ಪೆರ್ಣೆ ಮುಚ್ಚಿಲೋಟ್ ಭಗವತೀ ಕ್ಷೇತ್ರದ ಆಚಾರದಂತೆ ನಡೆಸಿಕೊಡಬೇಕಾಗಿ ವಿನಂತಿ.</p>
 
@@ -177,8 +177,8 @@
 
               <div class="pl"><span class="dots v" data-bind="district" data-fit></span><span>ജില്ല,</span><span class="dots v" data-bind="taluk" data-fit></span><span>താലൂക്ക്,</span></div>
               <div class="pl"><span class="dots v" data-bind="place" data-fit></span><span>എന്ന സ്ഥലത്തുള്ള</span></div>
-              <div class="pl"><span class="dots v" data-bind="father_name" data-fit></span><span>അച്ചന്റെ പേര്,</span><span class="dots fixed v" style="--w:40mm" data-bind="father_illam" data-fit></span><span>ഇല്ലം</span></div>
-              <div class="pl"><span class="dots v" data-bind="mother_name" data-fit></span><span>അമ്മയുടെ പേര്,</span><span class="dots fixed v" style="--w:40mm" data-bind="mother_illam" data-fit></span><span>ഇല്ലം</span></div>
+              <div class="pl"><span class="dots v" data-bind="father_name" data-fit></span><span>അച്ചന്റെ പേര്,</span><span class="dots fixed v" style="--w:40mm" data-bind="father_illam" data-fit></span><span>ഇല്ലം (കുടുംബം)</span></div>
+              <div class="pl"><span class="dots v" data-bind="mother_name" data-fit></span><span>അമ്മയുടെ പേര്,</span><span class="dots fixed v" style="--w:40mm" data-bind="mother_illam" data-fit></span><span>ഇല്ലം (കുടുംബം)</span></div>
               <div class="pl"><span>ഇവരുടെ മകൾ കുമാരി</span><span class="dots v" data-bind="daughter_name" data-fit></span><span>യുടെ പന്തൽ മംഗലം</span></div>
               <p class="para">ശ്രീ പെരുതണ മുച്ചിലോട്ട് ഭഗവതി ക്ഷേത്രാചാരമനുസരിച്ച് നടത്തി തരണമെന്ന് അപേക്ഷിക്കുന്നു.</p>
 
@@ -256,11 +256,11 @@
           F({ id: "daughter_name", en: "Daughter's name", kn: "ಮಗಳು ಕುಮಾರಿ", ml: "മകൾ കുമാരി", req: 1, max: 60 }) +
           '<div class="f-row">' +
             F({ id: "father_name", en: "Father's name", kn: "ತಂದೆ", ml: "അച്ചന്റെ പേര്", req: 1, max: 60 }) +
-            F({ id: "father_illam", en: "Father's illam", kn: "ಇಲ್ಲಂ", ml: "ഇല്ലം", max: 30 }) +
+            F({ id: "father_illam", en: "Father's illam (Kutumba)", kn: "ಇಲ್ಲಂ (ಕುಟುಂಬ)", ml: "ഇല്ലം (കുടുംബം)", options: PerneForm.ILLAMS, placeholder: "Choose illam" }) +
           "</div>" +
           '<div class="f-row">' +
             F({ id: "mother_name", en: "Mother's name", kn: "ತಾಯಿ", ml: "അമ്മയുടെ പേര്", req: 1, max: 60 }) +
-            F({ id: "mother_illam", en: "Mother's illam", kn: "ಇಲ್ಲಂ", ml: "ഇല്ലം", max: 30 }) +
+            F({ id: "mother_illam", en: "Mother's illam (Kutumba)", kn: "ಇಲ್ಲಂ (ಕುಟುಂಬ)", ml: "ഇല്ലം (കുടുംബം)", options: PerneForm.ILLAMS, placeholder: "Choose illam" }) +
           "</div>";
         document.querySelector('[data-fields="place"]').innerHTML =
           F({ id: "place", en: "Village or place", kn: "ಎಂಬಲ್ಲಿರುವ", ml: "എന്ന സ്ഥലത്തുള്ള", max: 80 }) +
@@ -282,9 +282,9 @@
             taluk: lang === "kn" ? "ಪುತ್ತೂರು" : "കാസറഗോഡ്",
             place: lang === "kn" ? "ಪೆರ್ಣೆ, ಬಂಟ್ವಾಳ" : "പെർണെ, കുമ്പള",
             father_name: "RAMESHA K",
-            father_illam: lang === "kn" ? "ಕೊಡಕ್ಕಾರ" : "കൊടക്കാര",
+            father_illam: "MUCHILTHA",
             mother_name: "SAVITHRI",
-            mother_illam: lang === "kn" ? "ಪುತ್ತಿಲ" : "പുത്തില",
+            mother_illam: "BALLI",
             daughter_name: "ANANYA",
             sign_place: "PERNE",
             sign_date: "15/11/2026",

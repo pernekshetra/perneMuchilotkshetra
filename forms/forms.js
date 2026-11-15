@@ -126,7 +126,11 @@
 
   /* ---------- Field builder ---------- */
 
-  /* def: { id, en, tr, req, upper, mask, max, rows, hint, error, nosave, age:{from,at}, placeholder, kind:'name' } */
+  /* def: { id, en, tr, req, upper, mask, max, rows, options, hint, error, nosave, age:{from,at}, placeholder, kind:'name' }
+     options: a list of values; the field becomes a dropdown. */
+  /* The illams (also called Kutumba), for the illam dropdowns. */
+  PerneForm.ILLAMS = ["BALLI", "CHANDANKULA", "CHORLA", "KEEKKOT", "KUNJATHA", "MUCHILTHA", "THACHILA"];
+
   PerneForm.field = function (def) {
     var a = ' id="' + def.id + '" name="' + def.id + '" aria-describedby="' + def.id + '-hint ' + def.id + '-err"';
     if (def.max) a += ' maxlength="' + def.max + '"';
@@ -150,9 +154,18 @@
     if (def.age) a += ' readonly tabindex="-1" data-age-from="' + def.age.from + '" data-age-at="' + def.age.at + '"';
     a += ' enterkeyhint="next"';
 
-    var input = def.rows
-      ? "<textarea" + a + ' rows="' + def.rows + '"></textarea>'
-      : '<input type="' + (def.mask === "phone" ? "tel" : "text") + '"' + a + ">";
+    var input;
+    if (def.options) {
+      var sa = ' id="' + def.id + '" name="' + def.id + '" aria-describedby="' + def.id + '-hint ' + def.id + '-err"' +
+        (def.req ? ' required aria-required="true"' : "") + (def.error ? ' data-error="' + esc(def.error) + '"' : "");
+      input = "<select" + sa + '><option value="">' + esc(def.placeholder || "Choose") + "</option>" +
+        def.options.map(function (o) { return '<option value="' + esc(o) + '">' + esc(o) + "</option>"; }).join("") +
+        "</select>";
+    } else if (def.rows) {
+      input = "<textarea" + a + ' rows="' + def.rows + '"></textarea>';
+    } else {
+      input = '<input type="' + (def.mask === "phone" ? "tel" : "text") + '"' + a + ">";
+    }
 
     return '<div class="f" data-field="' + def.id + '">' +
       '<label class="f-label" for="' + def.id + '"><span class="en">' + esc(def.en) + "</span>" +
@@ -167,7 +180,7 @@
   /* ---------- Data ---------- */
 
   PerneForm.prototype.fields = function () {
-    return $all("input[name], textarea[name]", this.form);
+    return $all("input[name], textarea[name], select[name]", this.form);
   };
   PerneForm.prototype.values = function () {
     var out = {};
@@ -287,7 +300,7 @@
     $all("[data-section]", this.form).forEach(function (sec) {
       var chip = $('.fp-chip[href="#' + sec.id + '"]');
       if (!chip) return;
-      var inputs = $all("input[name], textarea[name]", sec).filter(function (f) { return !f.readOnly; });
+      var inputs = $all("input[name], textarea[name], select[name]", sec).filter(function (f) { return !f.readOnly; });
       var filled = inputs.filter(function (f) { return f.value.trim(); }).length;
       var bad = inputs.some(function (f) { var w = f.closest(".f"); return w && w.classList.contains("is-invalid"); });
       var missingReq = inputs.some(function (f) { return f.required && !f.value.trim(); });
@@ -554,7 +567,7 @@
       var f = e.target;
       if (e.key !== "Enter" || f.tagName !== "INPUT" || e.isComposing) return;
       e.preventDefault();
-      var list = $all("input:not([readonly]), textarea", form);
+      var list = $all("input:not([readonly]), textarea, select", form);
       var next = list[list.indexOf(f) + 1];
       if (next) next.focus();
       else f.blur();
