@@ -24,6 +24,23 @@ There is no backend. Data stays in the browser.
 Add `?demo=1` to a form URL to fill sample data (it is not saved).
 For example: `forms/marriage/?demo=1`, `forms/pandal-mangalam/?lang=ml&demo=1`.
 
+## Social preview images
+
+`og/forms.jpg`, `og/marriage.jpg` and `og/pandal.jpg` (1200x630) are the link previews for WhatsApp, Facebook and X.
+They are rendered from `og/template.html` with the site's own photos and fonts. To regenerate (macOS):
+
+```sh
+python3 -m http.server 8765   # from the repo root, in another terminal
+for f in forms marriage pandal; do
+  "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --hide-scrollbars \
+    --force-device-scale-factor=1 --window-size=1200,630 --virtual-time-budget=6000 \
+    --screenshot="/tmp/og-$f.png" "http://127.0.0.1:8765/forms/og/template.html?f=$f"
+  sips -s format jpeg -s formatOptions 84 "/tmp/og-$f.png" --out "forms/og/$f.jpg"
+done
+```
+
+Keep each JPEG under about 300 KB, or WhatsApp may not show the preview.
+
 ## Proofreading needed
 
 The source PDFs used old non-Unicode fonts, so the Kannada and Malayalam text was retyped from the page images.
