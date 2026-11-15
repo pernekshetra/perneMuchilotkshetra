@@ -32,6 +32,8 @@
       /* Show only the active language (screen labels and sheet). */
       body[data-lang="kn"] [lang="ml"],
       body[data-lang="ml"] [lang="kn"] { display: none !important; }
+      /* The notice shows in English and Kannada for both languages. */
+      body[data-lang] .fp-notice [lang] { display: block !important; }
 
       .sheet.pandal { font-size: 13pt; line-height: 1.6; padding: 14mm 18mm 12mm; }
       .sheet.pandal[lang="ml"] { font-size: 12.5pt; }
@@ -79,6 +81,13 @@
         <a class="fp-back" href="../"><i class="fa fa-arrow-left" aria-hidden="true"></i> Form maker</a>
         <h1>Pandal Mangalam form maker</h1>
         <p class="fp-sub"><span lang="kn">ಚಪ್ಪರ ಮದುವೆಯ ಅರ್ಜಿ</span><span lang="ml">പന്തൽ മംഗലത്തിനുള്ള അപേക്ഷ</span></p>
+        <div class="fp-notice" role="note">
+          <i class="fa fa-info-circle" aria-hidden="true"></i>
+          <div>
+            <p class="en"><strong>Important.</strong> This is not an automatic registration process. The bride or groom must take a printout of this form, obtain the signatures of the respective Pattikars, and submit the signed form at the Kshetra before the specified deadline.</p>
+            <p class="kn" lang="kn">ಇದು ಸ್ವಯಂಚಾಲಿತ ನೋಂದಣಿ ಪ್ರಕ್ರಿಯೆಯಲ್ಲ. ವಧು ಅಥವಾ ವರರು ಈ ಅರ್ಜಿಯನ್ನು ಪ್ರಿಂಟ್ ತೆಗೆದುಕೊಂಡು, ಸಂಬಂಧಪಟ್ಟ ಪಟ್ಟಿಕಾರರ ಸಹಿಗಳನ್ನು ಪಡೆದು, ನಿಗದಿಪಡಿಸಿದ ದಿನಾಂಕದೊಳಗೆ ಕ್ಷೇತ್ರದಲ್ಲಿ ಸಲ್ಲಿಸಬೇಕು.</p>
+          </div>
+        </div>
         <p class="fp-privacy"><i class="fa fa-lock" aria-hidden="true"></i><span>Your details stay on this phone or computer. Nothing is sent to the temple or to any server.</span></p>
       </header>
 
