@@ -1,6 +1,7 @@
-# Online forms
+# Form maker
 
-Fill the Marriage Registration and Pandal Mangalam forms in the browser, then print or save as PDF.
+Make the Marriage Registration and Pandal Mangalam forms in the browser, then print or save as PDF.
+This is not online registration: people sign the printed form and submit it at the temple.
 There is no backend. Data stays in the browser.
 
 | Page | Prints |
