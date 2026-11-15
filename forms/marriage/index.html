@@ -20,19 +20,19 @@
     <link href="../forms.css" rel="stylesheet" type="text/css">
     <style>
       /* ---------- Marriage sheet, page 1 ---------- */
-      .sheet.marriage { --row: 6.1mm; font-size: 10.5pt; padding: 9mm 13mm 8mm; }
+      .sheet.marriage { --row: 5.7mm; font-size: 10.5pt; padding: 9mm 13mm 8mm; }
       .sheet.marriage .s-title { margin: 1mm 0 2.5mm; font-size: 12pt; }
       .m-top { display: grid; grid-template-columns: 1fr auto auto; gap: 0 8mm; align-items: end; margin-bottom: 1.5mm; }
       .m-top .m-h { font-style: italic; text-align: center; font-size: 10.5pt; margin-bottom: 0.8mm; }
       .m-top .line { border: 0.6pt solid #333; }
 
-      .m-row { display: grid; grid-template-columns: 62mm 3mm 1fr; align-items: end; min-height: var(--row); margin-bottom: 0.7mm; }
+      .m-row { display: grid; grid-template-columns: 62mm 3mm 1fr; align-items: end; min-height: var(--row); margin-bottom: 0.5mm; }
       .m-row.boxed { align-items: center; }
       .m-row.tall { align-items: start; }
       .m-row.tall .m-lab, .m-row.tall .m-col { line-height: var(--row); }
       .m-lab { white-space: nowrap; }
       .m-val { min-width: 0; }
-      .m-val .boxes .b { width: 5.1mm; height: 5.6mm; line-height: 5.4mm; font-size: 10.5pt; }
+      .m-val .boxes .b { width: 5.1mm; height: 5.2mm; line-height: 5mm; font-size: 10.5pt; }
       .m-age { float: right; display: inline-flex; align-items: center; }
       .m-addr { display: flex; align-items: flex-end; gap: 3mm; }
       .m-addr .line.multi { flex: 1 1 auto; min-width: 0; }
@@ -167,7 +167,7 @@
             </article>
 
             <!-- ======================= Page 2: instructions + office use ======================= -->
-            <article class="sheet instructions">
+            <article class="sheet instructions pb">
               <div lang="kn">
                 <h3>ಸೂಚನೆಗಳು</h3>
                 <ol>

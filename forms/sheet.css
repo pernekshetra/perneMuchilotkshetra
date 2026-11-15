@@ -198,9 +198,18 @@
     padding: 0 !important; margin: 0 !important; max-width: none !important; max-height: none !important;
     overflow: visible !important; background: #fff !important; transform: none !important;
   }
-  .sheet { zoom: 1 !important; box-shadow: none !important; margin: 0 !important; break-after: page; page-break-after: always; }
-  .sheet:last-child { break-after: auto; page-break-after: auto; }
+  /* No fixed height in print: a sheet is as tall as its content, so it can never
+     push blank padding onto an extra page. Page breaks are explicit (.pb). */
+  .sheet {
+    zoom: 1 !important; box-shadow: none !important; margin: 0 !important;
+    height: auto !important; overflow: visible !important; padding-bottom: 0 !important;
+    break-after: auto; page-break-after: auto;
+  }
+  .sheet.pb { break-before: page; page-break-before: always; }
+  .sheet .s-foot { position: static !important; margin-top: 6mm; color: #888 !important; }
   .sheet .is-hl { background: none !important; box-shadow: none !important; }
   .sheet .boxes .b.ph { color: transparent !important; }
-  .sheet .s-foot { color: #888 !important; }
+  /* WebKit (Safari, every browser on iPhone/iPad) ignores @page margins and adds
+     its own. It then shrinks the 210mm sheet to the printable width, which also
+     shrinks its height, so each auto-height sheet still fits on one page. */
 }
