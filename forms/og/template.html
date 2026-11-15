@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!-- Source for the social preview images in this folder (1200x630).
+     Regenerate: serve the repo root, then for f in forms marriage pandal:
+     Chrome --headless --window-size=1200,630 --screenshot=f.png ".../forms/og/template.html?f=$f"
+     and convert to JPEG (see forms/README.md). -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<title>Social image template</title>
+<style>
+  @font-face { font-family: "Anek"; font-weight: 100 800; src: url("../fonts/anek-kannada-latin-wght-normal.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+2000-206F, U+2190-21FF; }
+  @font-face { font-family: "Anek"; font-weight: 100 800; src: url("../fonts/anek-kannada-kannada-wght-normal.woff2") format("woff2");
+    unicode-range: U+0C80-0CFF, U+200C-200D, U+25CC; }
+  @font-face { font-family: "Anek"; font-weight: 100 800; src: url("../fonts/anek-malayalam-malayalam-wght-normal.woff2") format("woff2");
+    unicode-range: U+0D00-0D7F, U+200C-200D, U+25CC; }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1200px; height: 630px; overflow: hidden; background: #ffffff; }
+  body { font-family: "Anek", sans-serif; color: #18181b; -webkit-font-smoothing: antialiased; }
+
+  .card { display: grid; grid-template-columns: 600px 600px; width: 1200px; height: 630px; }
+
+  .text { position: relative; display: flex; flex-direction: column; padding: 56px 56px 48px 64px; }
+  .text::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 12px; background: #b91c1c; }
+
+  .brand { display: flex; align-items: center; gap: 14px; font-size: 22px; font-weight: 600; letter-spacing: 0.06em; color: #b91c1c; }
+  .brand img { width: 46px; height: 46px; border-radius: 50%; background: #b91c1c; padding: 3px; }
+
+  .main { margin-top: auto; margin-bottom: auto; }
+  h1 { font-size: 76px; line-height: 0.98; font-weight: 680; letter-spacing: -0.015em; }
+  .tr { margin-top: 18px; font-size: 32px; line-height: 1.3; font-weight: 500; color: #52525b; }
+
+  .cta { display: flex; align-items: center; gap: 14px; font-size: 27px; font-weight: 600; color: #18181b; }
+  .cta .pill { display: inline-flex; align-items: center; height: 54px; padding: 0 22px; border-radius: 10px; background: #b91c1c; color: #fff; }
+  .url { margin-top: 18px; font-size: 22px; color: #6b6b74; letter-spacing: 0.01em; }
+
+  .photo { position: relative; overflow: hidden; background: #27272a; }
+  .photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .photo.split { display: grid; grid-template-rows: 1fr 1fr; gap: 6px; background: #fff; }
+  .photo.split img { min-height: 0; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="text">
+      <div class="brand"><img src="../../Resource/Common/sitelogo.png" alt="">PERNE KSHETRA</div>
+      <div class="main">
+        <h1 id="h"></h1>
+        <p class="tr" id="tr"></p>
+      </div>
+      <div>
+        <div class="cta"><span class="pill">Fill online</span> Print or save as PDF</div>
+        <p class="url" id="url"></p>
+      </div>
+    </div>
+    <div class="photo" id="photo"></div>
+  </div>
+<script>
+  var V = {
+    forms: {
+      h: "Online forms", tr: "Marriage registration<br>Pandal Mangalam", url: "pernekshetra.com/forms",
+      photos: [["../../Resource/MarriageSection/malaexchange.jpg", "60% 40%"], ["../../Resource/MarriageSection/pandal.jpg", "55% 45%"]]
+    },
+    marriage: {
+      h: "Marriage<br>registration", tr: "ವಿವಾಹ ನೋಂದಣಿ<br>വിവാഹ രജിസ്ട്രേഷൻ", url: "pernekshetra.com/forms/marriage",
+      photos: [["../../Resource/MarriageSection/malaexchange.jpg", "63% 50%"]]
+    },
+    pandal: {
+      h: "Pandal<br>Mangalam", tr: "ಚಪ್ಪರ ಮದುವೆ<br>പന്തൽ മംഗലം", url: "pernekshetra.com/forms/pandal-mangalam",
+      photos: [["../../Resource/MarriageSection/pandal.jpg", "58% 50%"]]
+    }
+  };
+  var v = V[new URLSearchParams(location.search).get("f")] || V.forms;
+  document.getElementById("h").innerHTML = v.h;
+  document.getElementById("tr").innerHTML = v.tr;
+  document.getElementById("url").textContent = v.url;
+  var ph = document.getElementById("photo");
+  if (v.photos.length > 1) ph.classList.add("split");
+  v.photos.forEach(function (p) {
+    var img = document.createElement("img");
+    img.src = p[0]; img.alt = ""; img.style.objectPosition = p[1];
+    ph.appendChild(img);
+  });
+</script>
+</body>
+</html>
