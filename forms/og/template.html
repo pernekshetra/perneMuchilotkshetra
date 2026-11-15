@@ -22,8 +22,7 @@
 
   .card { display: grid; grid-template-columns: 600px 600px; width: 1200px; height: 630px; }
 
-  .text { position: relative; display: flex; flex-direction: column; padding: 56px 56px 48px 64px; }
-  .text::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 12px; background: #b91c1c; }
+  .text { display: flex; flex-direction: column; padding: 56px 56px 48px; }
 
   .brand { display: flex; align-items: center; gap: 14px; font-size: 22px; font-weight: 600; letter-spacing: 0.06em; color: #b91c1c; }
   .brand img { width: 46px; height: 46px; border-radius: 50%; background: #b91c1c; padding: 3px; }
@@ -51,7 +50,7 @@
         <p class="tr" id="tr"></p>
       </div>
       <div>
-        <div class="cta"><span class="pill">Fill online</span> Print or save as PDF</div>
+        <div class="cta"><span class="pill">Make your form</span> Print or save as PDF</div>
         <p class="url" id="url"></p>
       </div>
     </div>
@@ -60,15 +59,15 @@
 <script>
   var V = {
     forms: {
-      h: "Online forms", tr: "Marriage registration<br>Pandal Mangalam", url: "pernekshetra.com/forms",
+      h: "Form<br>maker", tr: "Marriage registration form<br>Pandal Mangalam form", url: "pernekshetra.com/forms",
       photos: [["../../Resource/MarriageSection/malaexchange.jpg", "60% 40%"], ["../../Resource/MarriageSection/pandal.jpg", "55% 45%"]]
     },
     marriage: {
-      h: "Marriage<br>registration", tr: "ವಿವಾಹ ನೋಂದಣಿ<br>വിവാഹ രജിസ്ട്രേഷൻ", url: "pernekshetra.com/forms/marriage",
+      h: "Marriage<br>form maker", tr: "ವಿವಾಹ ನೋಂದಣಿ ಅರ್ಜಿ<br>വിവാഹ രജിസ്ട്രേഷൻ ഫോം", url: "pernekshetra.com/forms/marriage",
       photos: [["../../Resource/MarriageSection/malaexchange.jpg", "63% 50%"]]
     },
     pandal: {
-      h: "Pandal<br>Mangalam", tr: "ಚಪ್ಪರ ಮದುವೆ<br>പന്തൽ മംഗലം", url: "pernekshetra.com/forms/pandal-mangalam",
+      h: "Pandal Mangalam<br>form maker", tr: "ಚಪ್ಪರ ಮದುವೆಯ ಅರ್ಜಿ<br>പന്തൽ മംഗലം അപേക്ഷ", url: "pernekshetra.com/forms/pandal-mangalam",
       photos: [["../../Resource/MarriageSection/pandal.jpg", "58% 50%"]]
     }
   };
