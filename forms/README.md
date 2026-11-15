@@ -20,6 +20,17 @@ There is no backend. Data stays in the browser.
 - No analytics script is loaded on these pages.
 - Fonts are self-hosted in `fonts/` (SIL OFL 1.1): Anek for the screen UI (one design for Latin, Kannada and Malayalam); EB Garamond and Noto Serif Kannada/Malayalam for the printed sheet.
 
+## Version numbers on CSS and JS
+
+The form pages load `forms.css`, `sheet.css`, `forms.js` and `marriage.js` with `?v=<number>` (date and time, YYYYMMDDHHMM).
+GitHub Pages lets browsers keep these files for 10 minutes. A new number makes browsers load the new files at once.
+When you change any of these files, update the number in all three pages (macOS):
+
+```sh
+V=$(date +%Y%m%d%H%M)
+sed -i '' -E "s/\?v=[0-9]+/?v=$V/g" forms/index.html forms/marriage/index.html forms/pandal-mangalam/index.html
+```
+
 ## Test
 
 Add `?demo=1` to a form URL to fill sample data (it is not saved).
