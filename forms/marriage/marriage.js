@@ -12,7 +12,7 @@
     name: { en: "Name of the {ROLE}", kn: "ಹೆಸರು", ml: "പേര്", upper: 1, req: 1, max: 60, hint: "Exactly as on the school or birth certificate." },
     father: { en: "Father’s name", kn: "ತಂದೆಯ ಹೆಸರು", ml: "അച്ഛന്റെ പേര്", upper: 1, max: 60 },
     mother: { en: "Mother’s name", kn: "ತಾಯಿಯ ಹೆಸರು", ml: "അമ്മയുടെ പേര്", upper: 1, max: 60 },
-    illam: { en: "Illam", kn: "ಇಲ್ಲಂ", ml: "ഇല്ലം", upper: 1, max: 40 },
+    illam: { en: "Illam (Kutumba)", kn: "ಇಲ್ಲಂ (ಕುಟುಂಬ)", ml: "ഇല്ലം (കുടുംബം)", options: window.PerneForm.ILLAMS, placeholder: "Choose illam" },
     tharavad: { en: "Tharavad", kn: "ತರವಾಡು", ml: "തറവാട്", upper: 1, max: 60 },
     dob: { en: "Date of birth", kn: "ಜನ್ಮ ದಿನಾಂಕ", ml: "ജനന തീയതി", mask: "date", req: 1, error: DATE_ERR },
     age: { en: "Age", kn: "ವಯಸ್ಸು", ml: "വയസ്സ്" },
@@ -74,7 +74,7 @@
       row("1. Name of the " + r.en + " (" + r.kn + "/" + r.ml + ")", line(p + "name")) +
       row("2. Father’s Name", line(p + "father")) +
       row("3. Mother’s Name", line(p + "mother")) +
-      row("4. Illam", line(p + "illam")) +
+      row("4. Illam (Kutumba)", line(p + "illam")) +
       row("5. Tharavad", line(p + "tharavad")) +
       row("6. Date of Birth", dateBoxes(p + "dob") + '<span class="m-age">7. Age :&nbsp;' + boxes(p + "age", 2) + "</span>", " boxed") +
       row("8. Address",
@@ -133,12 +133,12 @@
     demo: {
       engagement_place: "PERNE KSHETHRA", engagement_date: "04/10/2026", marriage_date: "21/03/2027",
       groom_name: "PRAKASHA KODAKKARA", groom_father: "NARAYANA K", groom_mother: "LAKSHMI",
-      groom_illam: "KODAKKARA", groom_tharavad: "KODAKKARA THARAVAD, ANANTHAPURA", groom_dob: "12/06/1997",
+      groom_illam: "CHORLA", groom_tharavad: "KODAKKARA THARAVAD, ANANTHAPURA", groom_dob: "12/06/1997",
       groom_address: "KODAKKARA HOUSE, ANANTHAPURA POST, KUMBLA VIA, KASARAGOD DISTRICT, KERALA", groom_pin: "671321",
       groom_phone: "98765 43210", groom_aadhaar: "1234 5678 9012", groom_occupation: "TEACHER",
       groom_w_name_addr: "SURESHA K, KODAKKARA HOUSE, ANANTHAPURA", groom_w_phone: "91234 56780",
       bride_name: "ANANYA PUTHILA", bride_father: "RAMESHA P", bride_mother: "SAVITHRI",
-      bride_illam: "PUTHILA", bride_tharavad: "PUTHILA THARAVAD", bride_dob: "30/01/2000",
+      bride_illam: "THACHILA", bride_tharavad: "PUTHILA THARAVAD", bride_dob: "30/01/2000",
       bride_address: "PUTHILA HOUSE, PERNE, BANTWAL TALUK, DAKSHINA KANNADA, KARNATAKA", bride_pin: "574231",
       bride_phone: "99887 76655", bride_aadhaar: "9876 5432 1098", bride_occupation: "NURSE",
       bride_w_name_addr: "GOPALA P, PUTHILA HOUSE, PERNE", bride_w_phone: "90000 11111"
