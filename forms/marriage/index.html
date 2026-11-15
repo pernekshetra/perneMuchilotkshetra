@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- ******************************** Marriage registration form - fill online, print / save as PDF ******************************** -->
+  <!-- Kannada and Malayalam instructions were retyped from the paper form. TODO(proofread): a native reader must check them. -->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/png" href="../../favicon.png" />
+    <link rel="icon" type="image/png" href="../../favicon.png" />
+    <meta name="description" content="Fill the marriage registration form of Perne Muchilotu Bhagavathi Kshetra online and print it or save it as PDF.">
+    <meta property="og:title" content="Marriage Registration Form - Perne Kshetra" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://pernekshetra.com/forms/marriage/"/>
+    <meta property="og:image" content="https://pernekshetra.com/kaliyata.png"/>
+    <title>Marriage Registration Form - Perne</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link href="../../css/custom.css" rel="stylesheet" type="text/css">
+    <link href="../sheet.css" rel="stylesheet" type="text/css">
+    <link href="../forms.css" rel="stylesheet" type="text/css">
+    <style>
+      /* ---------- Marriage sheet, page 1 ---------- */
+      .sheet.marriage { --row: 6.1mm; font-size: 10.5pt; padding: 9mm 13mm 8mm; }
+      .sheet.marriage .s-title { margin: 1mm 0 2.5mm; font-size: 12pt; }
+      .m-top { display: grid; grid-template-columns: 1fr auto auto; gap: 0 8mm; align-items: end; margin-bottom: 1.5mm; }
+      .m-top .m-h { font-style: italic; text-align: center; font-size: 10.5pt; margin-bottom: 0.8mm; }
+      .m-top .line { border: 0.6pt solid #333; }
+
+      .m-row { display: grid; grid-template-columns: 62mm 3mm 1fr; align-items: end; min-height: var(--row); margin-bottom: 0.7mm; }
+      .m-row.boxed { align-items: center; }
+      .m-row.tall { align-items: start; }
+      .m-row.tall .m-lab, .m-row.tall .m-col { line-height: var(--row); }
+      .m-lab { white-space: nowrap; }
+      .m-val { min-width: 0; }
+      .m-val .boxes .b { width: 5.1mm; height: 5.6mm; line-height: 5.4mm; font-size: 10.5pt; }
+      .m-age { float: right; display: inline-flex; align-items: center; }
+      .m-addr { display: flex; align-items: flex-end; gap: 3mm; }
+      .m-addr .line.multi { flex: 1 1 auto; min-width: 0; }
+      .m-pin { display: inline-flex; align-items: center; white-space: nowrap; }
+
+      .m-witness { display: grid; grid-template-columns: 1fr 52mm; gap: 6mm; margin-top: 1.6mm; }
+      .m-tag { display: inline-block; border: 0.6pt solid #333; font-style: italic; font-weight: 700; padding: 0.3mm 6mm; margin-bottom: 1mm; font-size: 10pt; }
+      .m-witness .m-row { grid-template-columns: 40mm 3mm 1fr; }
+      .m-sigs { display: flex; flex-direction: column; justify-content: space-around; align-items: center; }
+      .m-sigs .sig-line { display: block; width: 100%; border-top: 0.6pt solid #555; text-align: center; font-size: 9.5pt; padding-top: 0.6mm; margin-top: 7mm; }
+      .m-sigs.one { justify-content: flex-end; }
+
+      .m-patti { margin-top: 1.4mm; }
+      .m-patti-h { text-align: center; font-size: 9.5pt; font-weight: 700; text-decoration: underline; margin-bottom: 0.6mm !important; letter-spacing: 0.04em; }
+      .m-patti-body { display: grid; grid-template-columns: 1fr 52mm; gap: 6mm; }
+      .m-patti .m-row { grid-template-columns: 66mm 3mm 1fr; }
+      .m-patti .m-row-2 { grid-template-columns: 18mm 3mm 1fr 14mm 3mm 1fr; column-gap: 0; }
+      .m-patti .m-lab-s { padding-left: 4mm; }
+      .m-sep { border: 0; border-top: 1.2pt dashed #333; margin: 2.2mm 0 2mm; }
+
+      /* ---------- Marriage sheet, page 2 ---------- */
+      .sheet.instructions { font-size: 11pt; line-height: 1.6; padding: 14mm 16mm 12mm; }
+      .sheet.instructions h3 { text-align: center; font-size: 13pt; font-weight: 700; margin: 0 0 3mm; font-family: inherit; }
+      .sheet.instructions ol { margin: 0 0 7mm; padding-left: 6mm; }
+      .sheet.instructions ol li { margin-bottom: 1.6mm; padding-left: 1mm; }
+      .sheet.instructions [lang="kn"] { font-size: 10.5pt; }
+      .office { border: 0.8pt solid #333; padding: 4mm 6mm 6mm; margin-top: 4mm; font-family: "EB Garamond", serif; }
+      .office h4 { text-align: center; font-weight: 700; letter-spacing: 0.08em; font-size: 11.5pt; margin: 0 0 1mm; font-family: inherit; }
+      .office .c { text-align: center; margin-bottom: 6mm; }
+      .office .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10mm; align-items: end; }
+      .office .kv { display: grid; grid-template-columns: 16mm 1fr; margin-bottom: 6mm; }
+      .office .kv .line { border-bottom: 0.6pt solid #555; }
+      .office .sig-line { display: block; border-top: 0.6pt solid #555; text-align: center; padding-top: 1mm; margin-top: 16mm; }
+    </style>
+  </head>
+  <body class="forms-page">
+    <!-- ******************************** Navigation ******************************** -->
+    <nav class="navbar navbar-custom navbar-fixed-top navigation" id="nav">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" id="navbar-toggle" data-toggle="collapse" data-target="#menu">
+          <i class="fa fa-bars"></i>
+        </button>
+        <a class="navbar-brand" href="/">
+          <div class="brand"><img class="brand_logo" alt="" src="../../Resource/Common/sitelogo.png"/>PERNE KSHETRA</div>
+        </a>
+      </div>
+      <div class="collapse navbar-collapse" id="menu">
+        <ul class="nav navbar-nav navbar-center">
+          <li><a href="../../about/festivals">About</a></li>
+          <li><a href="../../history/incarnation">History</a></li>
+          <li class="active"><a href="../../marriage">Marriage</a></li>
+          <li><a href="../../donate">Donate</a></li>
+          <li><a href="../../gallery/videos">Gallery</a></li>
+          <li><a href="../../nearby">Nearby</a></li>
+          <li><a href="../../contactus">Contact</a></li>
+          <li><a href="../../kaliyata">Kaliyata</a></li>
+          <li><a href="../../oushadhavana">Oushadhavana</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <main>
+     <div class="fp-wrap">
+      <header class="fp-header">
+        <a class="fp-back" href="../"><i class="fa fa-arrow-left" aria-hidden="true"></i> All forms</a>
+        <h1>Marriage registration</h1>
+        <p class="fp-sub">ವಿವಾಹ ನೋಂದಣಿ ಅರ್ಜಿ · വിവാഹ രജിസ്ട്രേഷൻ ഫോം</p>
+        <p class="fp-privacy"><i class="fa fa-lock" aria-hidden="true"></i><span>Your details stay on this phone or computer. Nothing is sent to the temple or to any server.</span></p>
+      </header>
+
+      <div class="fp-layout">
+        <form class="fp-form" data-form-id="marriage" data-file-name="Marriage-Registration-{groom_name}-{bride_name}" novalidate autocomplete="off">
+          <nav class="fp-chips" aria-label="Form sections">
+            <a class="fp-chip" href="#sec-marriage">Marriage <span class="n">0/3</span><i class="fa fa-check ic" aria-hidden="true"></i></a>
+            <a class="fp-chip" href="#sec-groom">Bridegroom <span class="n">0/13</span><i class="fa fa-check ic" aria-hidden="true"></i></a>
+            <a class="fp-chip" href="#sec-bride">Bride <span class="n">0/13</span><i class="fa fa-check ic" aria-hidden="true"></i></a>
+            <a class="fp-chip" href="#sec-finish">Print</a>
+          </nav>
+          <div class="fp-errors" role="alert" tabindex="-1"></div>
+
+          <section class="fp-section" id="sec-marriage" data-section data-title="Marriage" aria-labelledby="h-marriage">
+            <div class="fp-section-head"><h2 id="h-marriage">Engagement and marriage</h2></div>
+            <p class="fp-note">Write names and addresses in English, as on your certificates. Capital letters are added for you.</p>
+            <div data-marriage-fields></div>
+          </section>
+          <section class="fp-section" id="sec-groom" data-section data-title="Bridegroom" data-person="groom" aria-label="Bridegroom"></section>
+          <section class="fp-section" id="sec-bride" data-section data-title="Bride" data-person="bride" aria-label="Bride"></section>
+
+          <section class="fp-section fp-finish" id="sec-finish" aria-labelledby="h-finish">
+            <h2 id="h-finish">Print and sign</h2>
+            <ol class="fp-steps">
+              <li>Press <strong>Print / Save as PDF</strong>. The form prints on 2 A4 pages.</li>
+              <li>The bride, the bridegroom and both witnesses sign the printed form.</li>
+              <li>The Pattikkaran fills in and signs the Pattikkaran section.</li>
+              <li>Bring the form and copies of the birth and address documents to the temple office.</li>
+            </ol>
+            <details class="fp-help">
+              <summary>How to save as PDF</summary>
+              <ul>
+                <li>Computer: set <em>Destination</em> to <em>Save as PDF</em>. Turn off <em>Headers and footers</em>.</li>
+                <li>Android: tap the printer name at the top and choose <em>Save as PDF</em>.</li>
+                <li>iPhone: tap the share button in the print screen, then <em>Save to Files</em>.</li>
+              </ul>
+            </details>
+            <div class="actions">
+              <button type="button" class="btn-x btn-primary-x" data-action="print"><i class="fa fa-print" aria-hidden="true"></i> Print / Save as PDF</button>
+              <button type="button" class="btn-x btn-quiet-x" data-action="clear">Clear my data</button>
+            </div>
+          </section>
+        </form>
+
+        <section class="fp-preview" aria-label="Print preview">
+          <div class="fp-preview-head">
+            <h2>Preview <small>A4, 2 pages</small></h2>
+            <button type="button" class="btn-x btn-primary-x" data-action="print"><i class="fa fa-print" aria-hidden="true"></i> Print / Save as PDF</button>
+            <button type="button" class="btn-x btn-secondary-x fp-close" data-action="close-preview"><i class="fa fa-times" aria-hidden="true"></i><span class="lbl">Close preview</span></button>
+          </div>
+          <div class="sheets">
+            <!-- ======================= Page 1: form ======================= -->
+            <article class="sheet marriage">
+              <p class="s-temple">SHREE PERNE MUCHILOT BHAGAVATHI KSHETHRA</p>
+              <p class="s-addr">POST KANNUR, KASARAGOD DISTRICT 671321</p>
+              <p class="s-title"><span>MARRIAGE REGISTRATION FORM</span></p>
+              <div class="m-top">
+                <div><p class="m-h">Place of Engagement</p><span class="line" data-fit><span class="v" data-bind="engagement_place"></span></span></div>
+                <div><p class="m-h">Date of Engagement</p><span class="boxes" data-boxes="engagement_date" data-fmt="date"></span></div>
+                <div><p class="m-h">Proposed Date of Marriage</p><span class="boxes" data-boxes="marriage_date" data-fmt="date"></span></div>
+              </div>
+              <div data-sheet-person="groom"></div>
+              <hr class="m-sep">
+              <div data-sheet-person="bride"></div>
+            </article>
+
+            <!-- ======================= Page 2: instructions + office use ======================= -->
+            <article class="sheet instructions">
+              <div lang="kn">
+                <h3>ಸೂಚನೆಗಳು</h3>
+                <ol>
+                  <li>ವಧು, ವರನ ಹೆಸರು ಮತ್ತು ವಿಳಾಸವನ್ನು ಇಂಗ್ಲಿಷ್ CAPITAL ಅಕ್ಷರದಲ್ಲಿ ಬರೆಯಬೇಕು.</li>
+                  <li>ಹೆಸರು, ವಿಳಾಸ ಮತ್ತು ಜನನ ದಿನಾಂಕವನ್ನು ವಧು, ವರರು ಹಾಜರುಪಡಿಸುವ ದಾಖಲೆಗಳಾದ ಶಾಲಾ ಪ್ರಮಾಣಪತ್ರ, ಜನನ ಪ್ರಮಾಣಪತ್ರ, ಪಾಸ್ ಪೋರ್ಟ್, ಆಧಾರ್ ಕಾರ್ಡ್‌ಗಳಲ್ಲಿ ಇರುವ ಪ್ರಕಾರವೇ ಬರೆಯಬೇಕು.</li>
+                  <li>ಪೂರ್ಣವಾಗಿ ಭರ್ತಿಗೊಳಿಸಿದ ಅರ್ಜಿಯನ್ನು, ಜನನ ದಿನಾಂಕ ಮತ್ತು ವಿಳಾಸವನ್ನು ದೃಢೀಕರಿಸುವ ದಾಖಲೆಗಳ ನಕಲು ಪ್ರತಿ ಸಹಿತ ಕ್ಷೇತ್ರದ ಕಛೇರಿಗೆ ನಿಶ್ಚಿತ ದಿನಾಂಕದಂದು ತಲುಪಿಸಬೇಕು.</li>
+                  <li>ಮನೆಯ ಕ್ರಮ ಸಂಖ್ಯೆಯು ಪಟ್ಟಿಕ್ಕಾರರ ಪುಸ್ತಕದಲ್ಲಿ ನಿಮ್ಮ ಮನೆಯನ್ನು ನೋಂದಾಯಿಸಿದ ಕ್ರಮ ಸಂಖ್ಯೆಯಾಗಿದೆ.</li>
+                  <li>ವಧೂವರರ ಕಡೆಯವರು ಒಟ್ಟಿಗೆ ಒಂದು ಅರ್ಜಿ ಫಾರ್ಮನ್ನು ಮಾತ್ರ ಭರ್ತಿ ಮಾಡಿ ನೀಡಬೇಕು.</li>
+                  <li>ಕ್ಷೇತ್ರದ ಆಚಾರ ಪ್ರಕಾರ ವಧೂವರರ ಕೈ ಹಿಡಿಯುವವರು ಕ್ಷೇತ್ರದ ನಿಯಮಾವಳಿಗಳಿಗೆ/ ಕ್ಷೇತ್ರಾಚಾರಕ್ಕೆ ಒಳಪಡುವವರಾಗಿರಬೇಕು.</li>
+                  <li>ವಧೂವರರು ವಿವಾಹ ಸಂದರ್ಭದಲ್ಲಿ ಕ್ಷೇತ್ರದ ಸಂಪ್ರದಾಯ ಮತ್ತು ನಿಯಮಾವಳಿಗಳನ್ನು ಕಡ್ಡಾಯವಾಗಿ ಪಾಲಿಸತಕ್ಕದ್ದು.</li>
+                </ol>
+              </div>
+              <div lang="ml">
+                <h3>നിർദേശങ്ങൾ</h3>
+                <ol>
+                  <li>വധു, വരന്റെ പേര്, മേൽവിലാസം എന്നിവ ഇംഗ്ലീഷ് CAPITAL അക്ഷരത്തിൽ എഴുതണം.</li>
+                  <li>അപേക്ഷയിൽ ജനന തിയതി, മേൽവിലാസം എന്നിവ വധു, വരൻ ഹാജരാക്കുന്ന സ്കൂൾ സർട്ടിഫിക്കറ്റ്, ആധാർ കാർഡ്, പാസ്പോർട്ട് എന്നിവയിൽ രേഖപ്പെടുത്തിയിരിക്കുന്നതുപോലെ എഴുതണം.</li>
+                  <li>പൂരിപ്പിച്ച അപേക്ഷ ജനന തിയതി, മേൽവിലാസം എന്നിവ തെളിയിക്കുന്നതിനാവശ്യമായ സർട്ടിഫിക്കറ്റുകളുടെ പകർപ്പ് സഹിതം ക്ഷേത്രത്തിൽനിന്ന് സൂചിപ്പിക്കുന്ന തിയതിയിൽ ക്ഷേത്ര ഓഫീസിലേക്ക് എത്തിക്കേണ്ടതാണ്.</li>
+                  <li>അപേക്ഷയിൽ സൂചിപ്പിച്ചിട്ടുള്ള വീട് നമ്പർ ക്ഷേത്ര പട്ടിക്കാർ നിങ്ങളുടെ വീട് റിജിസ്റ്റർ ചെയ്യുമ്പോൾ നൽകിയ വീട് നമ്പരാണ്.</li>
+                  <li>വധൂ വരന്മാർ ഒറ്റ അപേക്ഷ ഫോം മാത്രമേ പൂരിപ്പിച്ചു നൽകേണ്ടതുള്ളൂ.</li>
+                  <li>വധു വരന്മാരെ അനുഗമിക്കുന്നവർ പെരുതണ ക്ഷേത്രാചാരങ്ങൾക്ക് വിധേയമായവരും, ക്ഷേത്രാചാരങ്ങളെ പാലിക്കുന്നവരും ആയിരിക്കണം.</li>
+                  <li>വിവാഹ സമയത്ത് വധു, വരന്മാർ ക്ഷേത്ര ആചാരങ്ങളും നിയമങ്ങളും, നിർദേശങ്ങളും കർശനമായി പാലിക്കേണ്ടതാണ്.</li>
+                </ol>
+              </div>
+              <div class="office">
+                <h4>FOR OFFICE USE</h4>
+                <p class="c">Marriage Certificate issued</p>
+                <div class="grid">
+                  <div>
+                    <div class="kv"><span>Reg No:</span><span class="line"></span></div>
+                    <div class="kv"><span>Date:</span><span class="line"></span></div>
+                  </div>
+                  <div><span class="sig-line">Name and Signature of the Authorised Person</span></div>
+                </div>
+              </div>
+              <p class="s-foot">Filled online at pernekshetra.com/forms</p>
+            </article>
+          </div>
+        </section>
+      </div>
+     </div>
+    </main>
+
+    <div class="fp-bar-spacer" aria-hidden="true"></div>
+    <div class="fp-bar">
+      <button type="button" class="btn-x btn-secondary-x" data-action="preview"><i class="fa fa-eye" aria-hidden="true"></i> Preview</button>
+      <button type="button" class="btn-x btn-primary-x" data-action="print"><i class="fa fa-print" aria-hidden="true"></i> Print / Save as PDF</button>
+    </div>
+    <div class="fp-status" role="status" aria-live="polite"></div>
+
+    <footer>
+      <div class="footerData">
+        <p>©<span id="year"></span> Shree Perne Muchilot Bhagavathi Kshetra. <br>All rights reserved.
+          <a href="../../team/" style="cursor: pointer; color: #FFA500;">Website Team</a></p>
+      </div>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="../forms.js"></script>
+    <script src="marriage.js"></script>
+  </body>
+</html>
