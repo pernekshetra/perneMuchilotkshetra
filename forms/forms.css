@@ -150,7 +150,8 @@ body.forms-page h2::after { content: none; display: none; }
 .fp-section-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; margin-bottom: 18px; }
 .fp-section-head h2 { font-size: 22px; font-weight: 650; margin: 0; color: var(--ink); }
 .fp-section-head .tr { font-size: 17px; color: var(--ink-3); }
-.fp-subhead { font-size: 17px; font-weight: 600; margin: 8px 0 14px; padding-top: 18px; border-top: 1px solid var(--line); color: var(--ink); }
+/* body.forms-page raises specificity over the reset above, which zeroes heading padding. */
+body.forms-page .fp-subhead { font-size: 17px; font-weight: 600; margin: 32px 0 14px; padding-top: 20px; border-top: 1px solid var(--line); color: var(--ink); }
 
 .f { margin-bottom: 20px; min-width: 0; }
 .f-label { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 10px; margin: 0 0 7px; font-weight: 400; }
