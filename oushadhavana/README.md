@@ -8,7 +8,9 @@
 7. A `data.mjs` file will be created at `~[repository_root]/oushadhavana/` which is the data file.
 
 # How to update or create the individual details file for each plant?
-1. Once the `data.mjs` file is setup, navigate to `~[repository_root]/oushadhavana/scripts`.
-2. Run `node deletePlantsDirectory.mjs`. This deletes all the outdated details page for each plant.
-3. To create the files for plants from the latest data, while on `~[repository_root]/oushadhavana/scripts` run `node setupFiles.mjs`. This creates the individual details page for each plant.
-4. The details page is based on `base.htmx` template file which is located at `~[repository_root/oushadhavana/`. Steps 1 to 3 will need to executed everytime there is a change done to this file so its gets reflected in the individual files.
+1. Once the `data.mjs` file is set up, go to `~[repository_root]/oushadhavana/scripts`.
+2. Run `node setupFiles.mjs`. It creates or overwrites `oushadhavana/<plant>/index.html` for every plant in `data.mjs`.
+3. Each page is built from the `base.htmx` template in `~[repository_root]/oushadhavana/`. The script fills the `%%TITLE%%`, `%%DESCRIPTION%%`, `%%URL%%` and `%%IMAGE%%` tokens for each plant. Run step 2 again after every change to `base.htmx` or `data.mjs`.
+4. If you add or remove a plant, run `node scripts/build-sitemap.mjs` from the repository root to update `sitemap.xml`.
+
+`deletePlantsDirectory.mjs` is needed only when a plant is removed from the sheet. It deletes the folders of the plants that are in `data.mjs`.
