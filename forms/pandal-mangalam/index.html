@@ -6,8 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/png" href="../../favicon.png" />
-    <link rel="icon" type="image/png" href="../../favicon.png" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="description" content="Pandal Mangalam form maker of Perne Muchilotu Bhagavathi Kshetra: make the application form online, then print it or save it as PDF.">
     <meta property="og:title" content="Pandal Mangalam Form Maker - Perne Kshetra" />
     <meta property="og:type" content="website" />
@@ -24,10 +23,12 @@
     <meta name="twitter:description" content="Make the Pandal Mangalam application form in Kannada or Malayalam, then print it or save it as PDF. Nothing is sent to any server." />
     <meta name="twitter:image" content="https://pernekshetra.com/forms/og/pandal.jpg" />
     <title>Pandal Mangalam Form Maker - Perne</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-    <link href="../../css/custom.css" rel="stylesheet" type="text/css">
-    <link href="../sheet.css?v=202611152307" rel="stylesheet" type="text/css">
-    <link href="../forms.css?v=202611152307" rel="stylesheet" type="text/css">
+    <link rel="canonical" href="https://pernekshetra.com/forms/pandal-mangalam/" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/custom.css" rel="stylesheet" type="text/css">
+    <link href="/forms/sheet.css?v=202611152307" rel="stylesheet" type="text/css">
+    <link href="/forms/forms.css?v=202611152307" rel="stylesheet" type="text/css">
     <style>
       /* Show only the active language (screen labels and sheet). */
       body[data-lang="kn"] [lang="ml"],
@@ -53,24 +54,25 @@
     <!-- ******************************** Navigation ******************************** -->
     <nav class="navbar navbar-custom navbar-fixed-top navigation" id="nav">
       <div class="navbar-header">
-        <button type="button" class="navbar-toggle" id="navbar-toggle" data-toggle="collapse" data-target="#menu">
+        <button type="button" aria-label="Menu" aria-controls="menu" class="navbar-toggle" id="navbar-toggle" data-toggle="collapse" data-target="#menu">
           <i class="fa fa-bars"></i>
         </button>
         <a class="navbar-brand" href="/">
-          <div class="brand"><img class="brand_logo" alt="" src="../../Resource/Common/sitelogo.png"/>PERNE KSHETRA</div>
+          <div class="brand"><img class="brand_logo" alt="Perne Kshetra logo" src="/Resource/Common/sitelogo.png"/>PERNE KSHETRA</div>
         </a>
       </div>
       <div class="collapse navbar-collapse" id="menu">
         <ul class="nav navbar-nav navbar-center">
-          <li><a href="../../about/festivals">About</a></li>
-          <li><a href="../../history/incarnation">History</a></li>
-          <li class="active"><a href="../../marriage">Marriage</a></li>
-          <li><a href="../../donate">Donate</a></li>
-          <li><a href="../../gallery/videos">Gallery</a></li>
-          <li><a href="../../nearby">Nearby</a></li>
-          <li><a href="../../contactus">Contact</a></li>
-          <li><a href="../../kaliyata">Kaliyata</a></li>
-          <li><a href="../../oushadhavana">Oushadhavana</a></li>
+          <li><a href="/about/festivals/">About</a></li>
+          <li><a href="/history/incarnation/">History</a></li>
+          <li class="active"><a href="/marriage/">Marriage</a></li>
+          <li><a href="/forms/">Forms</a></li>
+          <li><a href="/donate/">Donate</a></li>
+          <li><a href="/gallery/videos/">Gallery</a></li>
+          <li><a href="/nearby/">Nearby</a></li>
+          <li><a href="/contactus/">Contact</a></li>
+          <li><a href="/kaliyata/">Kaliyata</a></li>
+          <li><a href="/oushadhavana/">Oushadhavana</a></li>
         </ul>
       </div>
     </nav>
@@ -78,7 +80,7 @@
     <main>
      <div class="fp-wrap">
       <header class="fp-header">
-        <a class="fp-back" href="../"><i class="fa fa-arrow-left" aria-hidden="true"></i> Form maker</a>
+        <a class="fp-back" href="/forms/"><i class="fa fa-arrow-left" aria-hidden="true"></i> Form maker</a>
         <h1>Pandal Mangalam form maker</h1>
         <p class="fp-sub"><span lang="kn">ಚಪ್ಪರ ಮದುವೆಯ ಅರ್ಜಿ</span><span lang="ml">പന്തൽ മംഗലത്തിനുള്ള അപേക്ഷ</span></p>
         <div class="fp-notice" role="note">
@@ -94,8 +96,8 @@
       <div class="fp-layout">
         <form class="fp-form" data-form-id="pandal-mangalam" data-file-name="Pandal-Mangalam-{daughter_name}" novalidate autocomplete="off">
           <nav class="fp-lang" aria-label="Language of the printed form">
-            <a href="?lang=kn" data-lang-link="kn">ಕನ್ನಡ</a>
-            <a href="?lang=ml" data-lang-link="ml">മലയാളം</a>
+            <a href="/forms/pandal-mangalam/?lang=kn" data-lang-link="kn">ಕನ್ನಡ</a>
+            <a href="/forms/pandal-mangalam/?lang=ml" data-lang-link="ml">മലയാളം</a>
           </nav>
           <div class="fp-errors" role="alert" tabindex="-1"></div>
 
@@ -146,34 +148,34 @@
             <article class="sheet pandal" lang="kn">
               <p class="s-temple">SHREE PERNE MUCHILOT BHAGAVATHI KSHETHRA</p>
               <p class="s-addr">POST KANNUR, KASARAGOD DISTRICT 671321</p>
-              <p class="s-title"><span>ಚಪ್ಪರ ಮದುವೆಯ ಅರ್ಜಿ</span></p>
+              <p class="s-title" lang="kn"><span>ಚಪ್ಪರ ಮದುವೆಯ ಅರ್ಜಿ</span></p>
 
-              <div class="pl"><span class="dots v" data-bind="district" data-fit></span><span>ಜಿಲ್ಲೆ,</span><span class="dots v" data-bind="taluk" data-fit></span><span>ತಾಲೂಕು,</span></div>
-              <div class="pl"><span class="dots v" data-bind="place" data-fit></span><span>ಎಂಬಲ್ಲಿರುವ</span></div>
-              <div class="pl"><span class="dots v" data-bind="father_name" data-fit></span><span>ತಂದೆ,</span><span class="dots fixed v" style="--w:42mm" data-bind="father_illam" data-fit></span><span>ಇಲ್ಲಂ (ಕುಟುಂಬ)</span></div>
-              <div class="pl"><span class="dots v" data-bind="mother_name" data-fit></span><span>ತಾಯಿ,</span><span class="dots fixed v" style="--w:42mm" data-bind="mother_illam" data-fit></span><span>ಇಲ್ಲಂ (ಕುಟುಂಬ)</span></div>
-              <div class="pl"><span>ಎಂಬವರ ಮಗಳು ಕುಮಾರಿ</span><span class="dots v" data-bind="daughter_name" data-fit></span><span>ಯ ಚಪ್ಪರ ಮದುವೆಯನ್ನು</span></div>
-              <p class="para">ಶ್ರೀ ಪೆರ್ಣೆ ಮುಚ್ಚಿಲೋಟ್ ಭಗವತೀ ಕ್ಷೇತ್ರದ ಆಚಾರದಂತೆ ನಡೆಸಿಕೊಡಬೇಕಾಗಿ ವಿನಂತಿ.</p>
+              <div class="pl"><span class="dots v" data-bind="district" data-fit></span><span lang="kn">ಜಿಲ್ಲೆ,</span><span class="dots v" data-bind="taluk" data-fit></span><span lang="kn">ತಾಲೂಕು,</span></div>
+              <div class="pl"><span class="dots v" data-bind="place" data-fit></span><span lang="kn">ಎಂಬಲ್ಲಿರುವ</span></div>
+              <div class="pl"><span class="dots v" data-bind="father_name" data-fit></span><span lang="kn">ತಂದೆ,</span><span class="dots fixed v" style="--w:42mm" data-bind="father_illam" data-fit></span><span lang="kn">ಇಲ್ಲಂ (ಕುಟುಂಬ)</span></div>
+              <div class="pl"><span class="dots v" data-bind="mother_name" data-fit></span><span lang="kn">ತಾಯಿ,</span><span class="dots fixed v" style="--w:42mm" data-bind="mother_illam" data-fit></span><span lang="kn">ಇಲ್ಲಂ (ಕುಟುಂಬ)</span></div>
+              <div class="pl"><span lang="kn">ಎಂಬವರ ಮಗಳು ಕುಮಾರಿ</span><span class="dots v" data-bind="daughter_name" data-fit></span><span lang="kn">ಯ ಚಪ್ಪರ ಮದುವೆಯನ್ನು</span></div>
+              <p class="para" lang="kn">ಶ್ರೀ ಪೆರ್ಣೆ ಮುಚ್ಚಿಲೋಟ್ ಭಗವತೀ ಕ್ಷೇತ್ರದ ಆಚಾರದಂತೆ ನಡೆಸಿಕೊಡಬೇಕಾಗಿ ವಿನಂತಿ.</p>
 
               <div class="sign-row">
                 <div>
-                  <div class="kv"><span>ಸ್ಥಳ</span><span>:</span><span class="dots v" data-bind="sign_place" data-fit></span></div>
-                  <div class="kv"><span>ದಿನಾಂಕ</span><span>:</span><span class="dots v" data-bind="sign_date" data-fmt="date"></span></div>
+                  <div class="kv"><span lang="kn">ಸ್ಥಳ</span><span>:</span><span class="dots v" data-bind="sign_place" data-fit></span></div>
+                  <div class="kv"><span lang="kn">ದಿನಾಂಕ</span><span>:</span><span class="dots v" data-bind="sign_date" data-fmt="date"></span></div>
                 </div>
-                <div class="sig"><span class="sig-line">ತಂದೆ/ತಾಯಿಯ ಸಹಿ</span></div>
+                <div class="sig"><span class="sig-line" lang="kn">ತಂದೆ/ತಾಯಿಯ ಸಹಿ</span></div>
               </div>
 
               <hr class="s-rule" style="margin:9mm 0 7mm">
 
-              <p class="para">ಈ ಮೇಲೆ ವಿವರಿಸಿದಂತೆ ಚಪ್ಪರ ಮದುವೆಯನ್ನು ಕ್ಷೇತ್ರದಲ್ಲಿ ನಡೆಸಿಕೊಡಲು ನನ್ನ ಪೂರ್ಣ ಅನುಮತಿ ಇದೆ.</p>
-              <div class="kv" style="grid-template-columns: 52mm 4mm 1fr"><span>ಅರ್ಜಿದಾರರ ಮನೆ ನಂಬ್ರ</span><span>:</span><span class="dots v" style="--w:30mm" data-bind="house_no"></span></div>
+              <p class="para" lang="kn">ಈ ಮೇಲೆ ವಿವರಿಸಿದಂತೆ ಚಪ್ಪರ ಮದುವೆಯನ್ನು ಕ್ಷೇತ್ರದಲ್ಲಿ ನಡೆಸಿಕೊಡಲು ನನ್ನ ಪೂರ್ಣ ಅನುಮತಿ ಇದೆ.</p>
+              <div class="kv" style="grid-template-columns: 52mm 4mm 1fr"><span lang="kn">ಅರ್ಜಿದಾರರ ಮನೆ ನಂಬ್ರ</span><span>:</span><span class="dots v" style="--w:30mm" data-bind="house_no"></span></div>
               <div class="gap"></div>
               <div class="sign-row">
                 <div>
-                  <div class="kv"><span>ಸ್ಥಳ</span><span>:</span><span class="dots"></span></div>
-                  <div class="kv"><span>ದಿನಾಂಕ</span><span>:</span><span class="dots"></span></div>
+                  <div class="kv"><span lang="kn">ಸ್ಥಳ</span><span>:</span><span class="dots"></span></div>
+                  <div class="kv"><span lang="kn">ದಿನಾಂಕ</span><span>:</span><span class="dots"></span></div>
                 </div>
-                <div class="sig"><span class="sig-line">ಪಟ್ಟಿಕ್ಕಾರರ ಹೆಸರು ಮತ್ತು ಸಹಿ</span></div>
+                <div class="sig"><span class="sig-line" lang="kn">ಪಟ್ಟಿಕ್ಕಾರರ ಹೆಸರು ಮತ್ತು ಸಹಿ</span></div>
               </div>
               <p class="s-foot">Filled online at pernekshetra.com/forms</p>
             </article>
@@ -182,34 +184,34 @@
             <article class="sheet pandal" lang="ml">
               <p class="s-temple">SHREE PERNE MUCHILOT BHAGAVATHI KSHETHRA</p>
               <p class="s-addr">POST KANNUR, KASARAGOD DISTRICT 671321</p>
-              <p class="s-title"><span>പന്തൽ മംഗലത്തിനുള്ള അപേക്ഷ</span></p>
+              <p class="s-title" lang="ml"><span>പന്തൽ മംഗലത്തിനുള്ള അപേക്ഷ</span></p>
 
-              <div class="pl"><span class="dots v" data-bind="district" data-fit></span><span>ജില്ല,</span><span class="dots v" data-bind="taluk" data-fit></span><span>താലൂക്ക്,</span></div>
-              <div class="pl"><span class="dots v" data-bind="place" data-fit></span><span>എന്ന സ്ഥലത്തുള്ള</span></div>
-              <div class="pl"><span class="dots v" data-bind="father_name" data-fit></span><span>അച്ചന്റെ പേര്,</span><span class="dots fixed v" style="--w:40mm" data-bind="father_illam" data-fit></span><span>ഇല്ലം (കുടുംബം)</span></div>
-              <div class="pl"><span class="dots v" data-bind="mother_name" data-fit></span><span>അമ്മയുടെ പേര്,</span><span class="dots fixed v" style="--w:40mm" data-bind="mother_illam" data-fit></span><span>ഇല്ലം (കുടുംബം)</span></div>
-              <div class="pl"><span>ഇവരുടെ മകൾ കുമാരി</span><span class="dots v" data-bind="daughter_name" data-fit></span><span>യുടെ പന്തൽ മംഗലം</span></div>
-              <p class="para">ശ്രീ പെരുതണ മുച്ചിലോട്ട് ഭഗവതി ക്ഷേത്രാചാരമനുസരിച്ച് നടത്തി തരണമെന്ന് അപേക്ഷിക്കുന്നു.</p>
+              <div class="pl"><span class="dots v" data-bind="district" data-fit></span><span lang="ml">ജില്ല,</span><span class="dots v" data-bind="taluk" data-fit></span><span lang="ml">താലൂക്ക്,</span></div>
+              <div class="pl"><span class="dots v" data-bind="place" data-fit></span><span lang="ml">എന്ന സ്ഥലത്തുള്ള</span></div>
+              <div class="pl"><span class="dots v" data-bind="father_name" data-fit></span><span lang="ml">അച്ചന്റെ പേര്,</span><span class="dots fixed v" style="--w:40mm" data-bind="father_illam" data-fit></span><span lang="ml">ഇല്ലം (കുടുംബം)</span></div>
+              <div class="pl"><span class="dots v" data-bind="mother_name" data-fit></span><span lang="ml">അമ്മയുടെ പേര്,</span><span class="dots fixed v" style="--w:40mm" data-bind="mother_illam" data-fit></span><span lang="ml">ഇല്ലം (കുടുംബം)</span></div>
+              <div class="pl"><span lang="ml">ഇവരുടെ മകൾ കുമാരി</span><span class="dots v" data-bind="daughter_name" data-fit></span><span lang="ml">യുടെ പന്തൽ മംഗലം</span></div>
+              <p class="para" lang="ml">ശ്രീ പെരുതണ മുച്ചിലോട്ട് ഭഗവതി ക്ഷേത്രാചാരമനുസരിച്ച് നടത്തി തരണമെന്ന് അപേക്ഷിക്കുന്നു.</p>
 
               <div class="sign-row">
                 <div>
-                  <div class="kv"><span>സ്ഥലം</span><span>:</span><span class="dots v" data-bind="sign_place" data-fit></span></div>
-                  <div class="kv"><span>തിയതി</span><span>:</span><span class="dots v" data-bind="sign_date" data-fmt="date"></span></div>
+                  <div class="kv"><span lang="ml">സ്ഥലം</span><span>:</span><span class="dots v" data-bind="sign_place" data-fit></span></div>
+                  <div class="kv"><span lang="ml">തിയതി</span><span>:</span><span class="dots v" data-bind="sign_date" data-fmt="date"></span></div>
                 </div>
-                <div class="sig"><span class="sig-line">അച്ചന്റെ/അമ്മന്റെ ഒപ്പ്</span></div>
+                <div class="sig"><span class="sig-line" lang="ml">അച്ചന്റെ/അമ്മന്റെ ഒപ്പ്</span></div>
               </div>
 
               <hr class="s-rule" style="margin:9mm 0 7mm">
 
-              <p class="para">ഈ മേൽ വിവരിച്ച പ്രകാരം ക്ഷേത്രത്തിൽ പന്തൽ മംഗലം നടത്തി കൊടുക്കുന്നതിൽ എനിക്ക് പൂർണ സമ്മതമാണ്.</p>
-              <div class="kv"><span>വീട് നമ്പർ</span><span>:</span><span class="dots v" style="--w:30mm" data-bind="house_no"></span></div>
+              <p class="para" lang="ml">ഈ മേൽ വിവരിച്ച പ്രകാരം ക്ഷേത്രത്തിൽ പന്തൽ മംഗലം നടത്തി കൊടുക്കുന്നതിൽ എനിക്ക് പൂർണ സമ്മതമാണ്.</p>
+              <div class="kv"><span lang="ml">വീട് നമ്പർ</span><span>:</span><span class="dots v" style="--w:30mm" data-bind="house_no"></span></div>
               <div class="gap"></div>
               <div class="sign-row">
                 <div>
-                  <div class="kv"><span>സ്ഥലം</span><span>:</span><span class="dots"></span></div>
-                  <div class="kv"><span>തിയതി</span><span>:</span><span class="dots"></span></div>
+                  <div class="kv"><span lang="ml">സ്ഥലം</span><span>:</span><span class="dots"></span></div>
+                  <div class="kv"><span lang="ml">തിയതി</span><span>:</span><span class="dots"></span></div>
                 </div>
-                <div class="sig"><span class="sig-line">പട്ടിക്കാരന്റെ പേരും, ഒപ്പും</span></div>
+                <div class="sig"><span class="sig-line" lang="ml">പട്ടിക്കാരന്റെ പേരും, ഒപ്പും</span></div>
               </div>
               <p class="s-foot">Filled online at pernekshetra.com/forms</p>
             </article>
@@ -229,13 +231,13 @@
     <footer>
       <div class="footerData">
         <p>©<span id="year"></span> Shree Perne Muchilot Bhagavathi Kshetra. <br>All rights reserved.
-          <a href="../../team/" style="cursor: pointer; color: #FFA500;">Website Team</a></p>
+          <a href="/team/" style="cursor: pointer; color: #FFA500;">Website Team</a></p>
       </div>
     </footer>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-    <script src="../forms.js?v=202611152307"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="/forms/forms.js?v=202611152307"></script>
     <script>
       (function () {
         document.getElementById("year").textContent = new Date().getFullYear();
