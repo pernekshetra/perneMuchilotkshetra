@@ -21,3 +21,5 @@ Run these from the repository root.
 | `node scripts/build-sitemap.mjs` | Rebuilds `sitemap.xml`. Run it after you add or remove a page. |
 
 Use paths that start with `/` (for example `/css/custom.css`) for links, scripts, styles and images. They work on every page, at any folder depth. To preview the site, run `python3 -m http.server 8765` from the repository root. Pages opened directly from disk (`file://`) do not load these paths.
+
+Google Analytics 4 (`G-22PTX83LGR`) is set up in `js/analytics.js`. Every page loads it with `<script src="/js/analytics.js" async></script>`.

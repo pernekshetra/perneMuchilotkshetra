@@ -17,7 +17,7 @@ There is no backend. Data stays in the browser.
 - Wide screens show a live preview that highlights the focused field. Narrow screens open the preview as an overlay.
 - The browser makes the PDF (Print → Save as PDF). The browser shapes Kannada/Malayalam text correctly; JS PDF libraries do not.
 - A draft is kept in `localStorage` (`pernekshetra:form:<id>`). Fields with `data-nosave` (Aadhaar) are never stored. "Clear my data" removes the draft.
-- No analytics script is loaded on these pages.
+- Google Analytics (`/js/analytics.js`) is loaded. On these pages it reports the URL without query parameters except `lang`, and turns off Google signals and ad personalisation. Form values are never sent. Keep "Form interactions" off in GA Enhanced measurement.
 - Fonts are self-hosted in `fonts/` (SIL OFL 1.1): Anek for the screen UI (one design for Latin, Kannada and Malayalam); EB Garamond and Noto Serif Kannada/Malayalam for the printed sheet.
 
 ## Version numbers on CSS and JS
