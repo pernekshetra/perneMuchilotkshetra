@@ -100,6 +100,20 @@
     return ("0" + n.getDate()).slice(-2) + "/" + ("0" + (n.getMonth() + 1)).slice(-2) + "/" + n.getFullYear();
   }
 
+  /* Count prints in Google Analytics (js/analytics.js). Only the form name,
+     blank or not, and the language are sent - never any form values.
+     Print renames the page to the PDF file name, which contains people's
+     names, and GA reads the title after this call. So the title that GA
+     must use is the page's own title, kept from page load. */
+  var PAGE_TITLE = document.title;
+  function trackPrint(form, blank) {
+    if (typeof window.gtag !== "function") return;
+    var params = { form_name: form.getAttribute("data-form-id"), blank: blank ? "yes" : "no", page_title: PAGE_TITLE };
+    var lang = document.body.getAttribute("data-lang");
+    if (lang) params.lang = lang;
+    window.gtag("event", "form_printed", params);
+  }
+
   /* Format digits into groups and keep the caret after the same digit. */
   function applyMask(input) {
     var spec = MASKS[input.getAttribute("data-mask")];
@@ -580,6 +594,7 @@
     this.computeAges();
     this.render();
     if (!this.validate()) return;
+    trackPrint(this.form, false);
     this.highlight(null);
     var title = document.title;
     var name = this.form.getAttribute("data-file-name");
@@ -606,6 +621,7 @@
     var wasBlocked = root.classList.contains("fp-blocked");
     var title = document.title;
     this.blank = true;
+    trackPrint(this.form, true);
     root.classList.remove("fp-blocked");
     if (panel) panel.classList.remove("is-blocked");
     this.highlight(null);

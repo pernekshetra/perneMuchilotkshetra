@@ -20,7 +20,8 @@ There is no backend. Data stays in the browser.
 - Aadhaar numbers are checked with the Verhoeff check digit, and must not start with 0 or 1. This catches any single wrong digit and any swap of two neighbouring digits.
 - "Print blank form" prints empty sheets for filling in by hand. The draft is not changed; the sheets show the values again when the print dialog closes.
 - Each sheet footer (`[data-print-meta]`) shows the print date, for example `Printed 17/11/2026`, so the office can tell which printout is the latest.
-- Google Analytics (`/js/analytics.js`) is loaded. On these pages it reports the URL without query parameters except `lang`, and turns off Google signals and ad personalisation. Form values are never sent. Keep "Form interactions" off in GA Enhanced measurement.
+- Google Analytics (`/js/analytics.js`) is loaded. On these pages it reports the URL without query parameters except `lang`, fixes the page title at load (Print renames the page to the PDF file name, which contains people's names), and turns off Google signals and ad personalisation. Form values are never sent. Keep "Form interactions" off in GA Enhanced measurement.
+- Print and Print blank form send a GA event `form_printed` with `form_name` (`marriage`, `pandal-mangalam`), `blank` (`yes`/`no`) and, on Pandal Mangalam, `lang`. To see these in GA reports, register them as custom dimensions (Admin → Custom definitions). Ctrl+P is not counted.
 - Fonts are self-hosted in `fonts/` (SIL OFL 1.1): Anek for the screen UI (one design for Latin, Kannada and Malayalam); EB Garamond and Noto Serif Kannada/Malayalam for the printed sheet.
 
 ## Version numbers on CSS and JS
