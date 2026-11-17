@@ -95,15 +95,6 @@
     return c === 0;
   }
 
-  /* Short ID from the form values (FNV-1a, 24 bits, 6 hex digits). The same
-     values always give the same ID, so the office can match two printouts.
-     The ID cannot be turned back into the values. */
-  function formId(prefix, values) {
-    var text = JSON.stringify(Object.keys(values).sort().map(function (k) { return [k, values[k]]; }));
-    var h = 0x811c9dc5;
-    for (var i = 0; i < text.length; i++) { h ^= text.charCodeAt(i); h = Math.imul(h, 0x01000193) >>> 0; }
-    return prefix + "-" + ("00000" + (h >>> 8).toString(16).toUpperCase()).slice(-6);
-  }
   function today() {
     var n = new Date();
     return ("0" + n.getDate()).slice(-2) + "/" + ("0" + (n.getMonth() + 1)).slice(-2) + "/" + n.getFullYear();
@@ -440,9 +431,8 @@
   PerneForm.prototype.render = function () {
     var v = this.blank ? {} : this.values();
 
-    var prefix = this.form.getAttribute("data-id-prefix") || "F";
     var meta = this.blank ? "Blank form · pernekshetra.com/forms"
-      : "Form ID " + formId(prefix, this.values()) + " · Printed " + today() + " · Filled online at pernekshetra.com/forms";
+      : "Printed " + today() + " · Filled online at pernekshetra.com/forms";
     $all("[data-print-meta]").forEach(function (el) { el.textContent = meta; });
 
     $all("[data-bind]").forEach(function (el) {
