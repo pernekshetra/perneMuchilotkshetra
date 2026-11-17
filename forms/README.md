@@ -17,6 +17,9 @@ There is no backend. Data stays in the browser.
 - Wide screens show a live preview that highlights the focused field. Narrow screens open the preview as an overlay.
 - The browser makes the PDF (Print → Save as PDF). The browser shapes Kannada/Malayalam text correctly; JS PDF libraries do not.
 - A draft is kept in `localStorage` (`pernekshetra:form:<id>`). Fields with `data-nosave` (Aadhaar) are never stored. "Clear my data" removes the draft.
+- Aadhaar numbers are checked with the Verhoeff check digit, and must not start with 0 or 1. This catches any single wrong digit and any swap of two neighbouring digits.
+- "Print blank form" prints empty sheets for filling in by hand. The draft is not changed; the sheets show the values again when the print dialog closes.
+- Each sheet footer (`[data-print-meta]`) shows a form ID and the print date, for example `Form ID MR-3A1CCF · Printed 17/11/2026`. The ID is a 6-digit hash of all values, with the prefix from `data-id-prefix` on the `<form>` (MR, PM). The same values always give the same ID, so the office can see that two printouts match. The ID cannot be turned back into the values.
 - Google Analytics (`/js/analytics.js`) is loaded. On these pages it reports the URL without query parameters except `lang`, and turns off Google signals and ad personalisation. Form values are never sent. Keep "Form interactions" off in GA Enhanced measurement.
 - Fonts are self-hosted in `fonts/` (SIL OFL 1.1): Anek for the screen UI (one design for Latin, Kannada and Malayalam); EB Garamond and Noto Serif Kannada/Malayalam for the printed sheet.
 

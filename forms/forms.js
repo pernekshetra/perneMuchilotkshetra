@@ -80,6 +80,35 @@
     return age >= 0 && age < 130 ? String(age) : "";
   }
 
+  /* Aadhaar numbers have 12 digits, never start with 0 or 1, and end with a
+     Verhoeff check digit. The check catches every single wrong digit and
+     every swap of two neighbouring digits. */
+  var VD = [[0,1,2,3,4,5,6,7,8,9],[1,2,3,4,0,6,7,8,9,5],[2,3,4,0,1,7,8,9,5,6],[3,4,0,1,2,8,9,5,6,7],[4,0,1,2,3,9,5,6,7,8],
+            [5,9,8,7,6,0,4,3,2,1],[6,5,9,8,7,1,0,4,3,2],[7,6,5,9,8,2,1,0,4,3],[8,7,6,5,9,3,2,1,0,4],[9,8,7,6,5,4,3,2,1,0]];
+  var VP = [[0,1,2,3,4,5,6,7,8,9],[1,5,7,6,2,8,3,0,9,4],[5,8,0,3,7,9,6,1,4,2],[8,9,1,6,0,4,3,5,2,7],
+            [9,4,5,3,1,2,6,8,7,0],[4,2,8,6,5,7,3,9,0,1],[2,7,9,3,8,0,6,4,1,5],[7,0,4,6,9,1,3,2,5,8]];
+  function aadhaarOk(v) {
+    var d = String(v || "").replace(/\s/g, "");
+    if (!/^[2-9]\d{11}$/.test(d)) return false;
+    var c = 0;
+    for (var i = 0; i < d.length; i++) c = VD[c][VP[i % 8][+d.charAt(d.length - 1 - i)]];
+    return c === 0;
+  }
+
+  /* Short ID from the form values (FNV-1a, 24 bits, 6 hex digits). The same
+     values always give the same ID, so the office can match two printouts.
+     The ID cannot be turned back into the values. */
+  function formId(prefix, values) {
+    var text = JSON.stringify(Object.keys(values).sort().map(function (k) { return [k, values[k]]; }));
+    var h = 0x811c9dc5;
+    for (var i = 0; i < text.length; i++) { h ^= text.charCodeAt(i); h = Math.imul(h, 0x01000193) >>> 0; }
+    return prefix + "-" + ("00000" + (h >>> 8).toString(16).toUpperCase()).slice(-6);
+  }
+  function today() {
+    var n = new Date();
+    return ("0" + n.getDate()).slice(-2) + "/" + ("0" + (n.getMonth() + 1)).slice(-2) + "/" + n.getFullYear();
+  }
+
   /* Format digits into groups and keep the caret after the same digit. */
   function applyMask(input) {
     var spec = MASKS[input.getAttribute("data-mask")];
@@ -241,6 +270,9 @@
     if (f.getAttribute("data-mask") === "date") {
       var p = parseDate(f.value);
       if (f.value && p && !realDate(p)) custom = "This date does not exist. Check the day and month.";
+    }
+    if (f.getAttribute("data-mask") === "aadhaar" && /^\d{4} \d{4} \d{4}$/.test(f.value) && !aadhaarOk(f.value)) {
+      custom = "This is not a valid Aadhaar number. Check each digit against the card.";
     }
     if (!custom && f.value && this.cross[f.name]) custom = this.cross[f.name];
     f.setCustomValidity(custom);
@@ -406,7 +438,12 @@
   /* ---------- Sheet rendering ---------- */
 
   PerneForm.prototype.render = function () {
-    var v = this.values();
+    var v = this.blank ? {} : this.values();
+
+    var prefix = this.form.getAttribute("data-id-prefix") || "F";
+    var meta = this.blank ? "Blank form · pernekshetra.com/forms"
+      : "Form ID " + formId(prefix, this.values()) + " · Printed " + today() + " · Filled online at pernekshetra.com/forms";
+    $all("[data-print-meta]").forEach(function (el) { el.textContent = meta; });
 
     $all("[data-bind]").forEach(function (el) {
       var val = v[el.getAttribute("data-bind")] || "";
@@ -568,6 +605,36 @@
     else go();
   };
 
+  /* Print empty sheets for filling in by hand. The draft is not touched:
+     render() uses empty values until the print dialog closes. */
+  PerneForm.prototype.printBlank = function () {
+    var self = this;
+    var root = document.documentElement;
+    var panel = this.preview;
+    // A failing date rule hides the sheets in print (fp-blocked) and blurs the
+    // preview (is-blocked). A blank form has no dates, so lift both for now.
+    var wasBlocked = root.classList.contains("fp-blocked");
+    var title = document.title;
+    this.blank = true;
+    root.classList.remove("fp-blocked");
+    if (panel) panel.classList.remove("is-blocked");
+    this.highlight(null);
+    this.render();
+    document.title = (this.form.getAttribute("data-file-name") || "Form").split("-{")[0] + "-blank";
+    var done = function () {
+      window.removeEventListener("afterprint", done);
+      if (!self.blank) return;
+      self.blank = false;
+      document.title = title;
+      if (wasBlocked) { root.classList.add("fp-blocked"); if (panel) panel.classList.add("is-blocked"); }
+      self.render();
+    };
+    window.addEventListener("afterprint", done);
+    var go = function () { window.print(); };
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(go, go);
+    else go();
+  };
+
   PerneForm.prototype.clear = function (btn) {
     if (!btn.classList.contains("confirm")) {
       btn.classList.add("confirm");
@@ -608,6 +675,7 @@
 
     form.addEventListener("input", function (e) {
       var f = e.target;
+      self.blank = false;
       if (f.hasAttribute("data-mask")) applyMask(f);
       if (f.hasAttribute("data-upper")) {
         var s = f.selectionStart, en = f.selectionEnd;
@@ -652,12 +720,14 @@
     });
 
     $all("[data-action=print]").forEach(function (b) { b.addEventListener("click", function () { self.print(); }); });
+    $all("[data-action=print-blank]").forEach(function (b) { b.addEventListener("click", function () { self.printBlank(); }); });
     $all("[data-action=clear]").forEach(function (b) { b.addEventListener("click", function () { self.clear(b); }); });
     $all("[data-action=preview]").forEach(function (b) { b.addEventListener("click", function () { self.openPreview(b); }); });
     $all("[data-action=close-preview]").forEach(function (b) { b.addEventListener("click", function () { self.closePreview(); }); });
     document.addEventListener("keydown", function (e) { if (e.key === "Escape") self.closePreview(); });
 
     window.addEventListener("beforeprint", function () { self.computeAges(); self.render(); self.highlight(null); });
+    window.addEventListener("focus", function () { if (self.blank) { self.blank = false; self.render(); } });
     window.addEventListener("resize", function () { self.scalePreview(); });
 
     this.check = opts.check || null;
