@@ -56,60 +56,59 @@
       h("w_name_addr") + h("w_phone");
   }
 
-  /* ---------- Printable sheet ---------- */
+  /* ---------- Printable sheet (page 1: cards A to F) ---------- */
 
-  function row(label, valueHtml, extra) {
-    return '<div class="m-row' + (extra || "") + '"><span class="m-lab">' + label + '</span><span class="m-col">:</span><span class="m-val">' + valueHtml + "</span></div>";
-  }
   function line(name) { return '<span class="line" data-fit><span class="v" data-bind="' + name + '"></span></span>'; }
+  function multi(name) { return '<span class="line multi" data-lines="2" data-fit><span class="v" data-bind="' + name + '"></span></span>'; }
   function boxes(name, len, groups) {
     return '<span class="boxes" data-boxes="' + name + '" data-len="' + len + '"' + (groups ? ' data-groups="' + groups + '"' : "") + "></span>";
   }
   function dateBoxes(name) { return '<span class="boxes" data-boxes="' + name + '" data-fmt="date"></span>'; }
+  function row(n, label, valueHtml, cls) {
+    return '<div class="mf-r' + (cls ? " " + cls : "") + '">' + (n === null ? "" : '<span class="mf-n">' + n + "</span>") +
+      '<span class="mf-l">' + label + '</span><span class="mf-v">' + valueHtml + "</span></div>";
+  }
+  function card(letter, title, body, opts) {
+    opts = opts || {};
+    return '<section class="mf-card' + (opts.use ? " use" : "") + '">' +
+      '<div class="mf-card-h"><span class="mf-badge">' + letter + "</span><span class=\"t\">" + title + "</span>" +
+      (opts.tr ? '<span class="tr">' + opts.tr + "</span>" : "") + "</div>" +
+      '<div class="mf-card-b">' + body + "</div></section>";
+  }
+  function sig(text) { return '<span class="mf-sig">' + text + "</span>"; }
 
-  function buildSheet(prefix) {
+  function buildSheet(prefix, letters) {
     var r = ROLES[prefix];
     var p = prefix + "_";
-    return (
-      row("1. Name of the " + r.en + " (" + r.kn + "/" + r.ml + ")", line(p + "name")) +
-      row("2. Father’s Name", line(p + "father")) +
-      row("3. Mother’s Name", line(p + "mother")) +
-      row("4. Illam (Kutumba)", line(p + "illam")) +
-      row("5. Tharavad", line(p + "tharavad")) +
-      row("6. Date of Birth", dateBoxes(p + "dob") + '<span class="m-age">7. Age :&nbsp;' + boxes(p + "age", 2) + "</span>", " boxed") +
-      row("8. Address",
-        '<span class="m-addr"><span class="line multi" data-lines="2" data-fit><span class="v" data-bind="' + p + 'address"></span></span>' +
-        '<span class="m-pin">Pin:&nbsp;' + boxes(p + "pin", 6) + "</span></span>", " tall") +
-      row("9. Contact Number", boxes(p + "phone", 10), " boxed") +
-      row("10. Aadhaar Card Number", boxes(p + "aadhaar", 12, "4,4,4"), " boxed") +
-      row("11. Occupation", line(p + "occupation")) +
+    var details =
+      row("1.", "Name of the " + r.en, line(p + "name")) +
+      row("2.", "Father’s Name", line(p + "father")) +
+      row("3.", "Mother’s Name", line(p + "mother")) +
+      row("4.", "Illam (Kutumba)", line(p + "illam") + '<span class="sub"><b>5.</b> Tharavad</span>' + line(p + "tharavad")) +
+      row("6.", "Date of Birth", dateBoxes(p + "dob") + '<span class="sub push"><b>7.</b> Age</span>' + boxes(p + "age", 2)) +
+      row("8.", "Address", '<span class="mf-addr2" style="flex:1">' + multi(p + "address") +
+        '<span class="sub">PIN</span>' + boxes(p + "pin", 6) + "</span>", "tall") +
+      '<div class="mf-split"><div>' +
+        row("9.", "Contact Number", boxes(p + "phone", 10)) +
+        row("10.", "Aadhaar Number", boxes(p + "aadhaar", 12, "4,4,4")) +
+        row("11.", "Occupation", line(p + "occupation"), "nb") +
+      "</div>" + sig("Signature of the " + r.en) + "</div>";
 
-      '<div class="m-witness">' +
-        '<div class="m-wfields">' +
-          '<div class="m-tag">WITNESS OF THE ' + r.EN + "</div>" +
-          row("Name &amp; Address", '<span class="line multi" data-lines="2" data-fit><span class="v" data-bind="' + p + 'w_name_addr"></span></span>', " tall") +
-          row("Contact No", boxes(p + "w_phone", 10), " boxed") +
-        "</div>" +
-        '<div class="m-sigs">' +
-          '<span class="sig-line">Signature of the ' + r.en + "</span>" +
-          '<span class="sig-line">Signature of the Witness</span>' +
-        "</div>" +
-      "</div>" +
+    var witness =
+      '<div class="mf-split mf-w"><div>' +
+        row(null, "Name &amp; Address", multi(p + "w_name_addr"), "tall") +
+        row(null, "Contact No.", boxes(p + "w_phone", 10), "nb") +
+      "</div>" + sig("Signature of the Witness") + "</div>";
 
-      '<div class="m-patti">' +
-        '<p class="m-patti-h">FOR THE USE OF PATTIKKARAN</p>' +
-        '<div class="m-patti-body">' +
-          '<div class="m-patti-fields">' +
-            row("Name of the Pattikkaran of " + r.en, '<span class="line"></span>') +
-            '<div class="m-row m-row-2">' +
-              '<span class="m-lab">House No</span><span class="m-col">:</span><span class="m-val"><span class="line"></span></span>' +
-              '<span class="m-lab m-lab-s">Seeme</span><span class="m-col">:</span><span class="m-val"><span class="line"></span></span>' +
-            "</div>" +
-          "</div>" +
-          '<div class="m-sigs one"><span class="sig-line">Signature of the Pattikkaran</span></div>' +
-        "</div>" +
-      "</div>"
-    );
+    var use =
+      '<div class="mf-split mf-use"><div>' +
+        row(null, "", '<span class="sub">Name of the Pattikkaran of ' + r.en + '</span><span class="line"></span>') +
+        row(null, "", '<span class="sub">House No.</span><span class="line"></span><span class="sub">Seeme</span><span class="line"></span>', "nb") +
+      "</div>" + sig("Signature of the Pattikkaran") + "</div>";
+
+    return card(letters[0], r.EN + " DETAILS", details, { tr: r.kn + " / " + r.ml }) +
+      card(letters[1], "WITNESS OF THE " + r.EN, witness) +
+      card(letters[2], "FOR THE USE OF PATTIKKARAN", use, { use: 1 });
   }
 
   /* ---------- Marriage section (shared) ---------- */
@@ -124,8 +123,8 @@
 
   document.querySelector("[data-person=groom]").innerHTML = buildInputs("groom");
   document.querySelector("[data-person=bride]").innerHTML = buildInputs("bride");
-  document.querySelector("[data-sheet-person=groom]").innerHTML = buildSheet("groom");
-  document.querySelector("[data-sheet-person=bride]").innerHTML = buildSheet("bride");
+  document.querySelector("[data-sheet-person=groom]").innerHTML = buildSheet("groom", "ABC");
+  document.querySelector("[data-sheet-person=bride]").innerHTML = buildSheet("bride", "DEF");
 
   document.getElementById("year").textContent = new Date().getFullYear();
 

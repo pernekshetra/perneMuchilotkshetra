@@ -6,7 +6,7 @@ There is no backend. Data stays in the browser.
 
 | Page | Prints |
 |---|---|
-| `forms/marriage/` | 2 A4 pages (form + Kannada/Malayalam instructions + office use) |
+| `forms/marriage/` | 3 A4 pages: 1 form (sections A–F), 2 office use, 3 Kannada/Malayalam instructions |
 | `forms/pandal-mangalam/?lang=kn` | 1 A4 page, Kannada |
 | `forms/pandal-mangalam/?lang=ml` | 1 A4 page, Malayalam |
 
