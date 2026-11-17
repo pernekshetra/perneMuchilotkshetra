@@ -4,6 +4,8 @@
  *
  * Form maker pages (/forms/...) collect Aadhaar and phone numbers, so there:
  * - the reported URL keeps only the "lang" query parameter;
+ * - the page title is fixed at load. Print renames the page to the PDF file
+ *   name, which contains people's names, and GA must never see that;
  * - Google signals and ad personalisation are off.
  * Form values are never sent. Also keep "Form interactions" switched off in
  * GA Admin > Data streams > (web stream) > Enhanced measurement.
@@ -27,6 +29,7 @@
     config.page_referrer = document.referrer ? document.referrer.split(/[?#]/)[0] : "";
     config.allow_google_signals = false;
     config.allow_ad_personalization_signals = false;
+    window.gtag("set", { page_title: document.title });
   }
   window.gtag("config", MEASUREMENT_ID, config);
 })();
