@@ -193,6 +193,9 @@
   html, body { margin: 0 !important; padding: 0 !important; background: #fff !important; }
   body > *:not(main),
   .fp-header, .fp-form, .fp-chips, .fp-bar, .fp-preview-head, .no-print { display: none !important; }
+  /* The toast is shown with class "show", and Bootstrap 3 has .show { display: block !important },
+     which beats body > *:not(main). Without this, a visible toast prints on every page. */
+  body > .fp-status { display: none !important; }
   main, .fp-wrap, .fp-layout, .fp-preview, .fp-preview .sheets {
     display: block !important; position: static !important; inset: auto !important;
     padding: 0 !important; margin: 0 !important; max-width: none !important; max-height: none !important;
