@@ -27,56 +27,101 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="/css/custom.css" rel="stylesheet" type="text/css">
-    <link href="/forms/sheet.css?v=202611152307" rel="stylesheet" type="text/css">
-    <link href="/forms/forms.css?v=202611152307" rel="stylesheet" type="text/css">
+    <link href="/forms/sheet.css?v=202611171715" rel="stylesheet" type="text/css">
+    <link href="/forms/forms.css?v=202611171715" rel="stylesheet" type="text/css">
     <style>
-      /* ---------- Marriage sheet, page 1 ---------- */
-      .sheet.marriage { --row: 5.7mm; font-size: 10.5pt; padding: 9mm 13mm 8mm; }
-      .sheet.marriage .s-title { margin: 1mm 0 2.5mm; font-size: 12pt; }
-      .m-top { display: grid; grid-template-columns: 1fr auto auto; gap: 0 8mm; align-items: end; margin-bottom: 1.5mm; }
-      .m-top .m-h { font-style: italic; text-align: center; font-size: 10.5pt; margin-bottom: 0.8mm; }
-      .m-top .line { border: 0.6pt solid #333; }
+      /* ---------- Marriage sheets: shared look (3 A4 pages) ---------- */
+      .sheet.mf {
+        --maroon: #7d1f1f; --gold: #b8892f; --cream: #f4ebdc; --cream-2: #fbf7f0;
+        --card: #ddd0bc; --ink: #2b2420; --muted: #6f655c; --rule: #8c8279;
+        --row: 5.3mm;
+        padding: 5mm; font-size: 10.5pt; color: var(--ink);
+        -webkit-print-color-adjust: exact; print-color-adjust: exact;
+      }
+      .mf-frame { height: 100%; border: 1.2pt solid var(--maroon); padding: 1.2mm; }
+      .mf-in { height: 100%; border: 0.6pt solid var(--gold); padding: 3.5mm 5mm 2mm; display: flex; flex-direction: column; }
+      .mf-temple { text-align: center; color: var(--maroon); font-weight: 700; font-size: 16pt; letter-spacing: 0.05em; line-height: 1.1; }
+      .mf-addr { text-align: center; color: var(--muted); font-size: 9pt; letter-spacing: 0.16em; margin-top: 0.8mm !important; }
+      .mf-title { display: flex; align-items: center; gap: 4mm; margin: 1.6mm 0 2.2mm !important; }
+      .mf-title::before, .mf-title::after { content: ""; flex: 1; border-top: 0.8pt solid var(--gold); }
+      .mf-title span { background: var(--maroon); color: #fff; font-weight: 700; font-size: 10.5pt; letter-spacing: 0.32em; padding: 0.8mm 4mm 0.8mm 5mm; border-radius: 1mm; }
 
-      .m-row { display: grid; grid-template-columns: 62mm 3mm 1fr; align-items: end; min-height: var(--row); margin-bottom: 0.5mm; }
-      .m-row.boxed { align-items: center; }
-      .m-row.tall { align-items: start; }
-      .m-row.tall .m-lab, .m-row.tall .m-col { line-height: var(--row); }
-      .m-lab { white-space: nowrap; }
-      .m-val { min-width: 0; }
-      .m-val .boxes .b { width: 5.1mm; height: 5.2mm; line-height: 5mm; font-size: 10.5pt; }
-      .m-age { float: right; display: inline-flex; align-items: center; }
-      .m-addr { display: flex; align-items: flex-end; gap: 3mm; }
-      .m-addr .line.multi { flex: 1 1 auto; min-width: 0; }
-      .m-pin { display: inline-flex; align-items: center; white-space: nowrap; }
+      .mf-card { border: 0.6pt solid var(--card); border-radius: 1.6mm; margin-bottom: 1.5mm; overflow: hidden; }
+      .mf-card.use { border-style: dashed; border-color: #b9b2a9; }
+      .mf-card-h { display: flex; align-items: center; gap: 2mm; background: var(--cream); padding: 0.6mm 3mm; border-bottom: 0.6pt solid var(--card); }
+      .mf-card.use .mf-card-h { background: #efede9; border-bottom: 0.6pt dashed #b9b2a9; }
+      .mf-badge { width: 4.4mm; height: 4.4mm; border-radius: 50%; background: var(--maroon); color: #fff; font-size: 7.5pt; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; flex: none; }
+      .mf-card.use .mf-badge { background: #3f3a36; }
+      .mf-card-h .t { margin: 0; padding: 0; text-align: left; font-family: inherit; font-size: 10.5pt; font-weight: 700; letter-spacing: 0.14em; color: var(--maroon); }
+      .mf-card.use .mf-card-h .t { color: #3f3a36; }
+      .mf-card-h .tr { margin-left: auto; font-style: italic; font-size: 9pt; color: var(--muted); }
+      .mf-card-b { padding: 0.2mm 3mm 0.9mm; }
 
-      .m-witness { display: grid; grid-template-columns: 1fr 52mm; gap: 6mm; margin-top: 1.6mm; }
-      .m-tag { display: inline-block; border: 0.6pt solid #333; font-style: italic; font-weight: 700; padding: 0.3mm 6mm; margin-bottom: 1mm; font-size: 10pt; }
-      .m-witness .m-row { grid-template-columns: 40mm 3mm 1fr; }
-      .m-sigs { display: flex; flex-direction: column; justify-content: space-around; align-items: center; }
-      .m-sigs .sig-line { display: block; width: 100%; border-top: 0.6pt solid #555; text-align: center; font-size: 9.5pt; padding-top: 0.6mm; margin-top: 7mm; }
-      .m-sigs.one { justify-content: flex-end; }
+      /* Top strip: place and dates of engagement and marriage */
+      .mf-top { display: grid; grid-template-columns: 1fr auto auto; gap: 0 7mm; align-items: end; background: var(--cream-2); border: 0.6pt solid var(--card); border-radius: 1.6mm; padding: 1.2mm 3mm 1.6mm; margin-bottom: 1.5mm; }
+      .mf-top .h { font-style: italic; color: var(--muted); font-size: 9.5pt; margin-bottom: 0.8mm !important; }
+      .mf-top .line { border: 0.6pt solid var(--rule); border-radius: 0.8mm; background: #fff; }
 
-      .m-patti { margin-top: 1.4mm; }
-      .m-patti-h { text-align: center; font-size: 9.5pt; font-weight: 700; text-decoration: underline; margin-bottom: 0.6mm !important; letter-spacing: 0.04em; }
-      .m-patti-body { display: grid; grid-template-columns: 1fr 52mm; gap: 6mm; }
-      .m-patti .m-row { grid-template-columns: 66mm 3mm 1fr; }
-      .m-patti .m-row-2 { grid-template-columns: 18mm 3mm 1fr 14mm 3mm 1fr; column-gap: 0; }
-      .m-patti .m-lab-s { padding-left: 4mm; }
-      .m-sep { border: 0; border-top: 1.2pt dashed #333; margin: 2.2mm 0 2mm; }
+      /* Rows: number, label, value */
+      .mf-r { display: grid; grid-template-columns: 6.5mm 46mm 1fr; align-items: end; min-height: var(--row); border-bottom: 0.4pt solid #efe8dd; }
+      .mf-r:last-child, .mf-r.nb { border-bottom: 0; }
+      .mf-r.tall { align-items: start; }
+      .mf-r.tall .mf-n, .mf-r.tall .mf-l { line-height: var(--row); padding-top: 0.25mm; }
+      .mf-n { color: var(--maroon); font-weight: 700; }
+      .mf-l { white-space: nowrap; line-height: var(--row); }
+      .mf-v { min-width: 0; display: flex; align-items: center; gap: 2mm; padding: 0.25mm 0; }
+      .mf-v > .line { flex: 1 1 0; min-width: 0; }
+      .mf-v .sub { white-space: nowrap; }
+      .mf-v .sub b { color: var(--maroon); }
+      .mf-v .push { margin-left: auto; }
+      .sheet.mf .line { border-bottom-color: var(--rule); }
+      .sheet.mf .boxes .b { width: 4.7mm; height: 4.7mm; line-height: 4.5mm; font-size: 10pt; border-color: #5a524b; }
+      .sheet.mf .boxes .b.ph { color: #c4bcb2; }
+      .mf-addr2 { display: flex; align-items: flex-end; gap: 3mm; }
+      .mf-addr2 .line.multi { flex: 1 1 auto; min-width: 0; }
 
-      /* ---------- Marriage sheet, page 2 ---------- */
-      .sheet.instructions { font-size: 11pt; line-height: 1.6; padding: 14mm 16mm 12mm; }
-      .sheet.instructions h3 { text-align: center; font-size: 13pt; font-weight: 700; margin: 0 0 3mm; font-family: inherit; }
-      .sheet.instructions ol { margin: 0 0 7mm; padding-left: 6mm; }
-      .sheet.instructions ol li { margin-bottom: 1.6mm; padding-left: 1mm; }
-      .sheet.instructions [lang="kn"] { font-size: 10.5pt; }
-      .office { border: 0.8pt solid #333; padding: 4mm 6mm 6mm; margin-top: 4mm; font-family: "EB Garamond", serif; }
-      .office h4 { text-align: center; font-weight: 700; letter-spacing: 0.08em; font-size: 11.5pt; margin: 0 0 1mm; font-family: inherit; }
-      .office .c { text-align: center; margin-bottom: 6mm; }
-      .office .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10mm; align-items: end; }
-      .office .kv { display: grid; grid-template-columns: 16mm 1fr; margin-bottom: 6mm; }
-      .office .kv .line { border-bottom: 0.6pt solid #555; }
-      .office .sig-line { display: block; border-top: 0.6pt solid #555; text-align: center; padding-top: 1mm; margin-top: 16mm; }
+      /* Left fields with a signature on the right */
+      .mf-split { display: grid; grid-template-columns: 1fr 56mm; gap: 6mm; align-items: end; }
+      .mf-split .mf-r { border-bottom: 0.4pt solid #efe8dd; }
+      .mf-sig { display: block; border-top: 0.6pt solid var(--rule); text-align: center; color: var(--muted); font-size: 8.5pt; padding-top: 0.6mm; margin-bottom: 0.4mm; }
+      .mf-w .mf-r { grid-template-columns: 34mm 1fr; }
+      .mf-use .mf-r { grid-template-columns: 1fr; }
+
+      .sheet.mf .s-foot { position: static; margin-top: auto; padding-top: 1.5mm; }
+
+      /* ---------- Page 2: office use ---------- */
+      .office { margin-top: 2mm; }
+      .office .mf-card-b { padding: 5mm 6mm 6mm; }
+      .office .c { margin-bottom: 7mm !important; font-size: 11.5pt; }
+      .office .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14mm; align-items: end; }
+      .office .kv { display: grid; grid-template-columns: 18mm 1fr; align-items: end; margin-bottom: 7mm; font-size: 11pt; }
+      .office .mf-sig { font-size: 10pt; margin-top: 18mm; }
+
+      /* ---------- Page 3: instructions ---------- */
+      .sheet.mf.instructions .mf-card-b { padding: 3mm 5mm 2mm; line-height: 1.6; font-size: 11pt; }
+      .sheet.mf.instructions [lang="kn"] .mf-card-b { font-size: 10.5pt; }
+      .sheet.mf.instructions ol { margin: 0; padding-left: 6mm; }
+      .sheet.mf.instructions ol li { margin-bottom: 1.6mm; padding-left: 1mm; }
+      .sheet.mf.instructions ol li::marker { color: var(--maroon); font-weight: 700; }
+      .sheet.mf.instructions .mf-card { margin-bottom: 4mm; }
+
+      /* Bootstrap 3 prints every element black on white (* { color/background !important }).
+         These !important rules are more specific, so the sheet keeps its colours in print. */
+      .sheet.mf .mf-temple, .sheet.mf .mf-n, .sheet.mf .mf-v .sub b, .sheet.mf .mf-card-h .t,
+      .sheet.mf.instructions ol li::marker { color: var(--maroon) !important; }
+      .sheet.mf .mf-card.use .mf-card-h .t { color: #3f3a36 !important; }
+      .sheet.mf .mf-addr, .sheet.mf .mf-top .h, .sheet.mf .mf-card-h .tr, .sheet.mf .mf-sig { color: var(--muted) !important; }
+      .sheet.mf .mf-title span, .sheet.mf .mf-badge { color: #fff !important; background: var(--maroon) !important; }
+      .sheet.mf .mf-card.use .mf-badge { background: #3f3a36 !important; }
+      .sheet.mf .mf-card-h { background: var(--cream) !important; }
+      .sheet.mf .mf-card.use .mf-card-h { background: #efede9 !important; }
+      .sheet.mf .mf-top { background: var(--cream-2) !important; }
+      .sheet.mf .mf-top .line { background: #fff !important; }
+      .sheet.mf .boxes .b.ph { color: #c4bcb2 !important; }
+      /* In print, sheet.css gives sheets height: auto and padding-bottom: 0. Keep each framed page
+         296mm tall (not 297, so rounding never adds a blank page) with 5mm above the frame and
+         4mm + the 1mm left over below it, so the gaps at the top and bottom are equal. */
+      @media print { .sheet.mf { height: 296mm !important; padding: 5mm 5mm 4mm !important; } }
     </style>
   </head>
   <body class="forms-page">
@@ -143,7 +188,7 @@
           <section class="fp-section fp-finish" id="sec-finish" aria-labelledby="h-finish">
             <h2 id="h-finish">Print and sign</h2>
             <ol class="fp-steps">
-              <li>Press <strong>Print / Save as PDF</strong>. The form prints on 2 A4 pages.</li>
+              <li>Press <strong>Print / Save as PDF</strong>. The form prints on 3 A4 pages.</li>
               <li>The bride, the bridegroom and both witnesses sign the printed form.</li>
               <li>The Pattikkaran fills in and signs the Pattikkaran section.</li>
               <li>Bring the form and copies of the birth and address documents to the temple office.</li>
@@ -165,64 +210,87 @@
 
         <section class="fp-preview" aria-label="Print preview">
           <div class="fp-preview-head">
-            <h2>Preview <small>A4, 2 pages</small></h2>
+            <h2>Preview <small>A4, 3 pages</small></h2>
             <button type="button" class="btn-x btn-primary-x" data-action="print"><i class="fa fa-print" aria-hidden="true"></i> Print / Save as PDF</button>
             <button type="button" class="btn-x btn-secondary-x fp-close" data-action="close-preview"><i class="fa fa-times" aria-hidden="true"></i><span class="lbl">Close preview</span></button>
           </div>
           <div class="sheets">
             <!-- ======================= Page 1: form ======================= -->
-            <article class="sheet marriage">
-              <p class="s-temple">SHREE PERNE MUCHILOT BHAGAVATHI KSHETHRA</p>
-              <p class="s-addr">POST KANNUR, KASARAGOD DISTRICT 671321</p>
-              <p class="s-title"><span>MARRIAGE REGISTRATION FORM</span></p>
-              <div class="m-top">
-                <div><p class="m-h">Place of Engagement</p><span class="line" data-fit><span class="v" data-bind="engagement_place"></span></span></div>
-                <div><p class="m-h">Date of Engagement</p><span class="boxes" data-boxes="engagement_date" data-fmt="date"></span></div>
-                <div><p class="m-h">Proposed Date of Marriage</p><span class="boxes" data-boxes="marriage_date" data-fmt="date"></span></div>
-              </div>
-              <div data-sheet-person="groom"></div>
-              <hr class="m-sep">
-              <div data-sheet-person="bride"></div>
+            <article class="sheet mf marriage">
+              <div class="mf-frame"><div class="mf-in">
+                <p class="mf-temple">SHREE PERNE MUCHILOT BHAGAVATHI KSHETHRA</p>
+                <p class="mf-addr">POST KANNUR, KASARAGOD DISTRICT – 671321</p>
+                <p class="mf-title"><span>MARRIAGE REGISTRATION FORM</span></p>
+                <div class="mf-top">
+                  <div><p class="h">Place of Engagement</p><span class="line" data-fit><span class="v" data-bind="engagement_place"></span></span></div>
+                  <div><p class="h">Date of Engagement</p><span class="boxes" data-boxes="engagement_date" data-fmt="date"></span></div>
+                  <div><p class="h">Proposed Date of Marriage</p><span class="boxes" data-boxes="marriage_date" data-fmt="date"></span></div>
+                </div>
+                <div data-sheet-person="groom"></div>
+                <div data-sheet-person="bride"></div>
+                <p class="s-foot">Page 1 of 3 · Filled online at pernekshetra.com/forms</p>
+              </div></div>
             </article>
 
-            <!-- ======================= Page 2: instructions + office use ======================= -->
-            <article class="sheet instructions pb">
-              <div lang="kn">
-                <h3 lang="kn">ಸೂಚನೆಗಳು</h3>
-                <ol>
-                  <li lang="kn">ವಧು, ವರನ ಹೆಸರು ಮತ್ತು ವಿಳಾಸವನ್ನು ಇಂಗ್ಲಿಷ್ CAPITAL ಅಕ್ಷರದಲ್ಲಿ ಬರೆಯಬೇಕು.</li>
-                  <li lang="kn">ಹೆಸರು, ವಿಳಾಸ ಮತ್ತು ಜನನ ದಿನಾಂಕವನ್ನು ವಧು, ವರರು ಹಾಜರುಪಡಿಸುವ ದಾಖಲೆಗಳಾದ ಶಾಲಾ ಪ್ರಮಾಣಪತ್ರ, ಜನನ ಪ್ರಮಾಣಪತ್ರ, ಪಾಸ್ ಪೋರ್ಟ್, ಆಧಾರ್ ಕಾರ್ಡ್‌ಗಳಲ್ಲಿ ಇರುವ ಪ್ರಕಾರವೇ ಬರೆಯಬೇಕು.</li>
-                  <li lang="kn">ಪೂರ್ಣವಾಗಿ ಭರ್ತಿಗೊಳಿಸಿದ ಅರ್ಜಿಯನ್ನು, ಜನನ ದಿನಾಂಕ ಮತ್ತು ವಿಳಾಸವನ್ನು ದೃಢೀಕರಿಸುವ ದಾಖಲೆಗಳ ನಕಲು ಪ್ರತಿ ಸಹಿತ ಕ್ಷೇತ್ರದ ಕಛೇರಿಗೆ ನಿಶ್ಚಿತ ದಿನಾಂಕದಂದು ತಲುಪಿಸಬೇಕು.</li>
-                  <li lang="kn">ಮನೆಯ ಕ್ರಮ ಸಂಖ್ಯೆಯು ಪಟ್ಟಿಕ್ಕಾರರ ಪುಸ್ತಕದಲ್ಲಿ ನಿಮ್ಮ ಮನೆಯನ್ನು ನೋಂದಾಯಿಸಿದ ಕ್ರಮ ಸಂಖ್ಯೆಯಾಗಿದೆ.</li>
-                  <li lang="kn">ವಧೂವರರ ಕಡೆಯವರು ಒಟ್ಟಿಗೆ ಒಂದು ಅರ್ಜಿ ಫಾರ್ಮನ್ನು ಮಾತ್ರ ಭರ್ತಿ ಮಾಡಿ ನೀಡಬೇಕು.</li>
-                  <li lang="kn">ಕ್ಷೇತ್ರದ ಆಚಾರ ಪ್ರಕಾರ ವಧೂವರರ ಕೈ ಹಿಡಿಯುವವರು ಕ್ಷೇತ್ರದ ನಿಯಮಾವಳಿಗಳಿಗೆ/ ಕ್ಷೇತ್ರಾಚಾರಕ್ಕೆ ಒಳಪಡುವವರಾಗಿರಬೇಕು.</li>
-                  <li lang="kn">ವಧೂವರರು ವಿವಾಹ ಸಂದರ್ಭದಲ್ಲಿ ಕ್ಷೇತ್ರದ ಸಂಪ್ರದಾಯ ಮತ್ತು ನಿಯಮಾವಳಿಗಳನ್ನು ಕಡ್ಡಾಯವಾಗಿ ಪಾಲಿಸತಕ್ಕದ್ದು.</li>
-                </ol>
-              </div>
-              <div lang="ml">
-                <h3 lang="ml">നിർദേശങ്ങൾ</h3>
-                <ol>
-                  <li lang="ml">വധു, വരന്റെ പേര്, മേൽവിലാസം എന്നിവ ഇംഗ്ലീഷ് CAPITAL അക്ഷരത്തിൽ എഴുതണം.</li>
-                  <li lang="ml">അപേക്ഷയിൽ ജനന തിയതി, മേൽവിലാസം എന്നിവ വധു, വരൻ ഹാജരാക്കുന്ന സ്കൂൾ സർട്ടിഫിക്കറ്റ്, ആധാർ കാർഡ്, പാസ്പോർട്ട് എന്നിവയിൽ രേഖപ്പെടുത്തിയിരിക്കുന്നതുപോലെ എഴുതണം.</li>
-                  <li lang="ml">പൂരിപ്പിച്ച അപേക്ഷ ജനന തിയതി, മേൽവിലാസം എന്നിവ തെളിയിക്കുന്നതിനാവശ്യമായ സർട്ടിഫിക്കറ്റുകളുടെ പകർപ്പ് സഹിതം ക്ഷേത്രത്തിൽനിന്ന് സൂചിപ്പിക്കുന്ന തിയതിയിൽ ക്ഷേത്ര ഓഫീസിലേക്ക് എത്തിക്കേണ്ടതാണ്.</li>
-                  <li lang="ml">അപേക്ഷയിൽ സൂചിപ്പിച്ചിട്ടുള്ള വീട് നമ്പർ ക്ഷേത്ര പട്ടിക്കാർ നിങ്ങളുടെ വീട് റിജിസ്റ്റർ ചെയ്യുമ്പോൾ നൽകിയ വീട് നമ്പരാണ്.</li>
-                  <li lang="ml">വധൂ വരന്മാർ ഒറ്റ അപേക്ഷ ഫോം മാത്രമേ പൂരിപ്പിച്ചു നൽകേണ്ടതുള്ളൂ.</li>
-                  <li lang="ml">വധു വരന്മാരെ അനുഗമിക്കുന്നവർ പെരുതണ ക്ഷേത്രാചാരങ്ങൾക്ക് വിധേയമായവരും, ക്ഷേത്രാചാരങ്ങളെ പാലിക്കുന്നവരും ആയിരിക്കണം.</li>
-                  <li lang="ml">വിവാഹ സമയത്ത് വധു, വരന്മാർ ക്ഷേത്ര ആചാരങ്ങളും നിയമങ്ങളും, നിർദേശങ്ങളും കർശനമായി പാലിക്കേണ്ടതാണ്.</li>
-                </ol>
-              </div>
-              <div class="office">
-                <h4>FOR OFFICE USE</h4>
-                <p class="c">Marriage Certificate issued</p>
-                <div class="grid">
-                  <div>
-                    <div class="kv"><span>Reg No:</span><span class="line"></span></div>
-                    <div class="kv"><span>Date:</span><span class="line"></span></div>
+            <!-- ======================= Page 2: office use ======================= -->
+            <article class="sheet mf pb">
+              <div class="mf-frame"><div class="mf-in">
+                <p class="mf-temple">SHREE PERNE MUCHILOT BHAGAVATHI KSHETHRA</p>
+                <p class="mf-addr">POST KANNUR, KASARAGOD DISTRICT – 671321</p>
+                <p class="mf-title"><span>MARRIAGE REGISTRATION FORM</span></p>
+                <section class="mf-card office">
+                  <div class="mf-card-h"><span class="mf-badge">G</span><span class="t">FOR OFFICE USE</span></div>
+                  <div class="mf-card-b">
+                    <p class="c">Marriage Certificate issued</p>
+                    <div class="grid">
+                      <div>
+                        <div class="kv"><span>Reg No:</span><span class="line"></span></div>
+                        <div class="kv"><span>Date:</span><span class="line"></span></div>
+                      </div>
+                      <div><span class="mf-sig">Name and Signature of the Authorised Person</span></div>
+                    </div>
                   </div>
-                  <div><span class="sig-line">Name and Signature of the Authorised Person</span></div>
-                </div>
-              </div>
-              <p class="s-foot">Filled online at pernekshetra.com/forms</p>
+                </section>
+                <p class="s-foot">Page 2 of 3 · Filled online at pernekshetra.com/forms</p>
+              </div></div>
+            </article>
+
+            <!-- ======================= Page 3: instructions ======================= -->
+            <article class="sheet mf instructions pb">
+              <div class="mf-frame"><div class="mf-in">
+                <p class="mf-temple">SHREE PERNE MUCHILOT BHAGAVATHI KSHETHRA</p>
+                <p class="mf-addr">POST KANNUR, KASARAGOD DISTRICT – 671321</p>
+                <p class="mf-title"><span>INSTRUCTIONS</span></p>
+                <section class="mf-card" lang="kn">
+                  <div class="mf-card-h"><span class="t" lang="kn">ಸೂಚನೆಗಳು</span></div>
+                  <div class="mf-card-b">
+                    <ol>
+                    <li lang="kn">ವಧು, ವರನ ಹೆಸರು ಮತ್ತು ವಿಳಾಸವನ್ನು ಇಂಗ್ಲಿಷ್ CAPITAL ಅಕ್ಷರದಲ್ಲಿ ಬರೆಯಬೇಕು.</li>
+                    <li lang="kn">ಹೆಸರು, ವಿಳಾಸ ಮತ್ತು ಜನನ ದಿನಾಂಕವನ್ನು ವಧು, ವರರು ಹಾಜರುಪಡಿಸುವ ದಾಖಲೆಗಳಾದ ಶಾಲಾ ಪ್ರಮಾಣಪತ್ರ, ಜನನ ಪ್ರಮಾಣಪತ್ರ, ಪಾಸ್ ಪೋರ್ಟ್, ಆಧಾರ್ ಕಾರ್ಡ್‌ಗಳಲ್ಲಿ ಇರುವ ಪ್ರಕಾರವೇ ಬರೆಯಬೇಕು.</li>
+                    <li lang="kn">ಪೂರ್ಣವಾಗಿ ಭರ್ತಿಗೊಳಿಸಿದ ಅರ್ಜಿಯನ್ನು, ಜನನ ದಿನಾಂಕ ಮತ್ತು ವಿಳಾಸವನ್ನು ದೃಢೀಕರಿಸುವ ದಾಖಲೆಗಳ ನಕಲು ಪ್ರತಿ ಸಹಿತ ಕ್ಷೇತ್ರದ ಕಛೇರಿಗೆ ನಿಶ್ಚಿತ ದಿನಾಂಕದಂದು ತಲುಪಿಸಬೇಕು.</li>
+                    <li lang="kn">ಮನೆಯ ಕ್ರಮ ಸಂಖ್ಯೆಯು ಪಟ್ಟಿಕ್ಕಾರರ ಪುಸ್ತಕದಲ್ಲಿ ನಿಮ್ಮ ಮನೆಯನ್ನು ನೋಂದಾಯಿಸಿದ ಕ್ರಮ ಸಂಖ್ಯೆಯಾಗಿದೆ.</li>
+                    <li lang="kn">ವಧೂವರರ ಕಡೆಯವರು ಒಟ್ಟಿಗೆ ಒಂದು ಅರ್ಜಿ ಫಾರ್ಮನ್ನು ಮಾತ್ರ ಭರ್ತಿ ಮಾಡಿ ನೀಡಬೇಕು.</li>
+                    <li lang="kn">ಕ್ಷೇತ್ರದ ಆಚಾರ ಪ್ರಕಾರ ವಧೂವರರ ಕೈ ಹಿಡಿಯುವವರು ಕ್ಷೇತ್ರದ ನಿಯಮಾವಳಿಗಳಿಗೆ/ ಕ್ಷೇತ್ರಾಚಾರಕ್ಕೆ ಒಳಪಡುವವರಾಗಿರಬೇಕು.</li>
+                    <li lang="kn">ವಧೂವರರು ವಿವಾಹ ಸಂದರ್ಭದಲ್ಲಿ ಕ್ಷೇತ್ರದ ಸಂಪ್ರದಾಯ ಮತ್ತು ನಿಯಮಾವಳಿಗಳನ್ನು ಕಡ್ಡಾಯವಾಗಿ ಪಾಲಿಸತಕ್ಕದ್ದು.</li>
+                    </ol>
+                  </div>
+                </section>
+                <section class="mf-card" lang="ml">
+                  <div class="mf-card-h"><span class="t" lang="ml">നിർദേശങ്ങൾ</span></div>
+                  <div class="mf-card-b">
+                    <ol>
+                    <li lang="ml">വധു, വരന്റെ പേര്, മേൽവിലാസം എന്നിവ ഇംഗ്ലീഷ് CAPITAL അക്ഷരത്തിൽ എഴുതണം.</li>
+                    <li lang="ml">അപേക്ഷയിൽ ജനന തിയതി, മേൽവിലാസം എന്നിവ വധു, വരൻ ഹാജരാക്കുന്ന സ്കൂൾ സർട്ടിഫിക്കറ്റ്, ആധാർ കാർഡ്, പാസ്പോർട്ട് എന്നിവയിൽ രേഖപ്പെടുത്തിയിരിക്കുന്നതുപോലെ എഴുതണം.</li>
+                    <li lang="ml">പൂരിപ്പിച്ച അപേക്ഷ ജനന തിയതി, മേൽവിലാസം എന്നിവ തെളിയിക്കുന്നതിനാവശ്യമായ സർട്ടിഫിക്കറ്റുകളുടെ പകർപ്പ് സഹിതം ക്ഷേത്രത്തിൽനിന്ന് സൂചിപ്പിക്കുന്ന തിയതിയിൽ ക്ഷേത്ര ഓഫീസിലേക്ക് എത്തിക്കേണ്ടതാണ്.</li>
+                    <li lang="ml">അപേക്ഷയിൽ സൂചിപ്പിച്ചിട്ടുള്ള വീട് നമ്പർ ക്ഷേത്ര പട്ടിക്കാർ നിങ്ങളുടെ വീട് റിജിസ്റ്റർ ചെയ്യുമ്പോൾ നൽകിയ വീട് നമ്പരാണ്.</li>
+                    <li lang="ml">വധൂ വരന്മാർ ഒറ്റ അപേക്ഷ ഫോം മാത്രമേ പൂരിപ്പിച്ചു നൽകേണ്ടതുള്ളൂ.</li>
+                    <li lang="ml">വധു വരന്മാരെ അനുഗമിക്കുന്നവർ പെരുതണ ക്ഷേത്രാചാരങ്ങൾക്ക് വിധേയമായവരും, ക്ഷേത്രാചാരങ്ങളെ പാലിക്കുന്നവരും ആയിരിക്കണം.</li>
+                    <li lang="ml">വിവാഹ സമയത്ത് വധു, വരന്മാർ ക്ഷേത്ര ആചാരങ്ങളും നിയമങ്ങളും, നിർദേശങ്ങളും കർശനമായി പാലിക്കേണ്ടതാണ്.</li>
+                    </ol>
+                  </div>
+                </section>
+                <p class="s-foot">Page 3 of 3 · Filled online at pernekshetra.com/forms</p>
+              </div></div>
             </article>
           </div>
         </section>
@@ -246,8 +314,8 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <script src="/forms/forms.js?v=202611152307"></script>
-    <script src="/forms/marriage/marriage.js?v=202611152307"></script>
+    <script src="/forms/forms.js?v=202611171715"></script>
+    <script src="/forms/marriage/marriage.js?v=202611171715"></script>
     <script src="/js/analytics.js" async></script>
   </body>
 </html>
