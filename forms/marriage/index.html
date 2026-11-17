@@ -30,7 +30,7 @@
     <link href="/forms/sheet.css?v=202611171715" rel="stylesheet" type="text/css">
     <link href="/forms/forms.css?v=202611171715" rel="stylesheet" type="text/css">
     <style>
-      /* ---------- Marriage sheets: shared look (3 A4 pages) ---------- */
+      /* ---------- Marriage sheets: shared look (2 A4 pages) ---------- */
       .sheet.mf {
         --maroon: #7d1f1f; --gold: #b8892f; --cream: #f4ebdc; --cream-2: #fbf7f0;
         --card: #ddd0bc; --ink: #2b2420; --muted: #6f655c; --rule: #8c8279;
@@ -89,21 +89,23 @@
 
       .sheet.mf .s-foot { position: static; margin-top: auto; padding-top: 1.5mm; }
 
-      /* ---------- Page 2: office use ---------- */
+      /* ---------- Page 2: office use, then the instructions ---------- */
       .office { margin-top: 2mm; }
-      .office .mf-card-b { padding: 5mm 6mm 6mm; }
-      .office .c { margin-bottom: 7mm !important; font-size: 11.5pt; }
+      .office .mf-card-b { padding: 3mm 6mm 3mm; }
+      .office .c { margin-bottom: 4mm !important; font-size: 11pt; }
       .office .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14mm; align-items: end; }
-      .office .kv { display: grid; grid-template-columns: 18mm 1fr; align-items: end; margin-bottom: 7mm; font-size: 11pt; }
-      .office .mf-sig { font-size: 10pt; margin-top: 18mm; }
+      .office .kv { display: grid; grid-template-columns: 18mm 1fr; align-items: end; margin-bottom: 5mm; font-size: 11pt; }
+      .office .mf-sig { font-size: 10pt; margin-top: 12mm; margin-bottom: 5mm; }
 
-      /* ---------- Page 3: instructions ---------- */
-      .sheet.mf.instructions .mf-card-b { padding: 3mm 5mm 2mm; line-height: 1.6; font-size: 11pt; }
-      .sheet.mf.instructions [lang="kn"] .mf-card-b { font-size: 10.5pt; }
+      /* ---------- Instructions (page 2) ---------- */
+      .sheet.mf.instructions .mf-card-b { padding: 2mm 5mm 1mm; line-height: 1.5; font-size: 10.5pt; }
+      .sheet.mf.instructions [lang="kn"] .mf-card-b { font-size: 10pt; }
       .sheet.mf.instructions ol { margin: 0; padding-left: 6mm; }
-      .sheet.mf.instructions ol li { margin-bottom: 1.6mm; padding-left: 1mm; }
+      .sheet.mf.instructions ol li { margin-bottom: 1.2mm; padding-left: 1mm; }
       .sheet.mf.instructions ol li::marker { color: var(--maroon); font-weight: 700; }
-      .sheet.mf.instructions .mf-card { margin-bottom: 4mm; }
+      .sheet.mf.instructions .mf-card { margin-bottom: 2.5mm; }
+      /* Letter spacing breaks up Kannada and Malayalam letters. */
+      .sheet.mf .mf-card-h .t[lang] { letter-spacing: 0; font-size: 11pt; }
 
       /* Bootstrap 3 prints every element black on white (* { color/background !important }).
          These !important rules are more specific, so the sheet keeps its colours in print. */
@@ -188,7 +190,7 @@
           <section class="fp-section fp-finish" id="sec-finish" aria-labelledby="h-finish">
             <h2 id="h-finish">Print and sign</h2>
             <ol class="fp-steps">
-              <li>Press <strong>Print / Save as PDF</strong>. The form prints on 3 A4 pages.</li>
+              <li>Press <strong>Print / Save as PDF</strong>. The form prints on 2 A4 pages.</li>
               <li>The bride, the bridegroom and both witnesses sign the printed form.</li>
               <li>The Pattikkaran fills in and signs the Pattikkaran section.</li>
               <li>Bring the form and copies of the birth and address documents to the temple office.</li>
@@ -210,7 +212,7 @@
 
         <section class="fp-preview" aria-label="Print preview">
           <div class="fp-preview-head">
-            <h2>Preview <small>A4, 3 pages</small></h2>
+            <h2>Preview <small>A4, 2 pages</small></h2>
             <button type="button" class="btn-x btn-primary-x" data-action="print"><i class="fa fa-print" aria-hidden="true"></i> Print / Save as PDF</button>
             <button type="button" class="btn-x btn-secondary-x fp-close" data-action="close-preview"><i class="fa fa-times" aria-hidden="true"></i><span class="lbl">Close preview</span></button>
           </div>
@@ -228,12 +230,12 @@
                 </div>
                 <div data-sheet-person="groom"></div>
                 <div data-sheet-person="bride"></div>
-                <p class="s-foot">Page 1 of 3 · Filled online at pernekshetra.com/forms</p>
+                <p class="s-foot">Page 1 of 2 · Filled online at pernekshetra.com/forms</p>
               </div></div>
             </article>
 
-            <!-- ======================= Page 2: office use ======================= -->
-            <article class="sheet mf pb">
+            <!-- ======================= Page 2: office use + instructions ======================= -->
+            <article class="sheet mf instructions pb">
               <div class="mf-frame"><div class="mf-in">
                 <p class="mf-temple">SHREE PERNE MUCHILOT BHAGAVATHI KSHETHRA</p>
                 <p class="mf-addr">POST KANNUR, KASARAGOD DISTRICT – 671321</p>
@@ -251,16 +253,6 @@
                     </div>
                   </div>
                 </section>
-                <p class="s-foot">Page 2 of 3 · Filled online at pernekshetra.com/forms</p>
-              </div></div>
-            </article>
-
-            <!-- ======================= Page 3: instructions ======================= -->
-            <article class="sheet mf instructions pb">
-              <div class="mf-frame"><div class="mf-in">
-                <p class="mf-temple">SHREE PERNE MUCHILOT BHAGAVATHI KSHETHRA</p>
-                <p class="mf-addr">POST KANNUR, KASARAGOD DISTRICT – 671321</p>
-                <p class="mf-title"><span>INSTRUCTIONS</span></p>
                 <section class="mf-card" lang="kn">
                   <div class="mf-card-h"><span class="t" lang="kn">ಸೂಚನೆಗಳು</span></div>
                   <div class="mf-card-b">
@@ -289,7 +281,7 @@
                     </ol>
                   </div>
                 </section>
-                <p class="s-foot">Page 3 of 3 · Filled online at pernekshetra.com/forms</p>
+                <p class="s-foot">Page 2 of 2 · Filled online at pernekshetra.com/forms</p>
               </div></div>
             </article>
           </div>
