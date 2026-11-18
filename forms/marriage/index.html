@@ -123,8 +123,16 @@
       /* In print, sheet.css gives sheets height: auto and padding-bottom: 0. Keep each framed page
          296mm tall (not 297, so rounding never adds a blank page) with 5mm above the frame and
          4mm + the 1mm left over below it, so the gaps at the top and bottom are equal. */
-      @media print { .sheet.mf { height: 296mm !important; padding: 5mm 5mm 4mm !important; } }
+      @media print {
+        .sheet.mf { height: 296mm !important; padding: 5mm 5mm 4mm !important; }
+        /* Safari fits only about 275mm on its first layout, and scaling the sheet makes it look
+           small. So keep the full width and make the rows shorter. The script below sets the class. */
+        html.is-webkit .sheet.mf { --row: 4.8mm; height: 275mm !important; margin: 0 auto !important; }
+        html.is-webkit .sheet.mf .boxes .b { width: 4.5mm; height: 4.5mm; line-height: 4.3mm; }
+        html.is-webkit .sheet.mf .mf-card { margin-bottom: 1.2mm; }
+      }
     </style>
+    <script>if (navigator.vendor === "Apple Computer, Inc.") document.documentElement.classList.add("is-webkit");</script>
   </head>
   <body class="forms-page">
     <!-- ******************************** Navigation ******************************** -->
