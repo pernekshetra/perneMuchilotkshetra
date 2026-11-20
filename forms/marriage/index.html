@@ -124,11 +124,24 @@
          296mm tall (not 297, so rounding never adds a blank page) with 5mm above the frame and
          4mm + the 1mm left over below it, so the gaps at the top and bottom are equal. */
       @media print { .sheet.mf { height: 296mm !important; padding: 5mm 5mm 4mm !important; } }
-      /* Safari's print preview can count 4 pages, but its saved PDF has 2. */
+      /* iPhone and iPad add their own page margins and shrink the sheet to fit the width. That leaves
+         about 287mm of sheet height per A4 page, so a 296mm sheet spills onto extra pages. */
+      @media print {
+        html.is-ios .sheet.mf { --row: 5mm; height: 282mm !important; }
+        html.is-ios .sheet.mf .boxes .b { width: 4.5mm; height: 4.5mm; line-height: 4.3mm; }
+        html.is-ios .sheet.mf .mf-card { margin-bottom: 1.2mm; }
+      }
+      /* Safari on a Mac: the print preview can count 4 pages, but its saved PDF has 2. */
       .fp-webkit-note { display: none; }
-      html.is-webkit .fp-webkit-note { display: block; }
+      html.is-webkit:not(.is-ios) .fp-webkit-note { display: block; }
     </style>
-    <script>if (navigator.vendor === "Apple Computer, Inc.") document.documentElement.classList.add("is-webkit");</script>
+    <script>
+      (function (root) {
+        if (navigator.vendor === "Apple Computer, Inc.") root.classList.add("is-webkit");
+        // iPadOS reports itself as a Mac, so also check for a touch screen.
+        if (/iP(hone|ad|od)/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1)) root.classList.add("is-ios");
+      })(document.documentElement);
+    </script>
   </head>
   <body class="forms-page">
     <!-- ******************************** Navigation ******************************** -->
