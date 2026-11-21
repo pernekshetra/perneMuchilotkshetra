@@ -24,6 +24,13 @@
 (function () {
   "use strict";
 
+  /* WebKit prints the framed sheets shorter (sheet.css, html.is-webkit).
+     iPadOS reports itself as a Mac, so also check for a touch screen. */
+  (function (root) {
+    var ios = /iP(hone|ad|od)/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+    if (ios || navigator.vendor === "Apple Computer, Inc.") root.classList.add("is-webkit");
+  })(document.documentElement);
+
   var PREFIX = "pernekshetra:form:";
   var MASKS = {
     date: { groups: [2, 2, 4], sep: "/" },
