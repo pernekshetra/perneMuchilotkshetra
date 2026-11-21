@@ -123,23 +123,22 @@
       /* In print, sheet.css gives sheets height: auto and padding-bottom: 0. Keep each framed page
          296mm tall (not 297, so rounding never adds a blank page) with 5mm above the frame and
          4mm + the 1mm left over below it, so the gaps at the top and bottom are equal. */
-      @media print { .sheet.mf { height: 296mm !important; padding: 5mm 5mm 4mm !important; } }
-      /* iPhone and iPad add their own page margins and shrink the sheet to fit the width. That leaves
-         about 287mm of sheet height per A4 page, so a 296mm sheet spills onto extra pages. */
       @media print {
-        html.is-ios .sheet.mf { --row: 5mm; height: 282mm !important; }
-        html.is-ios .sheet.mf .boxes .b { width: 4.5mm; height: 4.5mm; line-height: 4.3mm; }
-        html.is-ios .sheet.mf .mf-card { margin-bottom: 1.2mm; }
+        .sheet.mf { height: 296mm !important; padding: 5mm 5mm 4mm !important; }
+        /* Safari on a Mac fits only about 275mm on its first print layout. iPhone and iPad (every
+           browser there is WebKit) add their own margins and leave about 287mm. Scaling the sheet
+           makes it look small, so keep the full width and make the rows shorter. 275mm fits both.
+           The script below sets the class. Chrome and Edge on a Mac or PC keep 296mm. */
+        html.is-webkit .sheet.mf { --row: 4.8mm; height: 275mm !important; margin: 0 auto !important; }
+        html.is-webkit .sheet.mf .boxes .b { width: 4.5mm; height: 4.5mm; line-height: 4.3mm; }
+        html.is-webkit .sheet.mf .mf-card { margin-bottom: 1.2mm; }
       }
-      /* Safari on a Mac: the print preview can count 4 pages, but its saved PDF has 2. */
-      .fp-webkit-note { display: none; }
-      html.is-webkit:not(.is-ios) .fp-webkit-note { display: block; }
     </style>
     <script>
       (function (root) {
-        if (navigator.vendor === "Apple Computer, Inc.") root.classList.add("is-webkit");
         // iPadOS reports itself as a Mac, so also check for a touch screen.
-        if (/iP(hone|ad|od)/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1)) root.classList.add("is-ios");
+        var ios = /iP(hone|ad|od)/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+        if (ios || navigator.vendor === "Apple Computer, Inc.") root.classList.add("is-webkit");
       })(document.documentElement);
     </script>
   </head>
@@ -220,7 +219,6 @@
                 <li>iPhone: tap the share button in the print screen, then <em>Save to Files</em>.</li>
               </ul>
             </details>
-            <p class="fp-note fp-webkit-note">Safari's print preview may show 4 pages. Keep <em>All Pages</em> selected. The saved PDF has 2 pages.</p>
             <div class="actions">
               <button type="button" class="btn-x btn-primary-x" data-action="print"><i class="fa fa-print" aria-hidden="true"></i> Print / Save as PDF</button>
               <button type="button" class="btn-x btn-quiet-x" data-action="print-blank"><i class="fa fa-file-o" aria-hidden="true"></i> Print blank form</button>
