@@ -14,13 +14,14 @@ There is no backend. Data stays in the browser.
 
 - `forms.js` builds the inputs (`PerneForm.field`), formats typing (dates DD/MM/YYYY, Aadhaar, phone, PIN), validates on blur, and copies values into the A4 `.sheet` markup (`data-bind`, `data-boxes`).
 - `forms.css` is the screen UI. `sheet.css` is the A4 sheet and the print rules: `@media print` hides everything except the sheets, and `@page { margin: 0 }` removes browser headers/footers.
+- Both forms use the same framed sheet design (`.sheet.mf` in `sheet.css`): maroon and gold frame, temple header, title band and lettered cards. Page-specific rows stay in each page's `<style>`.
 - Wide screens show a live preview that highlights the focused field. Narrow screens open the preview as an overlay.
 - The browser makes the PDF (Print → Save as PDF). The browser shapes Kannada/Malayalam text correctly; JS PDF libraries do not.
 - A draft is kept in `localStorage` (`pernekshetra:form:<id>`). Fields with `data-nosave` (Aadhaar) are never stored. "Clear my data" removes the draft.
 - Aadhaar numbers are checked with the Verhoeff check digit, and must not start with 0 or 1. This catches any single wrong digit and any swap of two neighbouring digits.
 - "Print blank form" prints empty sheets for filling in by hand. The draft is not changed; the sheets show the values again when the print dialog closes.
 - Each sheet footer (`[data-print-meta]`) shows the print date, for example `Printed 17/11/2026`, so the office can tell which printout is the latest.
-- The marriage sheets print 296mm tall in Chrome and Edge. In WebKit (Safari on a Mac, and every browser on iPhone and iPad) they print 275mm tall with shorter rows (`html.is-webkit`), because Safari fits only about 275mm per page on its first layout and iOS adds its own margins.
+- The framed sheets print 296mm tall in Chrome and Edge. In WebKit (Safari on a Mac, and every browser on iPhone and iPad) they print 275mm tall with shorter rows (`html.is-webkit`, set in `forms.js`), because Safari fits only about 275mm per page on its first layout and iOS adds its own margins.
 - Google Analytics (`/js/analytics.js`) is loaded. On these pages it reports the URL without query parameters except `lang`, fixes the page title at load (Print renames the page to the PDF file name, which contains people's names), and turns off Google signals and ad personalisation. Form values are never sent. Keep "Form interactions" off in GA Enhanced measurement.
 - Print and Print blank form send a GA event `form_printed` with `form_name` (`marriage`, `pandal-mangalam`), `blank` (`yes`/`no`) and, on Pandal Mangalam, `lang`. To see these in GA reports, register them as custom dimensions (Admin → Custom definitions). Ctrl+P is not counted.
 - Fonts are self-hosted in `fonts/` (SIL OFL 1.1): Anek for the screen UI (one design for Latin, Kannada and Malayalam); EB Garamond and Noto Serif Kannada/Malayalam for the printed sheet.

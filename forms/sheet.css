@@ -175,6 +175,67 @@
   font-size: 10pt;
 }
 
+/* ==========================================================================
+   Framed sheet (.sheet.mf): maroon and gold frame, temple header, title band
+   and lettered cards. Used by the Marriage and Pandal Mangalam forms.
+   ========================================================================== */
+
+.sheet.mf {
+  --maroon: #7d1f1f; --gold: #b8892f; --cream: #f4ebdc; --cream-2: #fbf7f0;
+  --card: #ddd0bc; --ink: #2b2420; --muted: #6f655c; --rule: #8c8279;
+  --row: 5.3mm;
+  padding: 5mm; font-size: 10.5pt; color: var(--ink);
+  -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+.mf-frame { height: 100%; border: 1.2pt solid var(--maroon); padding: 1.2mm; }
+.mf-in { height: 100%; border: 0.6pt solid var(--gold); padding: 3.5mm 5mm 2mm; display: flex; flex-direction: column; }
+.mf-temple { text-align: center; color: var(--maroon); font-weight: 700; font-size: 16pt; letter-spacing: 0.05em; line-height: 1.1; }
+.mf-addr { text-align: center; color: var(--muted); font-size: 9pt; letter-spacing: 0.16em; margin-top: 0.8mm !important; }
+.mf-title { display: flex; align-items: center; gap: 4mm; margin: 1.6mm 0 2.2mm !important; }
+.mf-title::before, .mf-title::after { content: ""; flex: 1; border-top: 0.8pt solid var(--gold); }
+.mf-title span { background: var(--maroon); color: #fff; font-weight: 700; font-size: 10.5pt; letter-spacing: 0.32em; padding: 0.8mm 4mm 0.8mm 5mm; border-radius: 1mm; }
+
+.mf-card { border: 0.6pt solid var(--card); border-radius: 1.6mm; margin-bottom: 1.5mm; overflow: hidden; }
+.mf-card.use { border-style: dashed; border-color: #b9b2a9; }
+.mf-card-h { display: flex; align-items: center; gap: 2mm; background: var(--cream); padding: 0.6mm 3mm; border-bottom: 0.6pt solid var(--card); }
+.mf-card.use .mf-card-h { background: #efede9; border-bottom: 0.6pt dashed #b9b2a9; }
+.mf-badge { width: 4.4mm; height: 4.4mm; border-radius: 50%; background: var(--maroon); color: #fff; font-size: 7.5pt; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; flex: none; }
+.mf-card.use .mf-badge { background: #3f3a36; }
+.mf-card-h .t { margin: 0; padding: 0; text-align: left; font-family: inherit; font-size: 10.5pt; font-weight: 700; letter-spacing: 0.14em; color: var(--maroon); }
+.mf-card.use .mf-card-h .t { color: #3f3a36; }
+.mf-card-h .tr { margin-left: auto; font-style: italic; font-size: 9pt; color: var(--muted); }
+.mf-card-b { padding: 0.2mm 3mm 0.9mm; }
+
+.sheet.mf .line { border-bottom-color: var(--rule); }
+.sheet.mf .boxes .b { width: 4.7mm; height: 4.7mm; line-height: 4.5mm; font-size: 10pt; border-color: #5a524b; }
+.sheet.mf .boxes .b.ph { color: #c4bcb2; }
+.mf-sig { display: block; border-top: 0.6pt solid var(--rule); text-align: center; color: var(--muted); font-size: 8.5pt; padding-top: 0.6mm; margin-bottom: 0.4mm; }
+.sheet.mf .s-foot { position: static; margin-top: auto; padding-top: 1.5mm; }
+/* Letter spacing breaks up Kannada and Malayalam letters. */
+.sheet.mf .mf-card-h .t[lang], .sheet.mf .mf-title span[lang] { letter-spacing: 0; font-size: 11pt; }
+
+/* Bootstrap 3 prints every element black on white (* { color/background !important }).
+   These !important rules are more specific, so the sheet keeps its colours in print. */
+.sheet.mf .mf-temple, .sheet.mf .mf-card-h .t { color: var(--maroon) !important; }
+.sheet.mf .mf-card.use .mf-card-h .t { color: #3f3a36 !important; }
+.sheet.mf .mf-addr, .sheet.mf .mf-card-h .tr, .sheet.mf .mf-sig { color: var(--muted) !important; }
+.sheet.mf .mf-title span, .sheet.mf .mf-badge { color: #fff !important; background: var(--maroon) !important; }
+.sheet.mf .mf-card.use .mf-badge { background: #3f3a36 !important; }
+.sheet.mf .mf-card-h { background: var(--cream) !important; }
+.sheet.mf .mf-card.use .mf-card-h { background: #efede9 !important; }
+.sheet.mf .boxes .b.ph { color: #c4bcb2 !important; }
+
+/* In print, sheets get height: auto and padding-bottom: 0 (below). Keep each framed page
+   296mm tall (not 297, so rounding never adds a blank page) with 5mm above the frame and
+   4mm + the 1mm left over below it, so the gaps at the top and bottom are equal. */
+@media print {
+  .sheet.mf { height: 296mm !important; padding: 5mm 5mm 4mm !important; }
+  /* Safari on a Mac fits only about 275mm on its first print layout. iPhone and iPad (every
+     browser there is WebKit) add their own margins and leave about 287mm. Scaling the sheet
+     makes it look small, so keep the full width and make the content shorter. 275mm fits both.
+     forms.js sets the class. Chrome and Edge on a Mac or PC keep 296mm. */
+  html.is-webkit .sheet.mf { height: 275mm !important; margin: 0 auto !important; }
+}
 
 /* Highlight the spot that matches the focused input (screen only). */
 .sheet .is-hl {

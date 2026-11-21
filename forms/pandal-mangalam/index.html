@@ -27,8 +27,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="/css/custom.css" rel="stylesheet" type="text/css">
-    <link href="/forms/sheet.css?v=202611172306" rel="stylesheet" type="text/css">
-    <link href="/forms/forms.css?v=202611172306" rel="stylesheet" type="text/css">
+    <link href="/forms/sheet.css?v=202611211854" rel="stylesheet" type="text/css">
+    <link href="/forms/forms.css?v=202611211854" rel="stylesheet" type="text/css">
     <style>
       /* Show only the active language (screen labels and sheet). */
       body[data-lang="kn"] [lang="ml"],
@@ -36,18 +36,29 @@
       /* The notice shows in English and Kannada for both languages. */
       body[data-lang] .fp-notice [lang] { display: block !important; }
 
-      .sheet.pandal { font-size: 13pt; line-height: 1.6; padding: 14mm 18mm 12mm; }
-      .sheet.pandal[lang="ml"] { font-size: 12.5pt; }
-      .sheet.pandal .s-title { font-size: 16pt; letter-spacing: 0; margin: 7mm 0 10mm; }
-      .sheet.pandal .pl { display: flex; align-items: baseline; gap: 2mm; margin-bottom: 5.5mm; white-space: nowrap; }
-      .sheet.pandal .pl .dots { flex: 1 1 auto; min-width: 0; }
-      .sheet.pandal .pl .dots.fixed { flex: 0 0 var(--w); }
-      .sheet.pandal .para { margin: 0 0 6mm; }
-      .sheet.pandal .kv { display: grid; grid-template-columns: 26mm 4mm 1fr; align-items: baseline; margin-bottom: 3mm; }
-      .sheet.pandal .kv .dots { --w: 55mm; justify-self: start; text-align: left; }
-      .sheet.pandal .sign-row { display: flex; justify-content: space-between; align-items: flex-end; }
-      .sheet.pandal .sign-row .sig-line { width: 70mm; font-size: 11.5pt; }
-      .sheet.pandal .gap { height: 14mm; }
+      /* Pandal sheet: same frame, header and cards as the marriage form (.sheet.mf in sheet.css).
+         --gap is the space between lines. WebKit prints 275mm tall, so it gets a smaller gap. */
+      .sheet.mf.pandal { --gap: 8.5mm; font-size: 12.5pt; line-height: 1.5; }
+      .sheet.mf.pandal[lang="ml"] { font-size: 12pt; }
+      .sheet.mf.pandal .mf-title { margin: 3mm 0 5mm !important; }
+      .sheet.mf.pandal .mf-title span { font-size: 13pt; padding: 1mm 6mm; }
+      .sheet.mf.pandal .mf-card { margin-bottom: 5mm; }
+      .sheet.mf.pandal .mf-card-b { padding: calc(var(--gap) - 1mm) 6mm 4mm; }
+      .sheet.mf.pandal .pl { display: flex; align-items: baseline; gap: 2mm; margin-bottom: var(--gap); white-space: nowrap; }
+      .sheet.mf.pandal .pl .dots { flex: 1 1 auto; min-width: 0; }
+      .sheet.mf.pandal .pl .dots.fixed { flex: 0 0 var(--w); }
+      .sheet.mf.pandal .dots { border-bottom: 0.6pt solid var(--rule); }
+      .sheet.mf.pandal .para { margin: 0 0 var(--gap); }
+      .sheet.mf.pandal .kv { display: grid; grid-template-columns: 22mm 4mm 58mm; align-items: center; min-height: 7mm; margin-bottom: 2mm; }
+      .sheet.mf.pandal .kv.wide { grid-template-columns: 52mm 4mm 40mm; margin-bottom: calc(var(--gap) + 4mm); }
+      .sheet.mf.pandal .kv .line { --row: 6.4mm; }
+      .sheet.mf.pandal .sign-row { display: flex; justify-content: space-between; align-items: flex-end; gap: 8mm; margin-top: var(--gap); }
+      .sheet.mf.pandal .mf-card-h .tr[lang] { font-style: normal; }
+      .sheet.mf.pandal .sign-row .mf-sig { width: 70mm; font-size: 10.5pt; }
+      .sheet.mf.pandal .mf-card.use .mf-card-b { padding-bottom: 5mm; }
+      @media print {
+        html.is-webkit .sheet.mf.pandal { --gap: 6.5mm; }
+      }
     </style>
   </head>
   <body class="forms-page" data-lang="kn">
@@ -146,75 +157,93 @@
           </div>
           <div class="sheets">
             <!-- ======================= Kannada sheet ======================= -->
-            <article class="sheet pandal" lang="kn">
-              <p class="s-temple">SHREE PERNE MUCHILOT BHAGAVATHI KSHETHRA</p>
-              <p class="s-addr">POST KANNUR, KASARAGOD DISTRICT 671321</p>
-              <p class="s-title" lang="kn"><span>ಚಪ್ಪರ ಮದುವೆಯ ಅರ್ಜಿ</span></p>
+            <article class="sheet mf pandal" lang="kn">
+              <div class="mf-frame"><div class="mf-in">
+                <p class="mf-temple">SHREE PERNE MUCHILOT BHAGAVATHI KSHETHRA</p>
+                <p class="mf-addr">POST KANNUR, KASARAGOD DISTRICT – 671321</p>
+                <p class="mf-title"><span lang="kn">ಚಪ್ಪರ ಮದುವೆಯ ಅರ್ಜಿ</span></p>
 
-              <div class="pl"><span class="dots v" data-bind="district" data-fit></span><span lang="kn">ಜಿಲ್ಲೆ,</span><span class="dots v" data-bind="taluk" data-fit></span><span lang="kn">ತಾಲೂಕು,</span></div>
-              <div class="pl"><span class="dots v" data-bind="place" data-fit></span><span lang="kn">ಎಂಬಲ್ಲಿರುವ</span></div>
-              <div class="pl"><span class="dots v" data-bind="father_name" data-fit></span><span lang="kn">ತಂದೆ,</span><span class="dots fixed v" style="--w:42mm" data-bind="father_illam" data-fit></span><span lang="kn">ಇಲ್ಲಂ (ಕುಟುಂಬ)</span></div>
-              <div class="pl"><span class="dots v" data-bind="mother_name" data-fit></span><span lang="kn">ತಾಯಿ,</span><span class="dots fixed v" style="--w:42mm" data-bind="mother_illam" data-fit></span><span lang="kn">ಇಲ್ಲಂ (ಕುಟುಂಬ)</span></div>
-              <div class="pl"><span lang="kn">ಎಂಬವರ ಮಗಳು ಕುಮಾರಿ</span><span class="dots v" data-bind="daughter_name" data-fit></span><span lang="kn">ಯ ಚಪ್ಪರ ಮದುವೆಯನ್ನು</span></div>
-              <p class="para" lang="kn">ಶ್ರೀ ಪೆರ್ಣೆ ಮುಚ್ಚಿಲೋಟ್ ಭಗವತೀ ಕ್ಷೇತ್ರದ ಆಚಾರದಂತೆ ನಡೆಸಿಕೊಡಬೇಕಾಗಿ ವಿನಂತಿ.</p>
+                <section class="mf-card">
+                  <div class="mf-card-h"><span class="mf-badge">A</span><span class="t">APPLICATION</span><span class="tr" lang="kn">ಅರ್ಜಿ</span></div>
+                  <div class="mf-card-b">
+                    <div class="pl"><span class="dots v" data-bind="district" data-fit></span><span lang="kn">ಜಿಲ್ಲೆ,</span><span class="dots v" data-bind="taluk" data-fit></span><span lang="kn">ತಾಲೂಕು,</span></div>
+                    <div class="pl"><span class="dots v" data-bind="place" data-fit></span><span lang="kn">ಎಂಬಲ್ಲಿರುವ</span></div>
+                    <div class="pl"><span class="dots v" data-bind="father_name" data-fit></span><span lang="kn">ತಂದೆ,</span><span class="dots fixed v" style="--w:42mm" data-bind="father_illam" data-fit></span><span lang="kn">ಇಲ್ಲಂ (ಕುಟುಂಬ)</span></div>
+                    <div class="pl"><span class="dots v" data-bind="mother_name" data-fit></span><span lang="kn">ತಾಯಿ,</span><span class="dots fixed v" style="--w:42mm" data-bind="mother_illam" data-fit></span><span lang="kn">ಇಲ್ಲಂ (ಕುಟುಂಬ)</span></div>
+                    <div class="pl"><span lang="kn">ಎಂಬವರ ಮಗಳು ಕುಮಾರಿ</span><span class="dots v" data-bind="daughter_name" data-fit></span><span lang="kn">ಯ ಚಪ್ಪರ ಮದುವೆಯನ್ನು</span></div>
+                    <p class="para" lang="kn">ಶ್ರೀ ಪೆರ್ಣೆ ಮುಚ್ಚಿಲೋಟ್ ಭಗವತೀ ಕ್ಷೇತ್ರದ ಆಚಾರದಂತೆ ನಡೆಸಿಕೊಡಬೇಕಾಗಿ ವಿನಂತಿ.</p>
 
-              <div class="sign-row">
-                <div>
-                  <div class="kv"><span lang="kn">ಸ್ಥಳ</span><span>:</span><span class="dots v" data-bind="sign_place" data-fit></span></div>
-                  <div class="kv"><span lang="kn">ದಿನಾಂಕ</span><span>:</span><span class="dots v" data-bind="sign_date" data-fmt="date"></span></div>
-                </div>
-                <div class="sig"><span class="sig-line" lang="kn">ತಂದೆ/ತಾಯಿಯ ಸಹಿ</span></div>
-              </div>
+                    <div class="sign-row">
+                      <div>
+                        <div class="kv"><span lang="kn">ಸ್ಥಳ</span><span>:</span><span class="line" data-fit><span class="v" data-bind="sign_place"></span></span></div>
+                        <div class="kv"><span lang="kn">ದಿನಾಂಕ</span><span>:</span><span class="boxes" data-boxes="sign_date" data-fmt="date"></span></div>
+                      </div>
+                      <span class="mf-sig" lang="kn">ತಂದೆ/ತಾಯಿಯ ಸಹಿ</span>
+                    </div>
+                  </div>
+                </section>
 
-              <hr class="s-rule" style="margin:9mm 0 7mm">
-
-              <p class="para" lang="kn">ಈ ಮೇಲೆ ವಿವರಿಸಿದಂತೆ ಚಪ್ಪರ ಮದುವೆಯನ್ನು ಕ್ಷೇತ್ರದಲ್ಲಿ ನಡೆಸಿಕೊಡಲು ನನ್ನ ಪೂರ್ಣ ಅನುಮತಿ ಇದೆ.</p>
-              <div class="kv" style="grid-template-columns: 52mm 4mm 1fr"><span lang="kn">ಅರ್ಜಿದಾರರ ಮನೆ ನಂಬ್ರ</span><span>:</span><span class="dots v" style="--w:30mm" data-bind="house_no"></span></div>
-              <div class="gap"></div>
-              <div class="sign-row">
-                <div>
-                  <div class="kv"><span lang="kn">ಸ್ಥಳ</span><span>:</span><span class="dots"></span></div>
-                  <div class="kv"><span lang="kn">ದಿನಾಂಕ</span><span>:</span><span class="dots"></span></div>
-                </div>
-                <div class="sig"><span class="sig-line" lang="kn">ಪಟ್ಟಿಕ್ಕಾರರ ಹೆಸರು ಮತ್ತು ಸಹಿ</span></div>
-              </div>
-              <p class="s-foot"><span data-print-meta>Filled online at pernekshetra.com/forms</span></p>
+                <section class="mf-card use">
+                  <div class="mf-card-h"><span class="mf-badge">B</span><span class="t">FOR THE USE OF PATTIKKARAN</span></div>
+                  <div class="mf-card-b">
+                    <p class="para" lang="kn">ಈ ಮೇಲೆ ವಿವರಿಸಿದಂತೆ ಚಪ್ಪರ ಮದುವೆಯನ್ನು ಕ್ಷೇತ್ರದಲ್ಲಿ ನಡೆಸಿಕೊಡಲು ನನ್ನ ಪೂರ್ಣ ಅನುಮತಿ ಇದೆ.</p>
+                    <div class="kv wide"><span lang="kn">ಅರ್ಜಿದಾರರ ಮನೆ ನಂಬ್ರ</span><span>:</span><span class="line"><span class="v" data-bind="house_no"></span></span></div>
+                    <div class="sign-row">
+                      <div>
+                        <div class="kv"><span lang="kn">ಸ್ಥಳ</span><span>:</span><span class="line"></span></div>
+                        <div class="kv"><span lang="kn">ದಿನಾಂಕ</span><span>:</span><span class="boxes" data-boxes="pattikkaran_date" data-fmt="date"></span></div>
+                      </div>
+                      <span class="mf-sig" lang="kn">ಪಟ್ಟಿಕ್ಕಾರರ ಹೆಸರು ಮತ್ತು ಸಹಿ</span>
+                    </div>
+                  </div>
+                </section>
+                <p class="s-foot">Page 1 of 1 · <span data-print-meta>Filled online at pernekshetra.com/forms</span></p>
+              </div></div>
             </article>
 
             <!-- ======================= Malayalam sheet ======================= -->
-            <article class="sheet pandal" lang="ml">
-              <p class="s-temple">SHREE PERNE MUCHILOT BHAGAVATHI KSHETHRA</p>
-              <p class="s-addr">POST KANNUR, KASARAGOD DISTRICT 671321</p>
-              <p class="s-title" lang="ml"><span>പന്തൽ മംഗലത്തിനുള്ള അപേക്ഷ</span></p>
+            <article class="sheet mf pandal" lang="ml">
+              <div class="mf-frame"><div class="mf-in">
+                <p class="mf-temple">SHREE PERNE MUCHILOT BHAGAVATHI KSHETHRA</p>
+                <p class="mf-addr">POST KANNUR, KASARAGOD DISTRICT – 671321</p>
+                <p class="mf-title"><span lang="ml">പന്തൽ മംഗലത്തിനുള്ള അപേക്ഷ</span></p>
 
-              <div class="pl"><span class="dots v" data-bind="district" data-fit></span><span lang="ml">ജില്ല,</span><span class="dots v" data-bind="taluk" data-fit></span><span lang="ml">താലൂക്ക്,</span></div>
-              <div class="pl"><span class="dots v" data-bind="place" data-fit></span><span lang="ml">എന്ന സ്ഥലത്തുള്ള</span></div>
-              <div class="pl"><span class="dots v" data-bind="father_name" data-fit></span><span lang="ml">അച്ചന്റെ പേര്,</span><span class="dots fixed v" style="--w:40mm" data-bind="father_illam" data-fit></span><span lang="ml">ഇല്ലം (കുടുംബം)</span></div>
-              <div class="pl"><span class="dots v" data-bind="mother_name" data-fit></span><span lang="ml">അമ്മയുടെ പേര്,</span><span class="dots fixed v" style="--w:40mm" data-bind="mother_illam" data-fit></span><span lang="ml">ഇല്ലം (കുടുംബം)</span></div>
-              <div class="pl"><span lang="ml">ഇവരുടെ മകൾ കുമാരി</span><span class="dots v" data-bind="daughter_name" data-fit></span><span lang="ml">യുടെ പന്തൽ മംഗലം</span></div>
-              <p class="para" lang="ml">ശ്രീ പെരുതണ മുച്ചിലോട്ട് ഭഗവതി ക്ഷേത്രാചാരമനുസരിച്ച് നടത്തി തരണമെന്ന് അപേക്ഷിക്കുന്നു.</p>
+                <section class="mf-card">
+                  <div class="mf-card-h"><span class="mf-badge">A</span><span class="t">APPLICATION</span><span class="tr" lang="ml">അപേക്ഷ</span></div>
+                  <div class="mf-card-b">
+                    <div class="pl"><span class="dots v" data-bind="district" data-fit></span><span lang="ml">ജില്ല,</span><span class="dots v" data-bind="taluk" data-fit></span><span lang="ml">താലൂക്ക്,</span></div>
+                    <div class="pl"><span class="dots v" data-bind="place" data-fit></span><span lang="ml">എന്ന സ്ഥലത്തുള്ള</span></div>
+                    <div class="pl"><span class="dots v" data-bind="father_name" data-fit></span><span lang="ml">അച്ചന്റെ പേര്,</span><span class="dots fixed v" style="--w:40mm" data-bind="father_illam" data-fit></span><span lang="ml">ഇല്ലം (കുടുംബം)</span></div>
+                    <div class="pl"><span class="dots v" data-bind="mother_name" data-fit></span><span lang="ml">അമ്മയുടെ പേര്,</span><span class="dots fixed v" style="--w:40mm" data-bind="mother_illam" data-fit></span><span lang="ml">ഇല്ലം (കുടുംബം)</span></div>
+                    <div class="pl"><span lang="ml">ഇവരുടെ മകൾ കുമാരി</span><span class="dots v" data-bind="daughter_name" data-fit></span><span lang="ml">യുടെ പന്തൽ മംഗലം</span></div>
+                    <p class="para" lang="ml">ശ്രീ പെരുതണ മുച്ചിലോട്ട് ഭഗവതി ക്ഷേത്രാചാരമനുസരിച്ച് നടത്തി തരണമെന്ന് അപേക്ഷിക്കുന്നു.</p>
 
-              <div class="sign-row">
-                <div>
-                  <div class="kv"><span lang="ml">സ്ഥലം</span><span>:</span><span class="dots v" data-bind="sign_place" data-fit></span></div>
-                  <div class="kv"><span lang="ml">തിയതി</span><span>:</span><span class="dots v" data-bind="sign_date" data-fmt="date"></span></div>
-                </div>
-                <div class="sig"><span class="sig-line" lang="ml">അച്ചന്റെ/അമ്മന്റെ ഒപ്പ്</span></div>
-              </div>
+                    <div class="sign-row">
+                      <div>
+                        <div class="kv"><span lang="ml">സ്ഥലം</span><span>:</span><span class="line" data-fit><span class="v" data-bind="sign_place"></span></span></div>
+                        <div class="kv"><span lang="ml">തിയതി</span><span>:</span><span class="boxes" data-boxes="sign_date" data-fmt="date"></span></div>
+                      </div>
+                      <span class="mf-sig" lang="ml">അച്ചന്റെ/അമ്മന്റെ ഒപ്പ്</span>
+                    </div>
+                  </div>
+                </section>
 
-              <hr class="s-rule" style="margin:9mm 0 7mm">
-
-              <p class="para" lang="ml">ഈ മേൽ വിവരിച്ച പ്രകാരം ക്ഷേത്രത്തിൽ പന്തൽ മംഗലം നടത്തി കൊടുക്കുന്നതിൽ എനിക്ക് പൂർണ സമ്മതമാണ്.</p>
-              <div class="kv"><span lang="ml">വീട് നമ്പർ</span><span>:</span><span class="dots v" style="--w:30mm" data-bind="house_no"></span></div>
-              <div class="gap"></div>
-              <div class="sign-row">
-                <div>
-                  <div class="kv"><span lang="ml">സ്ഥലം</span><span>:</span><span class="dots"></span></div>
-                  <div class="kv"><span lang="ml">തിയതി</span><span>:</span><span class="dots"></span></div>
-                </div>
-                <div class="sig"><span class="sig-line" lang="ml">പട്ടിക്കാരന്റെ പേരും, ഒപ്പും</span></div>
-              </div>
-              <p class="s-foot"><span data-print-meta>Filled online at pernekshetra.com/forms</span></p>
+                <section class="mf-card use">
+                  <div class="mf-card-h"><span class="mf-badge">B</span><span class="t">FOR THE USE OF PATTIKKARAN</span></div>
+                  <div class="mf-card-b">
+                    <p class="para" lang="ml">ഈ മേൽ വിവരിച്ച പ്രകാരം ക്ഷേത്രത്തിൽ പന്തൽ മംഗലം നടത്തി കൊടുക്കുന്നതിൽ എനിക്ക് പൂർണ സമ്മതമാണ്.</p>
+                    <div class="kv wide"><span lang="ml">വീട് നമ്പർ</span><span>:</span><span class="line"><span class="v" data-bind="house_no"></span></span></div>
+                    <div class="sign-row">
+                      <div>
+                        <div class="kv"><span lang="ml">സ്ഥലം</span><span>:</span><span class="line"></span></div>
+                        <div class="kv"><span lang="ml">തിയതി</span><span>:</span><span class="boxes" data-boxes="pattikkaran_date" data-fmt="date"></span></div>
+                      </div>
+                      <span class="mf-sig" lang="ml">പട്ടിക്കാരന്റെ പേരും, ഒപ്പും</span>
+                    </div>
+                  </div>
+                </section>
+                <p class="s-foot">Page 1 of 1 · <span data-print-meta>Filled online at pernekshetra.com/forms</span></p>
+              </div></div>
             </article>
           </div>
         </section>
@@ -238,7 +267,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <script src="/forms/forms.js?v=202611172306"></script>
+    <script src="/forms/forms.js?v=202611211854"></script>
     <script>
       (function () {
         document.getElementById("year").textContent = new Date().getFullYear();
