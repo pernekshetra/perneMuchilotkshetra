@@ -115,6 +115,9 @@
   overflow: hidden;
   white-space: nowrap;
 }
+/* Keep a one-line value on one line (.v is pre-wrap), so [data-fit] shrinks it
+   instead of the row growing taller. */
+.sheet .line:not(.multi) > .v { white-space: nowrap; }
 /* Multi-line: rules are real borders (.r), because browsers skip
    background images when printing by default. */
 .sheet .line.multi {
