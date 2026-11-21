@@ -58,7 +58,7 @@
 
   /* ---------- Printable sheet (page 1: cards A to F) ---------- */
 
-  function line(name) { return '<span class="line" data-fit><span class="v" data-bind="' + name + '"></span></span>'; }
+  function line(name, cls) { return '<span class="line' + (cls ? " " + cls : "") + '" data-fit><span class="v" data-bind="' + name + '"></span></span>'; }
   function multi(name) { return '<span class="line multi" data-lines="2" data-fit><span class="v" data-bind="' + name + '"></span></span>'; }
   function boxes(name, len, groups) {
     return '<span class="boxes" data-boxes="' + name + '" data-len="' + len + '"' + (groups ? ' data-groups="' + groups + '"' : "") + "></span>";
@@ -84,7 +84,7 @@
       row("1.", "Name of the " + r.en, line(p + "name")) +
       row("2.", "Father’s Name", line(p + "father")) +
       row("3.", "Mother’s Name", line(p + "mother")) +
-      row("4.", "Illam (Kutumba)", line(p + "illam") + '<span class="sub"><b>5.</b> Tharavad</span>' + line(p + "tharavad")) +
+      row("4.", "Illam (Kutumba)", line(p + "illam", "mf-illam") + '<span class="sub"><b>5.</b> Tharavad</span>' + line(p + "tharavad")) +
       row("6.", "Date of Birth", dateBoxes(p + "dob") + '<span class="sub push"><b>7.</b> Age</span>' + boxes(p + "age", 2)) +
       row("8.", "Address", '<span class="mf-addr2" style="flex:1">' + multi(p + "address") +
         '<span class="sub">PIN</span>' + boxes(p + "pin", 6) + "</span>", "tall") +
