@@ -102,11 +102,6 @@
     return c === 0;
   }
 
-  function today() {
-    var n = new Date();
-    return ("0" + n.getDate()).slice(-2) + "/" + ("0" + (n.getMonth() + 1)).slice(-2) + "/" + n.getFullYear();
-  }
-
   /* Count prints in Google Analytics (js/analytics.js). Only the form name,
      blank or not, and the language are sent - never any form values.
      Print renames the page to the PDF file name, which contains people's
@@ -453,7 +448,7 @@
     var v = this.blank ? {} : this.values();
 
     var meta = this.blank ? "Blank form · pernekshetra.com/forms"
-      : "Printed " + today() + " · Filled online at pernekshetra.com/forms";
+      : "Filled online at pernekshetra.com/forms";
     $all("[data-print-meta]").forEach(function (el) { el.textContent = meta; });
 
     $all("[data-bind]").forEach(function (el) {
