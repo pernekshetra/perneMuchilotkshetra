@@ -729,6 +729,8 @@
 
     $all("[data-action=print]").forEach(function (b) { b.addEventListener("click", function () { self.print(); }); });
     $all("[data-action=print-blank]").forEach(function (b) { b.addEventListener("click", function () { self.printBlank(); }); });
+    // Marriage: the blank form is the temple's own paper PDF (forms/paper/), opened in a new tab.
+    $all("[data-action=blank-pdf]").forEach(function (b) { b.addEventListener("click", function () { trackPrint(self.form, true); }); });
     $all("[data-action=clear]").forEach(function (b) { b.addEventListener("click", function () { self.clear(b); }); });
     $all("[data-action=preview]").forEach(function (b) { b.addEventListener("click", function () { self.openPreview(b); }); });
     $all("[data-action=close-preview]").forEach(function (b) { b.addEventListener("click", function () { self.closePreview(); }); });

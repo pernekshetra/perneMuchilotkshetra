@@ -19,11 +19,12 @@ There is no backend. Data stays in the browser.
 - The browser makes the PDF (Print → Save as PDF). The browser shapes Kannada/Malayalam text correctly; JS PDF libraries do not.
 - A draft is kept in `localStorage` (`pernekshetra:form:<id>`). Fields with `data-nosave` (Aadhaar) are never stored. "Clear my data" removes the draft.
 - Aadhaar numbers are checked with the Verhoeff check digit, and must not start with 0 or 1. This catches any single wrong digit and any swap of two neighbouring digits.
-- "Print blank form" prints empty sheets for filling in by hand. The draft is not changed; the sheets show the values again when the print dialog closes.
+- "Print blank form" on the marriage page opens the temple's own paper form, `paper/MarriageApplicationPerneBlank.pdf`, in a new tab. People print it from the browser's PDF viewer and fill it in by hand. The new framed design prints only typed forms.
+- "Print blank form" on the Pandal Mangalam page prints the framed sheets with empty fields (there is no paper PDF for it yet). The draft is not changed; the sheets show the values again when the print dialog closes.
 - Each sheet footer (`[data-print-meta]`) shows the page number and "Filled online at pernekshetra.com/forms" ("Blank form" for a blank print). It does not show the print date.
 - The framed sheets print 296mm tall in Chrome and Edge. In WebKit (Safari on a Mac, and every browser on iPhone and iPad) they print 275mm tall with shorter rows (`html.is-webkit`, set in `forms.js`), because Safari fits only about 275mm per page on its first layout and iOS adds its own margins.
 - Google Analytics (`/js/analytics.js`) is loaded. On these pages it reports the URL without query parameters except `lang`, fixes the page title at load (Print renames the page to the PDF file name, which contains people's names), and turns off Google signals and ad personalisation. Form values are never sent. Keep "Form interactions" off in GA Enhanced measurement.
-- Print and Print blank form send a GA event `form_printed` with `form_name` (`marriage`, `pandal-mangalam`), `blank` (`yes`/`no`) and, on Pandal Mangalam, `lang`. To see these in GA reports, register them as custom dimensions (Admin → Custom definitions). Ctrl+P is not counted.
+- Print and Print blank form send a GA event `form_printed` (on the marriage page, a click on the blank PDF link counts as `blank: yes`) with `form_name` (`marriage`, `pandal-mangalam`), `blank` (`yes`/`no`) and, on Pandal Mangalam, `lang`. To see these in GA reports, register them as custom dimensions (Admin → Custom definitions). Ctrl+P is not counted.
 - Fonts are self-hosted in `fonts/` (SIL OFL 1.1): Anek for the screen UI (one design for Latin, Kannada and Malayalam); EB Garamond and Noto Serif Kannada/Malayalam for the printed sheet.
 
 ## Version numbers on CSS and JS
