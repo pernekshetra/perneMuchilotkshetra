@@ -19,11 +19,22 @@ There is no backend. Data stays in the browser.
 - The browser makes the PDF (Print → Save as PDF). The browser shapes Kannada/Malayalam text correctly; JS PDF libraries do not.
 - A draft is kept in `localStorage` (`pernekshetra:form:<id>`). Fields with `data-nosave` (Aadhaar) are never stored. "Clear my data" removes the draft.
 - Aadhaar numbers are checked with the Verhoeff check digit, and must not start with 0 or 1. This catches any single wrong digit and any swap of two neighbouring digits.
-- "Print blank form" prints empty sheets for filling in by hand. The draft is not changed; the sheets show the values again when the print dialog closes.
+- "Print blank form (PDF)" opens the temple's own paper form in a new tab. People print it from the browser's PDF viewer and fill it in by hand. The new framed design prints only typed forms.
+
+  | Page | Blank PDF |
+  |---|---|
+  | Marriage | `paper/MarriageApplicationPerneBlank.pdf` (2 A4 pages) |
+  | Pandal Mangalam, Kannada | `paper/PandalMangalamBlank-kn.pdf` |
+  | Pandal Mangalam, Malayalam | `paper/PandalMangalamBlank-ml.pdf` |
+
+  The Pandal page has one link per language (`lang="kn"` / `lang="ml"`); the page shows only the link for the chosen language.
+- Before the PDF opens, a modal (`confirmBlank` in `forms.js`) asks people to type the form online instead, because typed forms are easier for the office to read. "Fill the form online" is the main button and has focus; it closes the modal and moves to the first field. Only the small "Download the blank form anyway" link opens the PDF. Escape or a click on the backdrop closes the modal. Browsers without `<dialog>` open the PDF at once.
+- The modal sends a GA event `blank_form_choice` with `form_name`, `choice` (`online` or `download`) and, on Pandal Mangalam, `lang`. `form_printed` with `blank: yes` is sent only when people choose Download.
+- `PerneForm.printBlank()` (framed sheets with empty fields) is no longer used by any page. It stays for a form that has no paper PDF.
 - Each sheet footer (`[data-print-meta]`) shows the page number and "Filled online at pernekshetra.com/forms" ("Blank form" for a blank print). It does not show the print date.
 - The framed sheets print 296mm tall in Chrome and Edge. In WebKit (Safari on a Mac, and every browser on iPhone and iPad) they print 275mm tall with shorter rows (`html.is-webkit`, set in `forms.js`), because Safari fits only about 275mm per page on its first layout and iOS adds its own margins.
 - Google Analytics (`/js/analytics.js`) is loaded. On these pages it reports the URL without query parameters except `lang`, fixes the page title at load (Print renames the page to the PDF file name, which contains people's names), and turns off Google signals and ad personalisation. Form values are never sent. Keep "Form interactions" off in GA Enhanced measurement.
-- Print and Print blank form send a GA event `form_printed` with `form_name` (`marriage`, `pandal-mangalam`), `blank` (`yes`/`no`) and, on Pandal Mangalam, `lang`. To see these in GA reports, register them as custom dimensions (Admin → Custom definitions). Ctrl+P is not counted.
+- Print and Print blank form send a GA event `form_printed` (on a blank PDF link, only a click on "Download the blank form anyway" in the modal counts as `blank: yes`) with `form_name` (`marriage`, `pandal-mangalam`), `blank` (`yes`/`no`) and, on Pandal Mangalam, `lang`. To see these in GA reports, register them as custom dimensions (Admin → Custom definitions). Ctrl+P is not counted.
 - Fonts are self-hosted in `fonts/` (SIL OFL 1.1): Anek for the screen UI (one design for Latin, Kannada and Malayalam); EB Garamond and Noto Serif Kannada/Malayalam for the printed sheet.
 
 ## Version numbers on CSS and JS
@@ -62,6 +73,7 @@ A native reader must check:
 1. `pandal-mangalam/index.html`: all `lang="kn"` and `lang="ml"` text.
 2. `marriage/index.html`: the instructions on page 2 (ಸೂಚನೆಗಳು, നിർദേശങ്ങൾ).
 3. `marriage/marriage.js`: the `kn` and `ml` labels (new translations, not on the paper form).
+4. `forms.js` `confirmBlank`: the `kn` and `ml` text in the blank-form modal (new translations).
 
 Points to check in particular:
 

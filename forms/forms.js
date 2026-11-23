@@ -116,6 +116,16 @@
     window.gtag("event", "form_printed", params);
   }
 
+  /* Count what people choose in the blank-form modal: "online" (fill the
+     form here) or "download" (open the paper PDF). No form values are sent. */
+  function trackBlankChoice(form, choice) {
+    if (typeof window.gtag !== "function") return;
+    var params = { form_name: form.getAttribute("data-form-id"), choice: choice, page_title: PAGE_TITLE };
+    var lang = document.body.getAttribute("data-lang");
+    if (lang) params.lang = lang;
+    window.gtag("event", "blank_form_choice", params);
+  }
+
   /* Format digits into groups and keep the caret after the same digit. */
   function applyMask(input) {
     var spec = MASKS[input.getAttribute("data-mask")];
@@ -643,6 +653,61 @@
     else go();
   };
 
+  /* The blank form is the temple's paper PDF (forms/paper/). Before it opens,
+     a modal asks people to type the form here instead: typed forms are
+     easier for the office to read. "Fill the form online" is the default;
+     only the small "Download" link in the modal opens the PDF.
+     Browsers without <dialog> follow the link at once. */
+  PerneForm.prototype.confirmBlank = function (link) {
+    var self = this;
+    var d = this._blankDialog;
+    if (!d) {
+      d = document.createElement("dialog");
+      d.className = "fp-dialog";
+      d.setAttribute("aria-labelledby", "fp-dialog-title");
+      d.setAttribute("aria-describedby", "fp-dialog-text");
+      d.innerHTML =
+        '<div class="fp-dialog-in">' +
+          '<div class="fp-dialog-ic" aria-hidden="true"><i class="fa fa-keyboard-o"></i></div>' +
+          '<h2 id="fp-dialog-title">Please type the form online</h2>' +
+          '<div id="fp-dialog-text">' +
+            '<p>A typed form is clear and easy for the temple office to read. Type your details on this page, then print the form or save it as a PDF. You still sign the printed form.</p>' +
+            '<p class="tr" lang="kn">ದಯವಿಟ್ಟು ಈ ಪುಟದಲ್ಲೇ ವಿವರಗಳನ್ನು ಟೈಪ್ ಮಾಡಿ, ನಂತರ ಪ್ರಿಂಟ್ ಮಾಡಿ ಅಥವಾ PDF ಆಗಿ ಉಳಿಸಿ. ಟೈಪ್ ಮಾಡಿದ ಅರ್ಜಿ ಸ್ಪಷ್ಟವಾಗಿರುತ್ತದೆ.</p>' +
+            '<p class="tr" lang="ml">ദയവായി ഈ പേജിൽ തന്നെ വിവരങ്ങൾ ടൈപ്പ് ചെയ്ത്, പ്രിന്റ് ചെയ്യുകയോ PDF ആയി സേവ് ചെയ്യുകയോ ചെയ്യുക. ടൈപ്പ് ചെയ്ത അപേക്ഷ വ്യക്തമായിരിക്കും.</p>' +
+          '</div>' +
+          '<div class="fp-dialog-actions">' +
+            '<button type="button" class="btn-x btn-primary-x" data-dialog="online"><i class="fa fa-pencil" aria-hidden="true"></i> Fill the form online</button>' +
+            '<a class="fp-dialog-download" target="_blank" rel="noopener" data-dialog="download">Download the blank form anyway</a>' +
+          '</div>' +
+        '</div>';
+      document.body.appendChild(d);
+      $("[data-dialog=online]", d).addEventListener("click", function () {
+        trackBlankChoice(self.form, "online");
+        d.close("online");
+      });
+      $("[data-dialog=download]", d).addEventListener("click", function () {
+        trackBlankChoice(self.form, "download");
+        trackPrint(self.form, true);
+        d.close("download");
+      });
+      // A click on the dim backdrop closes the modal, like Escape.
+      d.addEventListener("click", function (e) { if (e.target === d) d.close(""); });
+      d.addEventListener("close", function () {
+        if (d.returnValue !== "online") { if (self._blankLink) self._blankLink.focus(); return; }
+        var first = $("input:not([readonly]):not([type=hidden]), textarea, select", self.form);
+        if (!first) return;
+        first.scrollIntoView({ block: "center", behavior: "smooth" });
+        first.focus({ preventScroll: true });
+      });
+      this._blankDialog = d;
+    }
+    this._blankLink = link;
+    $("[data-dialog=download]", d).setAttribute("href", link.getAttribute("href"));
+    d.returnValue = "";
+    d.showModal();
+    $("[data-dialog=online]", d).focus();
+  };
+
   PerneForm.prototype.clear = function (btn) {
     if (!btn.classList.contains("confirm")) {
       btn.classList.add("confirm");
@@ -729,6 +794,13 @@
 
     $all("[data-action=print]").forEach(function (b) { b.addEventListener("click", function () { self.print(); }); });
     $all("[data-action=print-blank]").forEach(function (b) { b.addEventListener("click", function () { self.printBlank(); }); });
+    $all("[data-action=blank-pdf]").forEach(function (b) {
+      b.addEventListener("click", function (e) {
+        if (typeof HTMLDialogElement !== "function") { trackPrint(self.form, true); return; }
+        e.preventDefault();
+        self.confirmBlank(b);
+      });
+    });
     $all("[data-action=clear]").forEach(function (b) { b.addEventListener("click", function () { self.clear(b); }); });
     $all("[data-action=preview]").forEach(function (b) { b.addEventListener("click", function () { self.openPreview(b); }); });
     $all("[data-action=close-preview]").forEach(function (b) { b.addEventListener("click", function () { self.closePreview(); }); });
